@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cldfb4dn1b54j"]
+
+[ext_resource type="SpriteFrames" uid="uid://3mo2rnqkl2n" path="res://Assets/Characters/sf_small-mario.tres" id="1_6f7ka"]
+
+[node name="prefab_small-mario" type="Node2D"]
+
+[node name="states" type="Node2D" parent="."]
+
+[node name="small-mario" type="AnimatedSprite2D" parent="states"]
+texture_filter = 1
+position = Vector2(0, -6.5)
+sprite_frames = ExtResource("1_6f7ka")
+animation = &"running_move"
+frame_progress = 0.235293

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvn3gylagmrph"
-path="res://.godot/imported/img-spritesheet-mario.png-9d644722d1ef5eb40588cee65b5eb020.ctex"
+uid="uid://dhwvcxw6r85gl"
+path="res://.godot/imported/img_spritesheet-powerups.png-68205cd8dfd45f27eb38cfd7aaf6a0bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/img-spritesheet-mario.png"
-dest_files=["res://.godot/imported/img-spritesheet-mario.png-9d644722d1ef5eb40588cee65b5eb020.ctex"]
+source_file="res://Assets/Pickups/img_spritesheet-powerups.png"
+dest_files=["res://.godot/imported/img_spritesheet-powerups.png-68205cd8dfd45f27eb38cfd7aaf6a0bc.ctex"]
 
 [params]
 
