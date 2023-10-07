@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2rymd4lkmfut"]
+
+[ext_resource type="PackedScene" uid="uid://cldfb4dn1b54j" path="res://Assets/Characters/prefab_mario.tscn" id="1_k0a0p"]
+[ext_resource type="PackedScene" uid="uid://2r7r5g0csimd" path="res://Assets/Props/Prototype/prop_test_block.tscn" id="2_rsqf3"]
+[ext_resource type="PackedScene" uid="uid://cbsiyikmybjf7" path="res://Assets/Props/Prototype/prop_test_blockbreakable.tscn" id="3_eibx2"]
+[ext_resource type="PackedScene" uid="uid://bid4sa0mj2y3j" path="res://Assets/Props/Prototype/prop_test_ground.tscn" id="4_ovbdm"]
+
+[node name="level_test_prototype" type="Node2D"]
+
+[node name="camera" type="Camera2D" parent="."]
+
+[node name="prefab_small-mario" parent="." instance=ExtResource("1_k0a0p")]
+position = Vector2(0, 87)
+can_sleep = false
+
+[node name="props_test_block" parent="." instance=ExtResource("2_rsqf3")]
+position = Vector2(-44, 50)
+
+[node name="props_test_blockbreakable" parent="." instance=ExtResource("3_eibx2")]
+position = Vector2(54, 51)
+
+[node name="prop_test_ground" parent="." instance=ExtResource("4_ovbdm")]
+position = Vector2(0, 107)

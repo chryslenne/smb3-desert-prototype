@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://fv1d6g0dl5qd"]
-
-[ext_resource type="PackedScene" uid="uid://bid4sa0mj2y3j" path="res://Assets/Props/prop_test_ground.tscn" id="1_5vcyx"]
-
-[node name="level_test_basics" type="Node2D"]
-
-[node name="prop_test_ground" parent="." instance=ExtResource("1_5vcyx")]

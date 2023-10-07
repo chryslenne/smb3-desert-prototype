@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cldfb4dn1b54j"]
+[gd_scene load_steps=4 format=3 uid="uid://cldfb4dn1b54j"]
 
 [ext_resource type="SpriteFrames" uid="uid://3mo2rnqkl2n" path="res://Assets/Characters/sf_small-mario.tres" id="1_6f7ka"]
+[ext_resource type="Script" path="res://Assets/Characters/Controller_Character.gd" id="1_bgpfi"]
 
-[node name="prefab_small-mario" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_celxw"]
+size = Vector2(4.5, 12)
+
+[node name="prefab_small-mario" type="RigidBody2D"]
+lock_rotation = true
+script = ExtResource("1_bgpfi")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, -6)
+shape = SubResource("RectangleShape2D_celxw")
 
 [node name="states" type="Node2D" parent="."]
 
@@ -10,5 +20,4 @@
 texture_filter = 1
 position = Vector2(0, -6.5)
 sprite_frames = ExtResource("1_6f7ka")
-animation = &"running_move"
-frame_progress = 0.235293
+animation = &"default_idle"

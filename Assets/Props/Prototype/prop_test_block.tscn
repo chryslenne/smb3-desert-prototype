@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://2r7r5g0csimd"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_wybgj"]
+size = Vector2(20, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbsa0"]
+
+[node name="props_test_block" type="RigidBody2D"]
+freeze = true
+
+[node name="visuals" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_wybgj")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hbsa0")
