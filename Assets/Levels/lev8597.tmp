@@ -12,6 +12,7 @@ zoom = Vector2(2, 2)
 
 [node name="prefab_small-mario" parent="." instance=ExtResource("1_k0a0p")]
 position = Vector2(0, 87)
+can_sleep = false
 
 [node name="props_test_block" parent="." instance=ExtResource("2_rsqf3")]
 position = Vector2(-44, 50)

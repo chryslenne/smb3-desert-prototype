@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cldfb4dn1b54j"]
+
+[ext_resource type="SpriteFrames" uid="uid://3mo2rnqkl2n" path="res://Assets/Characters/SpriteFrames-SmallMario.tres" id="1_6f7ka"]
+[ext_resource type="Script" path="res://Assets/Characters/ControllerCharacter.gd" id="1_bgpfi"]
+[ext_resource type="PackedScene" uid="uid://22q48wmuidxd" path="res://Assets/Characters/Modules/RoofChecker.tscn" id="3_4ickb"]
+[ext_resource type="PackedScene" uid="uid://dhphberhak0kw" path="res://Assets/Characters/Modules/GroundChecker.tscn" id="3_t1hsi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxvqm"]
+size = Vector2(5, 10)
+
+[node name="prefab_small-mario" type="CharacterBody2D"]
+script = ExtResource("1_bgpfi")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_hxvqm")
+
+[node name="states" type="Node2D" parent="."]
+
+[node name="small-mario" type="AnimatedSprite2D" parent="states"]
+texture_filter = 1
+sprite_frames = ExtResource("1_6f7ka")
+animation = &"default_idle"
+offset = Vector2(0, -6.5)
+
+[node name="roof_checker" parent="." instance=ExtResource("3_4ickb")]
+position = Vector2(0, -15)
+
+[node name="ground_checker" parent="." instance=ExtResource("3_t1hsi")]
+
+[node name="properties" type="Node" parent="."]
+
+[node name="jump-duration" type="Timer" parent="properties"]
+wait_time = 0.3
+
+[connection signal="timeout" from="properties/jump-duration" to="." method="_on_jumpduration_timeout"]
