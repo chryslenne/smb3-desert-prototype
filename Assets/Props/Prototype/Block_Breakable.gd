@@ -23,6 +23,3 @@ func break_block():
 	$collision.disabled = true
 	
 	onBreakableState.emit();
-
-func _on_body_entered(body):
-	if body.has_node("properties/can_break"): break_block()

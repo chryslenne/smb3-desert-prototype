@@ -14,3 +14,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	is_roofed = ($ShapeCast2D as ShapeCast2D).get_collision_count() > 0
+	
+	for i in ($ShapeCast2D as ShapeCast2D).get_collision_count():
+		if ($ShapeCast2D as ShapeCast2D).get_collider(i).has_node("properties/breakable"):
+			($ShapeCast2D as ShapeCast2D).get_collider(i).break_block()

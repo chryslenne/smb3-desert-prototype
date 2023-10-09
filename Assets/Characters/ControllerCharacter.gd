@@ -21,6 +21,7 @@ var horizontal_speed : float
 var h_input : int
 var v_input : int
 var jump_input : bool
+var pipe_entry : Dictionary
 var run_input : bool
 @export var ground_state : GroundState = GroundState.Grounded
 
@@ -31,20 +32,45 @@ func _enter_tree():
 	# the exception for raycasting
 	$ground_checker.exceptions.append(self)
 	$roof_checker.exceptions.append(self)
+	
+	# for pipe detectors
+	# disable detection to self
+	$pipe_detector/N.add_exception(self)
+	$pipe_detector/S.add_exception(self)
+	$pipe_detector/E.add_exception(self)
+	$pipe_detector/W.add_exception(self)
 
 # ==================
 # Receives player input here
 func _input(event):
 	if event.is_action("move_right"):
 		if event.is_pressed() && !event.is_echo():
+			pipe_entry["e"] = true
 			h_input += 1
 		elif event.is_released() && !event.is_echo():
+			pipe_entry["e"] = false
 			h_input -= 1
 	if event.is_action("move_left"):
 		if event.is_pressed() && !event.is_echo():
+			pipe_entry["w"] = true
 			h_input -= 1
 		elif event.is_released() && !event.is_echo():
+			pipe_entry["w"] = false
 			h_input += 1
+	if event.is_action("move_up"):
+		if event.is_pressed() && !event.is_echo():
+			pipe_entry["n"] = true
+			v_input -= 1
+		elif event.is_released() && !event.is_echo():
+			pipe_entry["n"] = false
+			v_input += 1
+	if event.is_action("move_down"):
+		if event.is_pressed() && !event.is_echo():
+			pipe_entry["s"] = true
+			v_input += 1
+		elif event.is_released() && !event.is_echo():
+			pipe_entry["s"] = false
+			v_input -= 1
 	
 	if event.is_action("run"):
 		if event.is_pressed():
@@ -62,6 +88,7 @@ func _input(event):
 func _process(delta):
 	process_movements(delta)
 	process_ground_state()
+	process_pipes_entry()
 
 func process_movements(delta):
 	if h_input > 0:
@@ -104,6 +131,23 @@ func process_ground_state():
 		$"properties/jump-duration".stop()
 		ground_state = GroundState.Grounded
 		jump_input = false
-	
+
+func process_pipes_entry():
+	if pipe_entry.has("e") && pipe_entry["e"]:
+		pipe_entry["e"] = false
+		print("trying to enter east pipe")
+	if pipe_entry.has("w") && pipe_entry["w"]:
+		pipe_entry["w"] = false
+		print("trying to enter west pipe")
+	if pipe_entry.has("n") && pipe_entry["n"]:
+		pipe_entry["n"] = false
+		print("trying to enter north pipe")
+	if pipe_entry.has("s") && pipe_entry["s"] && $pipe_detector/S.get_collider():
+		pipe_entry["s"] = false
+		var pipe = $pipe_detector/S.get_collider().get_parent()
+		if (pipe is Pipe):
+			global_position = pipe.other_pipe.get_node("exit").global_position + Vector2.UP
+		
+
 func _on_jumpduration_timeout():
 	ground_state = GroundState.JumpingToFalling

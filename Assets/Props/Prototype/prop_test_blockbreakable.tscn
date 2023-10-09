@@ -40,4 +40,8 @@ lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 
+[node name="properties" type="Node" parent="."]
+
+[node name="breakable" type="Node" parent="properties"]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
