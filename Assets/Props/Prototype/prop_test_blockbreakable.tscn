@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbsiyikmybjf7"]
 
-[ext_resource type="Script" path="res://Assets/Props/Prototype/Block_Breakable.gd" id="1_up0xs"]
+[ext_resource type="Script" path="res://Scripts/BlockBreakable.gd" id="1_up0xs"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_wybgj"]
 size = Vector2(20, 20)

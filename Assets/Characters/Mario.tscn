@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cldfb4dn1b54j"]
 
 [ext_resource type="SpriteFrames" uid="uid://3mo2rnqkl2n" path="res://Assets/Characters/SpriteFrames-SmallMario.tres" id="1_6f7ka"]
-[ext_resource type="Script" path="res://Assets/Characters/ControllerCharacter.gd" id="1_bgpfi"]
+[ext_resource type="Script" path="res://Scripts/ControllerCharacter.gd" id="1_bgpfi"]
 [ext_resource type="PackedScene" uid="uid://22q48wmuidxd" path="res://Assets/Characters/Modules/RoofChecker.tscn" id="3_4ickb"]
 [ext_resource type="PackedScene" uid="uid://dhphberhak0kw" path="res://Assets/Characters/Modules/GroundChecker.tscn" id="3_t1hsi"]
 

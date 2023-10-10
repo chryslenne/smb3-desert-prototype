@@ -4,6 +4,7 @@ enum GroundState
 {
 	Grounded,
 	Jumping,
+	JumpingSmall,
 	JumpingToFalling,
 	Falling,
 }
@@ -20,10 +21,13 @@ var horizontal_speed : float
 # Character input & states
 var h_input : int
 var v_input : int
+var s_input : bool
 var jump_input : bool
 var pipe_entry : Dictionary
 var run_input : bool
-@export var ground_state : GroundState = GroundState.Grounded
+var ground_state : GroundState = GroundState.Grounded
+
+var active_state
 
 # ==================
 # For initialization
@@ -39,6 +43,11 @@ func _enter_tree():
 	$pipe_detector/S.add_exception(self)
 	$pipe_detector/E.add_exception(self)
 	$pipe_detector/W.add_exception(self)
+
+# ==================
+# For start
+func _ready():
+	active_state = $"states/small-mario"
 
 # ==================
 # Receives player input here
@@ -83,9 +92,16 @@ func _input(event):
 			jump_input = true
 		elif event.is_released() && !event.is_echo():
 			jump_input = false
+	
+	if event.is_action("special"):
+		if event.is_pressed() && !event.is_echo():
+			s_input = true
+		elif event.is_released() && !event.is_echo():
+			s_input = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	process_special_attacks()
 	process_movements(delta)
 	process_ground_state()
 	process_pipes_entry()
@@ -102,6 +118,8 @@ func process_movements(delta):
 			velocity.y = 0
 		GroundState.Jumping:
 			velocity.y = -jump_power
+		GroundState.JumpingSmall:
+			velocity.y = -jump_power
 		GroundState.JumpingToFalling:
 			velocity.y = move_toward(velocity.y, -fall_speed, vertical_delta * delta)
 		GroundState.Falling:
@@ -115,7 +133,7 @@ func process_ground_state():
 	if is_grounded && ground_state == GroundState.Grounded && jump_input:
 		$"properties/jump-duration".start()
 		ground_state = GroundState.Jumping
-	elif ground_state == GroundState.Jumping && !jump_input:
+	elif ground_state == GroundState.Jumping && !jump_input || ground_state == GroundState.JumpingSmall:
 		ground_state = GroundState.JumpingToFalling
 	elif !is_grounded && ground_state == GroundState.Grounded:
 		ground_state = GroundState.JumpingToFalling
@@ -127,10 +145,12 @@ func process_ground_state():
 		$"properties/jump-duration".stop()
 		ground_state = GroundState.Grounded
 		jump_input = false
+		s_input = false
 	elif ground_state == GroundState.Falling && is_grounded:
 		$"properties/jump-duration".stop()
 		ground_state = GroundState.Grounded
 		jump_input = false
+		s_input = false
 
 func process_pipes_entry():
 	if pipe_entry.has("e") && pipe_entry["e"]:
@@ -147,7 +167,12 @@ func process_pipes_entry():
 		var pipe = $pipe_detector/S.get_collider().get_parent()
 		if (pipe is Pipe):
 			global_position = pipe.other_pipe.get_node("exit").global_position + Vector2.UP
-		
+
+func process_special_attacks():
+	var is_grounded = $ground_checker.is_grounded
+	if active_state == $"states/small-mario" && is_grounded && ground_state == GroundState.Grounded && s_input:
+		s_input = false
+		ground_state = GroundState.JumpingSmall
 
 func _on_jumpduration_timeout():
 	ground_state = GroundState.JumpingToFalling

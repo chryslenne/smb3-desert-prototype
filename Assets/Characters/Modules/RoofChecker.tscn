@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://22q48wmuidxd"]
 
-[ext_resource type="Script" path="res://Assets/Characters/Modules/RoofChecker.gd" id="1_surw3"]
+[ext_resource type="Script" path="res://Scripts/RoofChecker.gd" id="1_surw3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ld0j"]
 size = Vector2(5, 1)

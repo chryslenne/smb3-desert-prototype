@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbw45ab481hcl"]
 
-[ext_resource type="Script" path="res://Assets/Props/Prototype/Pipe.gd" id="1_263p4"]
+[ext_resource type="Script" path="res://Scripts/Pipe.gd" id="1_naqur"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_448w1"]
 size = Vector2(10, 10)
@@ -18,7 +18,7 @@ size = Vector2(12, 2)
 size = Vector2(8, 2)
 
 [node name="prop_test_pipe" type="Node2D"]
-script = ExtResource("1_263p4")
+script = ExtResource("1_naqur")
 entry_dir = 2
 
 [node name="tube" type="MeshInstance2D" parent="."]
