@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://byn3dxhkb8nrt"]
+
+[ext_resource type="PackedScene" uid="uid://bid4sa0mj2y3j" path="res://Assets/Props/Prototype/prop_test_ground.tscn" id="1_7c2hn"]
+[ext_resource type="PackedScene" uid="uid://cldfb4dn1b54j" path="res://Assets/Characters/Mario.tscn" id="2_75nf6"]
+
+[node name="level_test_pickups" type="Node2D"]
+
+[node name="prop_test_ground" parent="." instance=ExtResource("1_7c2hn")]
+
+[node name="prefab_small-mario" parent="." instance=ExtResource("2_75nf6")]
+position = Vector2(0, -13)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dht5edtyrfto5"
-path="res://.godot/imported/SNES - Super Mario All-Stars Super Mario Bros 3 - World 2 Boomerang Bro Fire Bro.png-3060e24da5b71e81fc1a9d904ea2f109.ctex"
+uid="uid://bmyyhmi5l4xn3"
+path="res://.godot/imported/img_spritesheet-stages-tileset-objects.png-6f8c69faa332eba27a44b656460ab16f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UnorganizedAssets/SNES - Super Mario All-Stars Super Mario Bros 3 - World 2 Boomerang Bro Fire Bro.png"
-dest_files=["res://.godot/imported/SNES - Super Mario All-Stars Super Mario Bros 3 - World 2 Boomerang Bro Fire Bro.png-3060e24da5b71e81fc1a9d904ea2f109.ctex"]
+source_file="res://Assets/Images/img_spritesheet-stages-tileset-objects.png"
+dest_files=["res://.godot/imported/img_spritesheet-stages-tileset-objects.png-6f8c69faa332eba27a44b656460ab16f.ctex"]
 
 [params]
 

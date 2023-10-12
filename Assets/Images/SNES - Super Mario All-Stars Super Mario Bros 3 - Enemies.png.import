@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmyyhmi5l4xn3"
-path="res://.godot/imported/SNES - Super Mario All-Stars Super Mario Bros 3 - Stage Tilesets & Objects.png-d77b48ea4624dde11805b79fa58ae5e0.ctex"
+uid="uid://bnrksyonwajj7"
+path="res://.godot/imported/SNES - Super Mario All-Stars Super Mario Bros 3 - Enemies.png-106ee314c857238e7aacb866a695786a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UnorganizedAssets/SNES - Super Mario All-Stars Super Mario Bros 3 - Stage Tilesets & Objects.png"
-dest_files=["res://.godot/imported/SNES - Super Mario All-Stars Super Mario Bros 3 - Stage Tilesets & Objects.png-d77b48ea4624dde11805b79fa58ae5e0.ctex"]
+source_file="res://Assets/Images/SNES - Super Mario All-Stars Super Mario Bros 3 - Enemies.png"
+dest_files=["res://.godot/imported/SNES - Super Mario All-Stars Super Mario Bros 3 - Enemies.png-106ee314c857238e7aacb866a695786a.ctex"]
 
 [params]
 

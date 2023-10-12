@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4ww6iusfg2nd"
-path="res://.godot/imported/SMB3_World_2-2_Map.png-f7167b3e16d463cab20b96d2ae1aa2e2.ctex"
+path="res://.godot/imported/SMB3_World_2-2_Map.png-9e9b2485a1ca61051f90f7e21f78f096.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UnorganizedAssets/SMB3_World_2-2_Map.png"
-dest_files=["res://.godot/imported/SMB3_World_2-2_Map.png-f7167b3e16d463cab20b96d2ae1aa2e2.ctex"]
+source_file="res://Assets/Images/SMB3_World_2-2_Map.png"
+dest_files=["res://.godot/imported/SMB3_World_2-2_Map.png-9e9b2485a1ca61051f90f7e21f78f096.ctex"]
 
 [params]
 

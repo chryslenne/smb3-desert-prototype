@@ -1,6 +1,7 @@
 extends Node2D
 
 var is_roofed : bool
+var main_body : PhysicsBody2D
 var exceptions : Array
 
 func _enter_tree():
@@ -17,4 +18,6 @@ func _process(delta):
 	
 	for i in ($ShapeCast2D as ShapeCast2D).get_collision_count():
 		if ($ShapeCast2D as ShapeCast2D).get_collider(i).has_node("properties/breakable"):
-			($ShapeCast2D as ShapeCast2D).get_collider(i).break_block()
+			($ShapeCast2D as ShapeCast2D).get_collider(i).break_block(main_body)
+		if ($ShapeCast2D as ShapeCast2D).get_collider(i).has_node("properties/lootable"):
+			($ShapeCast2D as ShapeCast2D).get_collider(i).loot_block(main_body)

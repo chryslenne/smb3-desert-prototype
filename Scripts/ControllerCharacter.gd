@@ -36,6 +36,7 @@ func _enter_tree():
 	# the exception for raycasting
 	$ground_checker.exceptions.append(self)
 	$roof_checker.exceptions.append(self)
+	$roof_checker.main_body = self
 	
 	# for pipe detectors
 	# disable detection to self

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://o7sps2vwclo5"]
+
+[ext_resource type="Script" path="res://Assets/Powerups/SuperMushroom.gd" id="1_2owis"]
+[ext_resource type="Texture2D" uid="uid://b264i0k53gt08" path="res://Assets/Powerups/altas_supermushroom.tres" id="2_bae3g"]
+[ext_resource type="PackedScene" uid="uid://dhphberhak0kw" path="res://Assets/Characters/Modules/GroundChecker.tscn" id="3_ipjv2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i85xl"]
+size = Vector2(8, 8.5)
+
+[node name="SuperMushroom" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_2owis")
+move_speed = 65.0
+
+[node name="visuals" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_bae3g")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.75)
+shape = SubResource("RectangleShape2D_i85xl")
+disabled = true
+
+[node name="Casters" type="Node2D" parent="."]
+
+[node name="left" type="RayCast2D" parent="Casters"]
+enabled = false
+target_position = Vector2(-8.5, 0)
+
+[node name="right" type="RayCast2D" parent="Casters"]
+enabled = false
+target_position = Vector2(8.5, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-8, -8, 16, 16)
+
+[node name="ground-checker" parent="." instance=ExtResource("3_ipjv2")]
+position = Vector2(0, 8)

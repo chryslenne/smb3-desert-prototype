@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gm1tmxp5dktg"
-path="res://.godot/imported/SMB3_NES_World_2-4_Map.png-7ff804f20b0fcabb243798ead9c624f7.ctex"
+uid="uid://coqh7gp2fjk4"
+path="res://.godot/imported/SMB3_World_2-3_Map.png-3f959c1267dfe1918eee08e01fd61bc1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UnorganizedAssets/SMB3_NES_World_2-4_Map.png"
-dest_files=["res://.godot/imported/SMB3_NES_World_2-4_Map.png-7ff804f20b0fcabb243798ead9c624f7.ctex"]
+source_file="res://Assets/Images/SMB3_World_2-3_Map.png"
+dest_files=["res://.godot/imported/SMB3_World_2-3_Map.png-3f959c1267dfe1918eee08e01fd61bc1.ctex"]
 
 [params]
 

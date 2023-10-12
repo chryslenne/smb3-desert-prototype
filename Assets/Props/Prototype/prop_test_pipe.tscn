@@ -1,49 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbw45ab481hcl"]
+[gd_scene load_steps=3 format=3 uid="uid://bbw45ab481hcl"]
 
 [ext_resource type="Script" path="res://Scripts/Pipe.gd" id="1_naqur"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_448w1"]
-size = Vector2(10, 10)
-
-[sub_resource type="QuadMesh" id="QuadMesh_5i231"]
-size = Vector2(12, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmpjv"]
-size = Vector2(10, 10)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yxlo7"]
-size = Vector2(12, 2)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t173n"]
-size = Vector2(8, 2)
+size = Vector2(15, 2)
 
 [node name="prop_test_pipe" type="Node2D"]
 script = ExtResource("1_naqur")
 entry_dir = 2
 
-[node name="tube" type="MeshInstance2D" parent="."]
-position = Vector2(0, -5)
-mesh = SubResource("QuadMesh_448w1")
-
-[node name="tube_top" type="MeshInstance2D" parent="."]
-position = Vector2(0, -11)
-mesh = SubResource("QuadMesh_5i231")
-
-[node name="body" type="StaticBody2D" parent="."]
-
-[node name="col_tube" type="CollisionShape2D" parent="body"]
-position = Vector2(0, -5)
-shape = SubResource("RectangleShape2D_pmpjv")
-
-[node name="col_tube_top" type="CollisionShape2D" parent="body"]
-position = Vector2(0, -11)
-shape = SubResource("RectangleShape2D_yxlo7")
-
 [node name="exit" type="Node2D" parent="."]
 position = Vector2(0, -12)
 
 [node name="entry" type="Area2D" parent="."]
-position = Vector2(0, -11)
+collision_layer = 8
+collision_mask = 0
+monitoring = false
 
 [node name="shape" type="CollisionShape2D" parent="entry"]
 shape = SubResource("RectangleShape2D_t173n")

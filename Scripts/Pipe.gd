@@ -7,7 +7,8 @@ enum EntryDirection
 	N,
 	W,
 	S,
-	E
+	E,
+	None
 }
 
 @export var other_pipe : Pipe

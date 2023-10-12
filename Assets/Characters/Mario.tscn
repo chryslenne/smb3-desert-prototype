@@ -9,6 +9,7 @@
 size = Vector2(5, 10)
 
 [node name="prefab_small-mario" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_bgpfi")
 
 [node name="collision" type="CollisionShape2D" parent="."]
@@ -31,32 +32,38 @@ position = Vector2(0, -15)
 [node name="properties" type="Node" parent="."]
 
 [node name="jump-duration" type="Timer" parent="properties"]
-wait_time = 0.3
+wait_time = 0.2
 
 [node name="can_break" type="Node" parent="properties"]
+
+[node name="is_a_player" type="Node" parent="properties"]
 
 [node name="pipe_detector" type="Node2D" parent="."]
 
 [node name="N" type="RayCast2D" parent="pipe_detector"]
 position = Vector2(0, -10)
 target_position = Vector2(0, -5)
+collision_mask = 8
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="S" type="RayCast2D" parent="pipe_detector"]
 target_position = Vector2(0, 5)
+collision_mask = 8
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="E" type="RayCast2D" parent="pipe_detector"]
 position = Vector2(2, -6)
 target_position = Vector2(5, 0)
+collision_mask = 8
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="W" type="RayCast2D" parent="pipe_detector"]
 position = Vector2(-2, -6)
 target_position = Vector2(-5, 0)
+collision_mask = 8
 collide_with_areas = true
 collide_with_bodies = false
 
