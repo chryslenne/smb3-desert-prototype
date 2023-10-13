@@ -1,29 +1,32 @@
 extends Node2D
-
 class_name Pipe
 
-enum EntryDirection
-{
-	N,
-	W,
-	S,
-	E,
-	None
-}
+const enums = preload("res://Assets/Basics/Enums.gd")
 
+#---------------------#
+# properties          #
+#---------------------#
 @export var other_pipe : Pipe
-@export var entry_dir : EntryDirection
+@export var entry_dir : enums.Directions
 
-func is_north_entry(): return entry_dir == EntryDirection.N
-func is_south_entry(): return entry_dir == EntryDirection.S
-func is_east_entry(): return entry_dir == EntryDirection.E
-func is_west_entry(): return entry_dir == EntryDirection.W
+#---------------------#
+# accessors           #
+#---------------------#
+func is_entry_illegal(): return entry_dir == enums.Directions.None
+func is_north_entry(): return entry_dir == enums.Directions.N
+func is_south_entry(): return entry_dir == enums.Directions.S
+func is_east_entry(): return entry_dir == enums.Directions.E
+func is_west_entry(): return entry_dir == enums.Directions.W
 
-# Called when the node enters the scene tree for the first time.
+#---------------------#
+# godot functions     #
+#---------------------#
+# Called when the node enters 
+# the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	pass
+# Called every frame. 'delta' is 
+# the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 

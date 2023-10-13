@@ -9,3 +9,12 @@ enum PowerupTypes
 	HammerSuit,
 	Starman
 }
+
+enum Directions
+{
+	None,
+	N,
+	W,
+	S,
+	E
+}

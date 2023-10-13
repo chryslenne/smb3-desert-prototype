@@ -1,14 +1,18 @@
 extends Node2D
 
+#---------------------#
+# properties          #
+#---------------------#
 var is_grounded : bool
 var exceptions : Array
 
-
-# Called when the node enters the scene tree for the first time.
-func _enter_tree():
-	pass
-
+#---------------------#
+# godot functions     #
+#---------------------#
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+#
+# This function shoots a raycast downwards
+# and sets the flag 'is_grounded' depending on the collision size
 func _process(_delta):
 	var space_state = get_world_2d().direct_space_state
 	# use global coordinates, not local to node

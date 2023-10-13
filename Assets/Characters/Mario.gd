@@ -9,7 +9,14 @@ enum GroundState
 	Falling,
 }
 
-# Character properties
+#---------------------#
+# signals             #
+#---------------------#
+signal onPlayerDeath
+
+#---------------------#
+# properties          #
+#---------------------#
 @export_range(0, 1000, 5) var move_speed : float = 85
 @export_range(0, 10, 0.1) var run_speed : float = 2
 @export_range(1000, 0, 5) var jump_power : float = 200
@@ -17,7 +24,6 @@ enum GroundState
 @export_range(200, 2000, 10) var vertical_delta : float = 1000
 var vertical_speed : float
 var horizontal_speed : float
-
 # Character input & states
 var h_input : int
 var v_input : int
@@ -26,7 +32,6 @@ var jump_input : bool
 var pipe_entry : Dictionary
 var run_input : bool
 var ground_state : GroundState = GroundState.Grounded
-
 var active_state
 
 # ==================
