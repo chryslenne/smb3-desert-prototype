@@ -31,8 +31,9 @@ target_position = Vector2(-8.5, 0)
 enabled = false
 target_position = Vector2(8.5, 0)
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(-8, -8, 16, 16)
-
 [node name="ground-checker" parent="." instance=ExtResource("3_ipjv2")]
 position = Vector2(0, 8)
+
+[node name="properties" type="Node" parent="."]
+
+[node name="powerup" type="Node" parent="properties"]

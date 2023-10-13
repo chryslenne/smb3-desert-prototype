@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cldfb4dn1b54j"]
+[gd_scene load_steps=8 format=3 uid="uid://cldfb4dn1b54j"]
 
 [ext_resource type="SpriteFrames" uid="uid://3mo2rnqkl2n" path="res://Assets/Characters/SpriteFrames-SmallMario.tres" id="1_6f7ka"]
 [ext_resource type="Script" path="res://Scripts/ControllerCharacter.gd" id="1_bgpfi"]
 [ext_resource type="PackedScene" uid="uid://22q48wmuidxd" path="res://Assets/Characters/Modules/RoofChecker.tscn" id="3_4ickb"]
 [ext_resource type="PackedScene" uid="uid://dhphberhak0kw" path="res://Assets/Characters/Modules/GroundChecker.tscn" id="3_t1hsi"]
+[ext_resource type="Script" path="res://Assets/Characters/Modules/PowerupCollector.gd" id="5_wm4p6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxvqm"]
 size = Vector2(5, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aj0s0"]
+size = Vector2(8, 12)
 
 [node name="prefab_small-mario" type="CharacterBody2D"]
 collision_layer = 2
@@ -67,4 +71,15 @@ collision_mask = 8
 collide_with_areas = true
 collide_with_bodies = false
 
+[node name="PowerupCollector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+monitorable = false
+script = ExtResource("5_wm4p6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PowerupCollector"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_aj0s0")
+
 [connection signal="timeout" from="properties/jump-duration" to="." method="_on_jumpduration_timeout"]
+[connection signal="body_entered" from="PowerupCollector" to="PowerupCollector" method="_on_body_entered"]

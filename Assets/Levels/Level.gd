@@ -7,6 +7,7 @@ var current : LevelNode2D
 var coin_pickups : Array = []
 var brick_blocks : Array = []
 var prize_blocks : Array = []
+var powerups_lst : Array = []
 
 var preloaded_powerups : Dictionary
 

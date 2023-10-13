@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name SuperMushroom
 
 # Mushroom properties
 @export_range(0, 1000, 5) var move_speed : float = 85
@@ -23,6 +24,9 @@ enum GroundState
 	Falling
 }
 
+const enums = preload("res://Assets/Basics/Enums.gd")
+const identity = enums.PowerupTypes.SuperMushroom
+
 var ground_state : GroundState
 var spawn_target : Vector2
 var spawn_origin : Vector2
@@ -36,11 +40,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# Static object will not process stuff
-	if shroom_state == ShroomState.Static: 
+	if shroom_state == ShroomState.Static || shroom_state == ShroomState.Looted: 
 		return
 	
 	process_state(delta)
 	process_ground_state()
+
+func loot_powerup():
+	initialize_state(ShroomState.Looted)
 
 func hit_by(body):
 	if body.global_position.x > self.global_position.x:
@@ -49,7 +56,6 @@ func hit_by(body):
 		h_input = 1
 	$Casters/right.enabled = h_input > 0
 	$Casters/left.enabled = h_input < 0
-
 func move_direction_left():
 	h_input = -1
 	$Casters/right.enabled = h_input > 0
@@ -81,6 +87,10 @@ func initialize_state(new_state = null):
 		ShroomState.Static:
 			$"ground-checker".process_mode = Node.PROCESS_MODE_DISABLED
 			$collision.disabled = false
+		ShroomState.Looted:
+			$"ground-checker".process_mode = Node.PROCESS_MODE_DISABLED
+			$collision.disabled = false
+			queue_free()
 
 func process_state(delta):
 	match shroom_state:
