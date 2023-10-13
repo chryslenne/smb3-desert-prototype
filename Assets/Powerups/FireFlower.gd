@@ -25,7 +25,6 @@ func _exit_tree():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$"ground-checker".exceptions.append(self)
 	initialize_state(FireFlowerState.Spawning)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,23 +42,19 @@ func initialize_state(new_state = null):
 	match flower_state:
 		FireFlowerState.Spawning:
 			$collision.disabled = true
-			$"ground-checker".process_mode = Node.PROCESS_MODE_DISABLED
 			global_position = spawn_origin
 			print(spawn_origin)
 			spawn_target = spawn_origin + Vector2.UP * 16 # add 16 pixel up
 			print(spawn_target)
 		FireFlowerState.Static:
-			$"ground-checker".process_mode = Node.PROCESS_MODE_DISABLED
 			$collision.disabled = false
 		FireFlowerState.Looted:
-			$"ground-checker".process_mode = Node.PROCESS_MODE_DISABLED
-			$collision.disabled = false
 			queue_free()
 
 func process_state(delta):
 	match flower_state:
 		FireFlowerState.Spawning:
-			spawn_lerp += delta * 0.5
+			spawn_lerp += delta * (1 / Level.powerup_spawn_delay)
 			global_position = lerp(spawn_origin, spawn_target, spawn_lerp)
 			if spawn_lerp > 1:
 				initialize_state(FireFlowerState.Static)

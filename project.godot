@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 
 Level="*res://Assets/Levels/Level.gd"
 
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=600
+
 [dotnet]
 
 project/assembly_name="Super Mario Brothers 3 Prototype (Desert)"

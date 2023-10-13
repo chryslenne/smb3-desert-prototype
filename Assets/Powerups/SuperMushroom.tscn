@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://o7sps2vwclo5"]
 
 [ext_resource type="Script" path="res://Assets/Powerups/SuperMushroom.gd" id="1_2owis"]
-[ext_resource type="Texture2D" uid="uid://b264i0k53gt08" path="res://Assets/Powerups/altas_supermushroom.tres" id="2_bae3g"]
+[ext_resource type="Texture2D" uid="uid://b264i0k53gt08" path="res://Assets/Powerups/SuperMushroom_AtlasTexture.tres" id="2_bae3g"]
 [ext_resource type="PackedScene" uid="uid://dhphberhak0kw" path="res://Assets/Characters/Modules/GroundChecker.tscn" id="3_ipjv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i85xl"]

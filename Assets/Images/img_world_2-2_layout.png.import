@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oe7sgy3r10oa"
-path="res://.godot/imported/SNES - Super Mario All-Stars Super Mario Bros 3 - World Maps.png-12aa87bf564c4f450ef130d3439aed1d.ctex"
+uid="uid://b4ww6iusfg2nd"
+path="res://.godot/imported/img_world_2-2_layout.png-6372164df7b81bc3b46cea44ef5c218b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/SNES - Super Mario All-Stars Super Mario Bros 3 - World Maps.png"
-dest_files=["res://.godot/imported/SNES - Super Mario All-Stars Super Mario Bros 3 - World Maps.png-12aa87bf564c4f450ef130d3439aed1d.ctex"]
+source_file="res://Assets/Images/img_world_2-2_layout.png"
+dest_files=["res://.godot/imported/img_world_2-2_layout.png-6372164df7b81bc3b46cea44ef5c218b.ctex"]
 
 [params]
 

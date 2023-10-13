@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gm1tmxp5dktg"
-path="res://.godot/imported/SMB3_NES_World_2-4_Map.png-316db07de33deb4de9ad22f51d12da3e.ctex"
+uid="uid://dhwvcxw6r85gl"
+path="res://.godot/imported/img_spritesheet-powerups.png-bd9df31de86340e7616264f57e630279.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/SMB3_NES_World_2-4_Map.png"
-dest_files=["res://.godot/imported/SMB3_NES_World_2-4_Map.png-316db07de33deb4de9ad22f51d12da3e.ctex"]
+source_file="res://Assets/Images/img_spritesheet-powerups.png"
+dest_files=["res://.godot/imported/img_spritesheet-powerups.png-bd9df31de86340e7616264f57e630279.ctex"]
 
 [params]
 

@@ -25,10 +25,10 @@ const PATH_STARMAN = "SuperMushroom"
 var loot_state : LootState
 @export var stored_pup : enums.PowerupTypes
 
-func is_active(): loot_state == LootState.Unlooted
-func is_looted(): loot_state == LootState.Looted
-func is_hidden(): loot_state == LootState.Hidden
-func is_disabled(): loot_state == LootState.Disabled
+func is_active(): return loot_state == LootState.Unlooted
+func is_looted(): return loot_state == LootState.Looted
+func is_hidden(): return loot_state == LootState.Hidden
+func is_disabled(): return loot_state == LootState.Disabled
 
 func _enter_tree():
 	Level.prize_blocks.append(self)
@@ -63,12 +63,9 @@ func set_visual_state():
 			$collision.disabled = true
 
 func loot_block(actor = null):
-	if loot_state == LootState.Looted:
+	if is_looted():
 		return
-	
-	print(loot_state)
 	loot_state = LootState.Looted
-	print(loot_state)
 	set_visual_state()
 	spawn_powerup(actor)
 
@@ -80,10 +77,10 @@ func spawn_powerup(actor):
 			Level.current.get_instance_container().add_child(instance)
 			if actor != null && actor is PhysicsBody2D:
 				instance.hit_by(actor)
-			
-			print("Spawning Super Mushroom!")
 		enums.PowerupTypes.FireFlower:
-			pass
+			var instance = Level.preloaded_powerups[enums.PowerupTypes.FireFlower].instantiate()
+			instance.spawn_origin = self.global_position
+			Level.current.get_instance_container().add_child(instance)
 		enums.PowerupTypes.SuperLeaf:
 			pass
 		enums.PowerupTypes.TanookiSuit:

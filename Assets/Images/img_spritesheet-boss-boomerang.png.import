@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnrksyonwajj7"
-path="res://.godot/imported/SNES - Super Mario All-Stars Super Mario Bros 3 - Enemies.png-106ee314c857238e7aacb866a695786a.ctex"
+uid="uid://dht5edtyrfto5"
+path="res://.godot/imported/img_spritesheet-boss-boomerang.png-38d36d1d9b9741fce48cb5628a6c1c07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/SNES - Super Mario All-Stars Super Mario Bros 3 - Enemies.png"
-dest_files=["res://.godot/imported/SNES - Super Mario All-Stars Super Mario Bros 3 - Enemies.png-106ee314c857238e7aacb866a695786a.ctex"]
+source_file="res://Assets/Images/img_spritesheet-boss-boomerang.png"
+dest_files=["res://.godot/imported/img_spritesheet-boss-boomerang.png-38d36d1d9b9741fce48cb5628a6c1c07.ctex"]
 
 [params]
 

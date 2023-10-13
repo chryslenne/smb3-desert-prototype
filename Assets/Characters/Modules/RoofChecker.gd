@@ -13,7 +13,7 @@ func _ready():
 		($ShapeCast2D as ShapeCast2D).add_exception(exception)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	is_roofed = ($ShapeCast2D as ShapeCast2D).get_collision_count() > 0
 	
 	for i in ($ShapeCast2D as ShapeCast2D).get_collision_count():

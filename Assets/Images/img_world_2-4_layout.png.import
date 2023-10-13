@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhwvcxw6r85gl"
-path="res://.godot/imported/img_spritesheet-powerups.png-6ecd775abd6693dad80bc5b815557af4.ctex"
+uid="uid://gm1tmxp5dktg"
+path="res://.godot/imported/img_world_2-4_layout.png-a2235768703f367f6d70afafc363a700.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Powerups/img_spritesheet-powerups.png"
-dest_files=["res://.godot/imported/img_spritesheet-powerups.png-6ecd775abd6693dad80bc5b815557af4.ctex"]
+source_file="res://Assets/Images/img_world_2-4_layout.png"
+dest_files=["res://.godot/imported/img_world_2-4_layout.png-a2235768703f367f6d70afafc363a700.ctex"]
 
 [params]
 

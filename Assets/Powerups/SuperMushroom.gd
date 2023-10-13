@@ -32,6 +32,11 @@ var spawn_target : Vector2
 var spawn_origin : Vector2
 var shroom_state : ShroomState = ShroomState.Spawning
 
+func _enter_tree():
+	Level.powerups_lst.append(self)
+func _exit_tree():
+	Level.powerups_lst.erase(self)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$"ground-checker".exceptions.append(self)
@@ -88,14 +93,12 @@ func initialize_state(new_state = null):
 			$"ground-checker".process_mode = Node.PROCESS_MODE_DISABLED
 			$collision.disabled = false
 		ShroomState.Looted:
-			$"ground-checker".process_mode = Node.PROCESS_MODE_DISABLED
-			$collision.disabled = false
 			queue_free()
 
 func process_state(delta):
 	match shroom_state:
 		ShroomState.Spawning:
-			spawn_lerp += delta * 0.5
+			spawn_lerp += delta * (1 / Level.powerup_spawn_delay)
 			global_position = lerp(spawn_origin, spawn_target, spawn_lerp)
 			if spawn_lerp > 1:
 				initialize_state(ShroomState.Moving)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cb1iq0470b7mb"]
 
 [ext_resource type="Script" path="res://Assets/Powerups/FireFlower.gd" id="1_drbhy"]
-[ext_resource type="Texture2D" uid="uid://b8e7ff7svdxvv" path="res://Assets/Powerups/atlas_fireflower.tres" id="2_okk80"]
+[ext_resource type="Texture2D" uid="uid://b8e7ff7svdxvv" path="res://Assets/Powerups/FireFlower_AtlasTexture.tres" id="2_0eo4s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i85xl"]
 size = Vector2(8, 8.5)
@@ -12,7 +12,7 @@ script = ExtResource("1_drbhy")
 
 [node name="visuals" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_okk80")
+texture = ExtResource("2_0eo4s")
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3.75)

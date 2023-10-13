@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkfiuiv7myc4t"
-path="res://.godot/imported/SMB3_World_2-F_Map.png-8e0f2f0dffc50346b58910ef65dd950f.ctex"
+uid="uid://bnrksyonwajj7"
+path="res://.godot/imported/img_spritesheet-enemies.png-871f9e1f1042fbcef50d7a025d3f6b2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/SMB3_World_2-F_Map.png"
-dest_files=["res://.godot/imported/SMB3_World_2-F_Map.png-8e0f2f0dffc50346b58910ef65dd950f.ctex"]
+source_file="res://Assets/Images/img_spritesheet-enemies.png"
+dest_files=["res://.godot/imported/img_spritesheet-enemies.png-871f9e1f1042fbcef50d7a025d3f6b2e.ctex"]
 
 [params]
 

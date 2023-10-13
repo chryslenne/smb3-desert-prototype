@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvn3gylagmrph"
-path="res://.godot/imported/img_spritesheet-mario.png-c62a65a6ad5b363189a608b90b93e5c8.ctex"
+uid="uid://cfpyqc0apokrm"
+path="res://.godot/imported/img_world_2-1_layout.png-f014afd6e0ef82a0b0c1f1e3d6ebc459.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/img_spritesheet-mario.png"
-dest_files=["res://.godot/imported/img_spritesheet-mario.png-c62a65a6ad5b363189a608b90b93e5c8.ctex"]
+source_file="res://Assets/Images/img_world_2-1_layout.png"
+dest_files=["res://.godot/imported/img_world_2-1_layout.png-f014afd6e0ef82a0b0c1f1e3d6ebc459.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

@@ -2,7 +2,7 @@ extends Area2D
 const enums = preload("res://Assets/Basics/Enums.gd")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	# controlled monitoring flag
 	# to avoid too much unwanted process
 	# of scanning
