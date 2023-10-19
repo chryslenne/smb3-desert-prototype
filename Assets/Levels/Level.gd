@@ -14,5 +14,7 @@ var powerups_lst : Array = []
 var preloaded_powerups : Dictionary
 
 func preload_powerups():
-	preloaded_powerups[enums.PowerupTypes.SuperMushroom] 	= preload("res://Assets/Powerups/SuperMushroom.tscn")
-	preloaded_powerups[enums.PowerupTypes.FireFlower] 		= preload("res://Assets/Powerups/FireFlower.tscn")
+	preloaded_powerups[enums.BrickPrizeType.SuperMushroom] 		= preload("res://Assets/Powerups/SuperMushroom.tscn")
+	preloaded_powerups[enums.BrickPrizeType.FireFlower] 		= preload("res://Assets/Powerups/FireFlower.tscn")
+	preloaded_powerups[enums.BrickPrizeType.SuperLeaf]   		= preload("res://Assets/Powerups/SuperLeaf.tscn")
+	preloaded_powerups[enums.BrickPrizeType.OneUpMushroom] 		= preload("res://Assets/Powerups/OneUpMushroom.tscn")

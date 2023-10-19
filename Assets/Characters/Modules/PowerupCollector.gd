@@ -13,21 +13,24 @@ func _process(_delta):
 
 func _on_body_entered(body):
 	# only checks for a node path: 'properties/powerup'
-	if body.has_node("properties/powerup"):
+	if body.has_node("Properties/Pickup"):
 		#-------------------------#
 		# logic here for powerup  #
 		#-------------------------#
-		match body.identity:
-			enums.PowerupTypes.SuperMushroom:
+		match enums.BrickPrizeType.get(body.owner.name):
+			enums.BrickPrizeType.SuperMushroom:
 				#super mushroom logic here
 				pass
-			enums.PowerupTypes.FireFlower:
+			enums.BrickPrizeType.FireFlower:
 				#fire flower logic here
 				pass
-			enums.PowerupTypes.SuperLeaf:
+			enums.BrickPrizeType.SuperLeaf:
+				#super leaf logic here
+				pass
+			enums.BrickPrizeType.OneUpMushroom:
 				#super leaf logic here
 				pass
 		#-------------------------#
 		# cleanup here            #
 		#-------------------------#
-		body.loot_powerup()
+		body.owner.loot_powerup()

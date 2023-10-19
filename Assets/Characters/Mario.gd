@@ -145,7 +145,7 @@ func process_ground_state():
 		ground_state = GroundState.JumpingToFalling
 	elif ground_state == GroundState.JumpingToFalling && velocity.y == fall_speed:
 		ground_state = GroundState.Falling
-	elif is_roofed && (ground_state == GroundState.Jumping || ground_state == GroundState.Falling):
+	elif is_roofed && (ground_state == GroundState.Jumping || ground_state == GroundState.JumpingToFalling):
 		ground_state = GroundState.Falling
 	elif ground_state == GroundState.JumpingToFalling && is_grounded:
 		$"properties/jump-duration".stop()

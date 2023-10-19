@@ -6,4 +6,7 @@ func _ready():
 	Level.current = self
 	Level.preload_powerups()
 
-func get_instance_container(): return $World/Instantiated
+func get_instance_container():
+	if has_node("World/Instantiated"):
+		return $World/Instantiated
+	return self

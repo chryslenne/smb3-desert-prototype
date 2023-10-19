@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5wifl71oeq4f"]
+
+[ext_resource type="Script" path="res://Assets/Powerups/Base/LeafPickup2D.gd" id="1_sfrny"]
+[ext_resource type="Texture2D" uid="uid://t8odpvpl1rqg" path="res://Assets/Powerups/SuperLeaf_AtlasTexture.tres" id="2_ek6oj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i85xl"]
+size = Vector2(8, 8.5)
+
+[node name="LeafPickup2D" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_sfrny")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i85xl")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture_filter = 1
+texture = ExtResource("2_ek6oj")
+
+[node name="Properties" type="Node" parent="."]
+
+[node name="Pickup" type="Node" parent="Properties"]
+
+[node name="SwayPath" type="Node2D" parent="."]
+
+[node name="p0" type="Node2D" parent="SwayPath"]
+position = Vector2(-11, -5)
+
+[node name="p1" type="Node2D" parent="SwayPath"]
+
+[node name="p2" type="Node2D" parent="SwayPath"]
+position = Vector2(11, -5)
+
+[node name="SpawnDuration" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="DespawnDuration" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="SpawnDuration" to="." method="_on_spawn_duration_timeout"]
+[connection signal="timeout" from="DespawnDuration" to="." method="_on_despawn_duration_timeout"]

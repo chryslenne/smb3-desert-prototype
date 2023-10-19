@@ -278,7 +278,6 @@ polygon = PackedVector2Array(192, -38, 144, -38, 144, 10, 128, 10, 128, -54, 192
 
 [node name="PowerupBlock" parent="World/Surface/Props" instance=ExtResource("4_cna14")]
 position = Vector2(-1192, 48)
-stored_pup = 1
 
 [node name="Pipes" type="Node2D" parent="World"]
 

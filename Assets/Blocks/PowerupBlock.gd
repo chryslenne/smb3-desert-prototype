@@ -1,14 +1,6 @@
 extends StaticBody2D 
 class_name PowerupBlock
 
-enum LootState
-{
-	Unlooted,
-	Looted,
-	Hidden,
-	Disabled
-}
-
 #---------------------#
 # signals             #
 #---------------------#
@@ -18,16 +10,20 @@ signal onLooted
 # properties          #
 #---------------------#
 const enums = preload("res://Assets/Basics/Enums.gd")
-var loot_state : LootState
-@export var stored_pup : enums.PowerupTypes
+@export var loot_state : enums.BrickPrizeState
+@export var stored_pup : enums.BrickPrizeType
 
 #---------------------#
 # accessors           #
 #---------------------#
-func is_active(): return loot_state == LootState.Unlooted
-func is_looted(): return loot_state == LootState.Looted
-func is_hidden(): return loot_state == LootState.Hidden
-func is_disabled(): return loot_state == LootState.Disabled
+func is_active(): 
+	return loot_state == enums.BrickPrizeState.Unlooted
+func is_looted(): 
+	return loot_state == enums.BrickPrizeState.Looted
+func is_hidden(): 
+	return loot_state == enums.BrickPrizeState.Hidden
+func is_disabled(): 
+	return loot_state == enums.BrickPrizeState.Disabled
 
 #---------------------#
 # godot functions     #
@@ -46,23 +42,23 @@ func _ready():
 #	Looted / Unlooted / Hidden / Disabled
 func set_visual_state():
 	match loot_state:
-		LootState.Unlooted:
+		enums.BrickPrizeState.Unlooted:
 			process_mode = Node.PROCESS_MODE_INHERIT
 			visible = true
 			$visuals.play("unlooted")
 			$collision.disabled = false
-		LootState.Looted:
+		enums.BrickPrizeState.Looted:
 			process_mode = Node.PROCESS_MODE_INHERIT
 			visible = true
 			$visuals.play("looted")
 			$collision.disabled = false
 			onLooted.emit()
-		LootState.Hidden: 
+		enums.BrickPrizeState.Hidden: 
 			process_mode = Node.PROCESS_MODE_INHERIT
 			visible = true
 			$visuals.visible = false
 			$collision.disabled = false
-		LootState.Disabled:
+		enums.BrickPrizeState.Disabled:
 			process_mode = PROCESS_MODE_DISABLED
 			visible = false
 			$visuals.visible = true
@@ -73,7 +69,7 @@ func set_visual_state():
 func loot_block(actor = null):
 	if is_looted():
 		return
-	loot_state = LootState.Looted
+	loot_state = enums.BrickPrizeState.Looted
 	set_visual_state()
 	spawn_powerup(actor)
 
@@ -82,26 +78,23 @@ func loot_block(actor = null):
 #
 # Only gets called once the block is looted
 func spawn_powerup(actor):
+	var instance = Level.preloaded_powerups[stored_pup].instantiate()
+	var instanceBody = instance.get_node("Body")
+	
 	match stored_pup:
-		enums.PowerupTypes.SuperMushroom:
-			var instance = Level.preloaded_powerups[enums.PowerupTypes.SuperMushroom].instantiate()
-			instance.spawn_origin = self.global_position
+		enums.BrickPrizeType.SuperMushroom:
+			instanceBody.spawn_origin = self.global_position
 			Level.current.get_instance_container().add_child(instance)
 			if actor != null && actor is PhysicsBody2D:
-				instance.hit_by(actor)
-		enums.PowerupTypes.FireFlower:
-			var instance = Level.preloaded_powerups[enums.PowerupTypes.FireFlower].instantiate()
-			instance.spawn_origin = self.global_position
+				instanceBody.hit_by(actor)
+		enums.BrickPrizeType.FireFlower:
+			instanceBody.spawn_origin = self.global_position
 			Level.current.get_instance_container().add_child(instance)
-		enums.PowerupTypes.SuperLeaf:
-			pass
-		enums.PowerupTypes.TanookiSuit:
-			pass
-		enums.PowerupTypes.PWing:
-			pass
-		enums.PowerupTypes.FrogSuit:
-			pass
-		enums.PowerupTypes.HammerSuit:
-			pass
-		enums.PowerupTypes.Starman:
-			pass
+		enums.BrickPrizeType.SuperLeaf:
+			instance.global_position = self.global_position
+			Level.current.get_instance_container().add_child(instance)
+		enums.BrickPrizeType.OneUpMushroom:
+			instanceBody.spawn_origin = self.global_position
+			Level.current.get_instance_container().add_child(instance)
+			if actor != null && actor is PhysicsBody2D:
+				instanceBody.hit_by(actor)

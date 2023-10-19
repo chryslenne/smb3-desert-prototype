@@ -1,24 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb1iq0470b7mb"]
+[gd_scene load_steps=3 format=3 uid="uid://cb1iq0470b7mb"]
 
-[ext_resource type="Script" path="res://Assets/Powerups/FireFlower.gd" id="1_drbhy"]
-[ext_resource type="Texture2D" uid="uid://b8e7ff7svdxvv" path="res://Assets/Powerups/FireFlower_AtlasTexture.tres" id="2_0eo4s"]
+[ext_resource type="PackedScene" uid="uid://dc1xxhc7a4c0a" path="res://Assets/Powerups/Base/FlowerPickup2D.tscn" id="1_ac24t"]
+[ext_resource type="Script" path="res://Assets/Powerups/Powerup.gd" id="1_r8bar"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i85xl"]
-size = Vector2(8, 8.5)
+[node name="FireFlower" type="Node2D"]
+script = ExtResource("1_r8bar")
+type = 1
 
-[node name="FireFlower" type="CharacterBody2D"]
-collision_layer = 8
-script = ExtResource("1_drbhy")
+[node name="Body" parent="." instance=ExtResource("1_ac24t")]
 
-[node name="visuals" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("2_0eo4s")
-
-[node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3.75)
-shape = SubResource("RectangleShape2D_i85xl")
-disabled = true
-
-[node name="properties" type="Node" parent="."]
-
-[node name="powerup" type="Node" parent="properties"]
+[connection signal="flower_despawn" from="Body" to="." method="on_body_despawned"]

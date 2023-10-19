@@ -1,39 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://o7sps2vwclo5"]
+[gd_scene load_steps=3 format=3 uid="uid://o7sps2vwclo5"]
 
-[ext_resource type="Script" path="res://Assets/Powerups/SuperMushroom.gd" id="1_2owis"]
-[ext_resource type="Texture2D" uid="uid://b264i0k53gt08" path="res://Assets/Powerups/SuperMushroom_AtlasTexture.tres" id="2_bae3g"]
-[ext_resource type="PackedScene" uid="uid://dhphberhak0kw" path="res://Assets/Characters/Modules/GroundChecker.tscn" id="3_ipjv2"]
+[ext_resource type="PackedScene" uid="uid://bus2jgmdmlm5g" path="res://Assets/Powerups/Base/MushroomPickup2D.tscn" id="1_757pr"]
+[ext_resource type="Script" path="res://Assets/Powerups/Powerup.gd" id="1_uiss1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i85xl"]
-size = Vector2(8, 8.5)
+[node name="SuperMushroom" type="Node2D"]
+script = ExtResource("1_uiss1")
 
-[node name="SuperMushroom" type="CharacterBody2D"]
-collision_layer = 8
-script = ExtResource("1_2owis")
-move_speed = 65.0
+[node name="Body" parent="." instance=ExtResource("1_757pr")]
 
-[node name="visuals" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("2_bae3g")
-
-[node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3.75)
-shape = SubResource("RectangleShape2D_i85xl")
-disabled = true
-
-[node name="Casters" type="Node2D" parent="."]
-
-[node name="left" type="RayCast2D" parent="Casters"]
-enabled = false
-target_position = Vector2(-8.5, 0)
-
-[node name="right" type="RayCast2D" parent="Casters"]
-enabled = false
-target_position = Vector2(8.5, 0)
-
-[node name="ground-checker" parent="." instance=ExtResource("3_ipjv2")]
-position = Vector2(0, 8)
-
-[node name="properties" type="Node" parent="."]
-
-[node name="powerup" type="Node" parent="properties"]
+[connection signal="mushroom_despawned" from="Body" to="." method="on_body_despawned"]

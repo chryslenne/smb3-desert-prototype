@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://buj4ggkyvimbu"]
+
+[ext_resource type="Script" path="res://Assets/Levels/LevelNode2D.gd" id="1_5sksh"]
+[ext_resource type="PackedScene" uid="uid://bid4sa0mj2y3j" path="res://Assets/_Prototype/prop_test_ground.tscn" id="1_pnou3"]
+[ext_resource type="PackedScene" uid="uid://cldfb4dn1b54j" path="res://Assets/Characters/Mario.tscn" id="2_cq2dw"]
+[ext_resource type="PackedScene" uid="uid://5r54yjixl5ki" path="res://Assets/Blocks/PowerupBlock.tscn" id="3_t6d0j"]
+
+[node name="level_test_pickups" type="Node2D"]
+script = ExtResource("1_5sksh")
+
+[node name="prop_test_ground" parent="." instance=ExtResource("1_pnou3")]
+
+[node name="prefab_small-mario" parent="." instance=ExtResource("2_cq2dw")]
+position = Vector2(0, -13)
+
+[node name="PowerupBlock" parent="." instance=ExtResource("3_t6d0j")]
+position = Vector2(-59, -47)
+
+[node name="PowerupBlock2" parent="." instance=ExtResource("3_t6d0j")]
+position = Vector2(-17, -47)
+stored_pup = 1
+
+[node name="PowerupBlock3" parent="." instance=ExtResource("3_t6d0j")]
+position = Vector2(28, -47)
+stored_pup = 2
+
+[node name="PowerupBlock4" parent="." instance=ExtResource("3_t6d0j")]
+position = Vector2(73, -47)
+stored_pup = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -51)
+zoom = Vector2(2, 2)

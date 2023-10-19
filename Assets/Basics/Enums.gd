@@ -1,13 +1,9 @@
-enum PowerupTypes
+enum BrickPrizeType
 {
 	SuperMushroom,
 	FireFlower,
 	SuperLeaf,
-	TanookiSuit,
-	PWing,
-	FrogSuit,
-	HammerSuit,
-	Starman
+	OneUpMushroom
 }
 
 enum Directions
@@ -17,4 +13,12 @@ enum Directions
 	W,
 	S,
 	E
+}
+
+enum BrickPrizeState
+{
+	Unlooted,
+	Looted,
+	Hidden,
+	Disabled
 }
