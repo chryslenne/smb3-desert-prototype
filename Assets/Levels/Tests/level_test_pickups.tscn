@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://byn3dxhkb8nrt"]
+[gd_scene load_steps=5 format=3 uid="uid://byn3dxhkb8nrt"]
 
 [ext_resource type="PackedScene" uid="uid://bid4sa0mj2y3j" path="res://Assets/_Prototype/prop_test_ground.tscn" id="1_7c2hn"]
+[ext_resource type="Script" path="res://Assets/Levels/LevelNode2D.gd" id="1_ip2d6"]
 [ext_resource type="PackedScene" uid="uid://cldfb4dn1b54j" path="res://Assets/Characters/Mario.tscn" id="2_75nf6"]
+[ext_resource type="PackedScene" uid="uid://ciepcc0jk7gyh" path="res://Assets/Characters/CharacterCamera.tscn" id="4_fqkwg"]
 
 [node name="level_test_pickups" type="Node2D"]
+script = ExtResource("1_ip2d6")
 
 [node name="prop_test_ground" parent="." instance=ExtResource("1_7c2hn")]
 
 [node name="prefab_small-mario" parent="." instance=ExtResource("2_75nf6")]
 position = Vector2(0, -13)
+
+[node name="CharacterCamera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_fqkwg")]
+target = NodePath("../prefab_small-mario")

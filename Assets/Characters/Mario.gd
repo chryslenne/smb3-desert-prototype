@@ -54,6 +54,7 @@ func _enter_tree():
 # For start
 func _ready():
 	active_state = $"states/small-mario"
+	Level.player = self
 
 # ==================
 # Receives player input here

@@ -3,6 +3,7 @@ extends Node
 const enums = preload("res://Assets/Basics/Enums.gd")
 
 var current : LevelNode2D
+var player : Node2D
 
 var coin_pickups : Array = []
 var brick_blocks : Array = []
