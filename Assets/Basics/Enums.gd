@@ -3,7 +3,8 @@ enum BrickPrizeType
 	SuperMushroom,
 	FireFlower,
 	SuperLeaf,
-	OneUpMushroom
+	OneUpMushroom,
+	Starman
 }
 
 enum Directions

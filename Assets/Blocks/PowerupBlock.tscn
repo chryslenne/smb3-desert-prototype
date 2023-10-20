@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://5r54yjixl5ki"]
+[gd_scene load_steps=12 format=3 uid="uid://5r54yjixl5ki"]
 
 [ext_resource type="Script" path="res://Assets/Blocks/PowerupBlock.gd" id="1_ksxrm"]
 [ext_resource type="SpriteFrames" uid="uid://ycvex6nils5o" path="res://Assets/Blocks/PowerupBlock_SpriteFrames.tres" id="2_jyscs"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b264i0k53gt08" path="res://Assets/Powerups/SuperMushroom_AtlasTexture.tres" id="5_aiga4"]
 [ext_resource type="Texture2D" uid="uid://c0hvdhgcagosg" path="res://Assets/Powerups/OneUpMushroom_AtlasTexture.tres" id="6_tetvv"]
 [ext_resource type="Texture2D" uid="uid://t8odpvpl1rqg" path="res://Assets/Powerups/SuperLeaf_AtlasTexture.tres" id="7_i7l7w"]
+[ext_resource type="Texture2D" uid="uid://cc4y1vy1s7wxr" path="res://Assets/Powerups/Starman_AtlasTexture.tres" id="8_gbxvc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fggmh"]
 size = Vector2(16, 16)
@@ -105,3 +106,10 @@ modulate = Color(1, 1, 1, 0.392157)
 z_index = 10
 texture_filter = 1
 texture = ExtResource("7_i7l7w")
+
+[node name="Starman" type="Sprite2D" parent="Debug"]
+visible = false
+modulate = Color(1, 1, 1, 0.392157)
+z_index = 10
+texture_filter = 1
+texture = ExtResource("8_gbxvc")
