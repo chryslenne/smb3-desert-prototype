@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://iyd4wtw4enoh"]
+[gd_scene load_steps=5 format=3 uid="uid://iyd4wtw4enoh"]
 
 [ext_resource type="Script" path="res://Assets/Blocks/NoteBlock.gd" id="1_arcyy"]
 [ext_resource type="SpriteFrames" uid="uid://b81tqklspvjya" path="res://Assets/Blocks/NoteBlock_SpriteFrames.tres" id="2_0q5j3"]
@@ -6,67 +6,31 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fggmh"]
 size = Vector2(16, 16)
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1b71f"]
-emission_shape = 1
-emission_sphere_radius = 10.17
-particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
-gravity = Vector3(0, 98, 0)
-initial_velocity_min = 5.13
-initial_velocity_max = 82.05
-angular_velocity_min = 107.08
-angular_velocity_max = 720.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-color = Color(1, 0.65098, 0, 1)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_scqj8"]
-emission_shape = 1
-emission_sphere_radius = 10.17
-particle_flag_disable_z = true
-direction = Vector3(0, -1, 0)
-gravity = Vector3(0, 98, 0)
-initial_velocity_min = 5.13
-initial_velocity_max = 82.05
-angular_velocity_min = 107.08
-angular_velocity_max = 720.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-color = Color(1, 1, 0, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84f48"]
+size = Vector2(16, 2)
 
 [node name="NoteBlock" type="StaticBody2D"]
 collision_layer = 9
 collision_mask = 0
 script = ExtResource("1_arcyy")
 
-[node name="visuals" type="AnimatedSprite2D" parent="."]
+[node name="Visual" type="AnimatedSprite2D" parent="."]
 z_index = 10
 texture_filter = 1
 sprite_frames = ExtResource("2_0q5j3")
 animation = &"variant_1"
 frame_progress = 0.0590047
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fggmh")
 
-[node name="visualfx" type="Node2D" parent="."]
+[node name="PlayerDetector" type="Area2D" parent="."]
+position = Vector2(0, -8)
+collision_mask = 2
 
-[node name="explosion" type="GPUParticles2D" parent="visualfx"]
-emitting = false
-amount = 16
-process_material = SubResource("ParticleProcessMaterial_1b71f")
-lifetime = 3.0
-one_shot = true
-explosiveness = 1.0
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_84f48")
 
-[node name="coin" type="GPUParticles2D" parent="visualfx"]
-emitting = false
-amount = 16
-process_material = SubResource("ParticleProcessMaterial_scqj8")
-lifetime = 3.0
-one_shot = true
-explosiveness = 1.0
-
-[node name="properties" type="Node" parent="."]
-
-[node name="lootable" type="Node" parent="properties"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="player_on_noteblock"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="player_left_noteblock"]

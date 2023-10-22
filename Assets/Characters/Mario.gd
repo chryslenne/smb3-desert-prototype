@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name SMBPlayer
 
 enum GroundState
 {
@@ -24,6 +25,7 @@ signal onPlayerDeath
 @export_range(200, 2000, 10) var vertical_delta : float = 1000
 var vertical_speed : float
 var horizontal_speed : float
+var jump_boost : bool = false
 # Character input & states
 var h_input : int
 var v_input : int
@@ -124,7 +126,7 @@ func process_movements(delta):
 		GroundState.Grounded:
 			velocity.y = 0
 		GroundState.Jumping:
-			velocity.y = -jump_power
+			velocity.y = -jump_power * (1.25 if jump_boost else 1)
 		GroundState.JumpingSmall:
 			velocity.y = -jump_power
 		GroundState.JumpingToFalling:
@@ -132,6 +134,8 @@ func process_movements(delta):
 		GroundState.Falling:
 			velocity.y = -fall_speed
 	move_and_slide()
+
+func is_grounded(): return $ground_checker.is_grounded
 
 func process_ground_state():
 	var is_grounded = $ground_checker.is_grounded
