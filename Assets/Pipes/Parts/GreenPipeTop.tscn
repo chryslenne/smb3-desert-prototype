@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8y0m2agd4o0y"]
+
+[ext_resource type="Texture2D" uid="uid://ddhhm8issomkb" path="res://Assets/Pipes/AtlasTextures/PipeGreenTopRight_AtlasTexture.tres" id="1_kecfv"]
+[ext_resource type="Texture2D" uid="uid://5uffbd0q56or" path="res://Assets/Pipes/AtlasTextures/PipeGreenTopLeft_AtlasTexture.tres" id="2_bd03a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bohxg"]
+size = Vector2(32, 16)
+
+[node name="GreenPipeTop" type="StaticBody2D"]
+texture_filter = 1
+collision_mask = 0
+
+[node name="Right" type="Sprite2D" parent="."]
+position = Vector2(8, 0)
+texture = ExtResource("1_kecfv")
+
+[node name="Left" type="Sprite2D" parent="."]
+position = Vector2(-8, 0)
+texture = ExtResource("2_bd03a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bohxg")

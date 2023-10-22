@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://duqebxbmacj5l"]
+
+[ext_resource type="Script" path="res://Assets/Pipes/Pipe.gd" id="1_2jrdh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ds2jv"]
+size = Vector2(15, 2)
+
+[node name="Pipe" type="Node2D"]
+script = ExtResource("1_2jrdh")
+
+[node name="Exit" type="Node2D" parent="."]
+
+[node name="Entrance" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+monitorable = false
+
+[node name="Shape2D" type="CollisionShape2D" parent="Entrance"]
+shape = SubResource("RectangleShape2D_ds2jv")
+
+[connection signal="body_entered" from="Entrance" to="." method="player_on_pipe"]
+[connection signal="body_exited" from="Entrance" to="." method="player_left_pipe"]

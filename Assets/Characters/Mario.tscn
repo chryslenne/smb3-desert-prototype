@@ -39,35 +39,6 @@ wait_time = 0.2
 
 [node name="is_a_player" type="Node" parent="properties"]
 
-[node name="pipe_detector" type="Node2D" parent="."]
-
-[node name="N" type="RayCast2D" parent="pipe_detector"]
-position = Vector2(0, -10)
-target_position = Vector2(0, -5)
-collision_mask = 8
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="S" type="RayCast2D" parent="pipe_detector"]
-target_position = Vector2(0, 5)
-collision_mask = 8
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="E" type="RayCast2D" parent="pipe_detector"]
-position = Vector2(2, -6)
-target_position = Vector2(5, 0)
-collision_mask = 8
-collide_with_areas = true
-collide_with_bodies = false
-
-[node name="W" type="RayCast2D" parent="pipe_detector"]
-position = Vector2(-2, -6)
-target_position = Vector2(-5, 0)
-collision_mask = 8
-collide_with_areas = true
-collide_with_bodies = false
-
 [node name="PowerupCollector" parent="." instance=ExtResource("5_hjvx0")]
 
 [connection signal="timeout" from="properties/jump-duration" to="." method="_on_jumpduration_timeout"]

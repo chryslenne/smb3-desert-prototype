@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://doner3tq7gf2v"]
+
+[ext_resource type="Texture2D" uid="uid://bmyyhmi5l4xn3" path="res://Assets/Images/img_spritesheet-stages-tileset-objects.png" id="1_eey20"]
+
+[resource]
+atlas = ExtResource("1_eey20")
+region = Rect2(600, 185, 16, 16)
