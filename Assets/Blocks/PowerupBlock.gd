@@ -98,3 +98,8 @@ func spawn_powerup(actor):
 			Level.current.get_instance_container().add_child(instance)
 			if actor != null && actor is PhysicsBody2D:
 				instanceBody.hit_by(actor)
+		enums.BrickPrizeType.Starman:
+			instanceBody.spawn_origin = self.global_position
+			Level.current.get_instance_container().add_child(instance)
+			if actor != null && actor is PhysicsBody2D:
+				instanceBody.hit_by(actor)
