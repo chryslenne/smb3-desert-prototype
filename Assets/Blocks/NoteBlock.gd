@@ -28,6 +28,7 @@ var original_position
 #---------------------#
 func _ready():
 	original_position = global_position
+	$Visual.play()
 
 func _process(delta):
 	if current_body is SMBPlayer && current_body.is_grounded():
