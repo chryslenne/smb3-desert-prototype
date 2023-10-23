@@ -45,18 +45,18 @@ collision_layer = 9
 collision_mask = 0
 script = ExtResource("1_ksxrm")
 
-[node name="visuals" type="AnimatedSprite2D" parent="."]
+[node name="Visual2D" type="AnimatedSprite2D" parent="."]
 z_index = 10
 texture_filter = 1
 sprite_frames = ExtResource("2_jyscs")
 animation = &"unlooted"
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="Collision2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fggmh")
 
-[node name="visualfx" type="Node2D" parent="."]
+[node name="VisualFX" type="Node2D" parent="."]
 
-[node name="explosion" type="GPUParticles2D" parent="visualfx"]
+[node name="Explosion" type="GPUParticles2D" parent="VisualFX"]
 emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_1b71f")
@@ -64,7 +64,7 @@ lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 
-[node name="coin" type="GPUParticles2D" parent="visualfx"]
+[node name="Coin" type="GPUParticles2D" parent="VisualFX"]
 emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_scqj8")
@@ -72,9 +72,9 @@ lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 
-[node name="properties" type="Node" parent="."]
+[node name="Properties" type="Node" parent="."]
 
-[node name="lootable" type="Node" parent="properties"]
+[node name="Lootable" type="Node" parent="Properties"]
 
 [node name="Debug" type="Node2D" parent="."]
 position = Vector2(0, -17)

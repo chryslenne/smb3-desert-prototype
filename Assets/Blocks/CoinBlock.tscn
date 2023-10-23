@@ -23,18 +23,18 @@ color = Color(1, 1, 0, 1)
 
 [node name="CoinBlock" type="Area2D"]
 collision_layer = 9
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_04dqa")
 
-[node name="visuals" type="MeshInstance2D" parent="."]
+[node name="Visual2D" type="MeshInstance2D" parent="."]
 mesh = SubResource("QuadMesh_4w1te")
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="Collision2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_iwemu")
 
-[node name="visualfx" type="Node2D" parent="."]
+[node name="VisualFX" type="Node2D" parent="."]
 
-[node name="coin" type="GPUParticles2D" parent="visualfx"]
+[node name="Coin" type="GPUParticles2D" parent="VisualFX"]
 emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_hbc2r")
@@ -42,9 +42,9 @@ lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 
-[node name="properties" type="Node" parent="."]
+[node name="Timer" type="Node" parent="."]
 
-[node name="cleanup" type="Timer" parent="."]
+[node name="Cleanup" type="Timer" parent="Timer"]
 wait_time = 5.0
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="." method="on_player_within_range"]

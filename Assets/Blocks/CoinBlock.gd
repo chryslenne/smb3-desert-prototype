@@ -11,11 +11,12 @@ enum CoinState
 #---------------------#
 # signals             #
 #---------------------#
-signal onPickup
+signal OnPickup
 
 #---------------------#
 # properties          #
 #---------------------#
+static var entities : Array
 var coin_state : CoinState = CoinState.Active
 var amt_coin_reward : int = 100
 
@@ -30,13 +31,15 @@ func is_pswitch_only(): return $properties/pswitch_only
 #---------------------#
 # godot functions     #
 #---------------------#
-func _enter_tree():
-	Level.coin_pickups.append(self)
-func _exit_tree():
-	Level.coin_pickups.erase(self)
 func _ready():
 	if is_pswitch_only(): coin_state = CoinState.Disabled
 	set_visual_state()
+func _notification(what):
+	match what:
+		NOTIFICATION_POSTINITIALIZE:
+			entities.append(self)
+		NOTIFICATION_PREDELETE:
+			entities.erase(self)
 
 # Initializes the visual state
 # of the brick block
@@ -47,23 +50,23 @@ func set_visual_state():
 	match coin_state:
 		CoinState.Active:
 			visible = true
-			$collision.disabled = false
+			$Collision2D.disabled = false
 		CoinState.Disabled:
 			visible = false
-			$collision.disabled = true
+			$Collision2D.disabled = true
 		CoinState.PickedUp: 
 			visible = true
-			$visuals.visible = false
-			$collision.disabled = false
-			onPickup.emit()
-			$cleanup.start()
+			$Visual2D.visible = false
+			$Collision2D.disabled = false
+			$Timer/Cleanup.start()
+			OnPickup.emit()
 
 # Throws an explosion particle fx
 # and sets the coin state to be picked up
 # and initializes visual state
 func pickup_coin():	
-	if $visualfx/coin: 
-		($visualfx/coin as GPUParticles2D).emitting = true
+	if $VisualFX/Coin: 
+		($VisualFX/Coin as GPUParticles2D).emitting = true
 	
 	coin_state = CoinState.PickedUp
 	set_visual_state()
@@ -79,6 +82,6 @@ func _on_cleanup_timeout():
 # and emits when a designated body has been scanned
 #
 # only scans for player
-func _on_body_entered(body):
-	if body.has_node("properties/is_a_player"):
+func on_player_within_range(body):
+	if body is SMBPlayer:
 		pickup_coin()

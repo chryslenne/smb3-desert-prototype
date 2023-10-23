@@ -1,14 +1,17 @@
 extends Node2D
 class_name Powerup
 
-const enums = preload("res://Assets/Basics/Enums.gd")
-@export var type : enums.BrickPrizeType
+static var entities : Array = []
+@export var type : ItemBlock.PrizeType
 @onready var body = $Body
 
-func _enter_tree():
-	Level.powerups_lst.append(self)
-func _exit_tree():
-	Level.powerups_lst.erase(self)
+
+func _notification(what):
+	match what:
+		NOTIFICATION_POSTINITIALIZE:
+			entities.append(self)
+		NOTIFICATION_PREDELETE:
+			entities.erase(self)
 
 func loot_powerup():
 	# powerup logic here...

@@ -20,6 +20,7 @@ signal onPlayerDeath
 #---------------------#
 # properties          #
 #---------------------#
+static var entity : SMBPlayer
 @export_range(0, 1000, 5) var move_speed : float = 85
 @export_range(0, 10, 0.1) var run_speed : float = 2
 @export_range(1000, 0, 5) var jump_power : float = 200
@@ -43,15 +44,15 @@ var active_state
 func _enter_tree():
 	# appends the current collision body to the raycasters as part of
 	# the exception for raycasting
-	$ground_checker.exceptions.append(self)
-	$roof_checker.exceptions.append(self)
-	$roof_checker.main_body = self
+	$GroundChecker.exceptions.append(self)
+	$RoofChecker.exceptions.append(self)
+	$RoofChecker.main_body = self
 
 # ==================
 # For start
 func _ready():
-	active_state = $"states/small-mario"
-	Level.player = self
+	active_state = $States/Small_Mario
+	entity = self
 	## warm up the pipe entry logic
 	for dir in enums.Directions:
 		pipe_entry[enums.Directions[dir]] = false
@@ -115,9 +116,9 @@ func _process(delta):
 
 func process_movements(delta):
 	if h_input > 0:
-		$states.scale.x = 1
+		$States.scale.x = 1
 	elif h_input < 0:
-		$states.scale.x = -1
+		$States.scale.x = -1
 	horizontal_speed = move_toward(horizontal_speed, h_input, delta * 3)
 	velocity.x = horizontal_speed * (move_speed * run_speed if run_input else move_speed)
 	match ground_state:
@@ -137,14 +138,14 @@ func process_movements(delta):
 			velocity.y = -fall_speed
 			move_and_slide()
 
-func is_grounded(): return $ground_checker.is_grounded
+func is_grounded(): return $GroundChecker.is_grounded
 
 func process_ground_state():
-	var is_grounded = $ground_checker.is_grounded
-	var is_roofed = $roof_checker.is_roofed
+	var is_grounded = $GroundChecker.is_grounded
+	var is_roofed = $RoofChecker.is_roofed
 	
 	if is_grounded && ground_state == GroundState.Grounded && jump_input:
-		$"properties/jump-duration".start()
+		$Timer/Jump.start()
 		ground_state = GroundState.Jumping
 	elif ground_state == GroundState.Jumping && !jump_input || ground_state == GroundState.JumpingSmall:
 		ground_state = GroundState.JumpingToFalling
@@ -155,12 +156,12 @@ func process_ground_state():
 	elif is_roofed && (ground_state == GroundState.Jumping || ground_state == GroundState.JumpingToFalling):
 		ground_state = GroundState.Falling
 	elif ground_state == GroundState.JumpingToFalling && is_grounded:
-		$"properties/jump-duration".stop()
+		$Timer/Jump.stop()
 		ground_state = GroundState.Grounded
 		jump_input = false
 		s_input = false
 	elif ground_state == GroundState.Falling && is_grounded:
-		$"properties/jump-duration".stop()
+		$Timer/Jump.stop()
 		ground_state = GroundState.Grounded
 		jump_input = false
 		s_input = false
@@ -168,23 +169,22 @@ func process_ground_state():
 func process_pipes_entry():
 	for dir in enums.Directions:
 		if pipe_entry[enums.Directions[dir]]:
-			print("attemtping to enter a pipe with a ", dir, " direction")
 			pipe_entry[enums.Directions[dir]] = false
 			enter_active_pipe(dir)
 
 func enter_active_pipe(dir):
-	if Level == null || Level.pipe == null:
+	if Pipe.nearest_pipe == null:
 		return
-	if Level.pipe.entry_dir == enums.Directions[dir]:
-		if Level.pipe.scene_camera != Level.pipe.other_pipe.scene_camera:
-			Level.pipe.other_pipe.scene_camera.enabled = true
-			Level.pipe.scene_camera.enabled = false
-		Level.pipe.transition(self)
+	if Pipe.nearest_pipe.entry_dir == enums.Directions[dir]:
+		if Pipe.nearest_pipe.scene_camera != Pipe.nearest_pipe.other_pipe.scene_camera:
+			Pipe.nearest_pipe.other_pipe.scene_camera.enabled = true
+			Pipe.nearest_pipe.scene_camera.enabled = false
+		Pipe.nearest_pipe.transition(self)
 		horizontal_speed = 0
 
 func process_special_attacks():
-	var is_grounded = $ground_checker.is_grounded
-	if active_state == $"states/small-mario" && is_grounded && ground_state == GroundState.Grounded && s_input:
+	var is_grounded = $GroundChecker.is_grounded
+	if active_state == $States/Small_Mario && is_grounded && ground_state == GroundState.Grounded && s_input:
 		s_input = false
 		ground_state = GroundState.JumpingSmall
 

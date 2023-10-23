@@ -13,32 +13,34 @@ size = Vector2(5, 10)
 collision_layer = 2
 script = ExtResource("1_crs4k")
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="Collision2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_hxvqm")
 
-[node name="states" type="Node2D" parent="."]
+[node name="States" type="Node2D" parent="."]
 
-[node name="small-mario" type="AnimatedSprite2D" parent="states"]
+[node name="Small_Mario" type="AnimatedSprite2D" parent="States"]
 texture_filter = 1
 sprite_frames = ExtResource("2_p7nxx")
 animation = &"default_idle"
 offset = Vector2(0, -6.5)
 
-[node name="roof_checker" parent="." instance=ExtResource("3_4ickb")]
+[node name="RoofChecker" parent="." instance=ExtResource("3_4ickb")]
 position = Vector2(0, -15)
 
-[node name="ground_checker" parent="." instance=ExtResource("3_t1hsi")]
-
-[node name="properties" type="Node" parent="."]
-
-[node name="jump-duration" type="Timer" parent="properties"]
-wait_time = 0.2
-
-[node name="can_break" type="Node" parent="properties"]
-
-[node name="is_a_player" type="Node" parent="properties"]
+[node name="GroundChecker" parent="." instance=ExtResource("3_t1hsi")]
 
 [node name="PowerupCollector" parent="." instance=ExtResource("5_hjvx0")]
 
-[connection signal="timeout" from="properties/jump-duration" to="." method="_on_jumpduration_timeout"]
+[node name="Properties" type="Node" parent="."]
+
+[node name="CanBreak" type="Node" parent="Properties"]
+
+[node name="IsPlayer" type="Node" parent="Properties"]
+
+[node name="Timer" type="Node" parent="."]
+
+[node name="Jump" type="Timer" parent="Timer"]
+wait_time = 0.2
+
+[connection signal="timeout" from="Timer/Jump" to="." method="_on_jumpduration_timeout"]

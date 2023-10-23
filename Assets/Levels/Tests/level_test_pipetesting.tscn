@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dbcbtidue8as8"]
 
-[ext_resource type="Script" path="res://Assets/Levels/LevelNode2D.gd" id="1_g2tx1"]
+[ext_resource type="Script" path="res://Assets/Levels/Level.gd" id="1_g2tx1"]
 [ext_resource type="PackedScene" uid="uid://bid4sa0mj2y3j" path="res://Assets/_Prototype/prop_test_ground.tscn" id="2_xu820"]
 [ext_resource type="PackedScene" uid="uid://cldfb4dn1b54j" path="res://Assets/Characters/Mario.tscn" id="3_yjw1q"]
 [ext_resource type="PackedScene" uid="uid://ciepcc0jk7gyh" path="res://Assets/Characters/CharacterCamera.tscn" id="5_cxi6o"]

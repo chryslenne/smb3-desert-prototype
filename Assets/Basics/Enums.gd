@@ -1,12 +1,3 @@
-enum BrickPrizeType
-{
-	SuperMushroom,
-	FireFlower,
-	SuperLeaf,
-	OneUpMushroom,
-	Starman
-}
-
 enum Directions
 {
 	None,
@@ -26,11 +17,3 @@ static func DirectionToVector2(dir):
 		Directions.W:
 			return Vector2.LEFT
 	return Vector2.ZERO
-
-enum BrickPrizeState
-{
-	Unlooted,
-	Looted,
-	Hidden,
-	Disabled
-}

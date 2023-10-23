@@ -6,6 +6,7 @@ const enums = preload("res://Assets/Basics/Enums.gd")
 #---------------------#
 # properties          #
 #---------------------#
+static var nearest_pipe : Pipe
 @export var other_pipe : Pipe
 @export var entry_dir : enums.Directions
 @export var scene_camera : Camera2D
@@ -47,7 +48,7 @@ func _process(_delta):
 	pass
 
 func transition(body):
-	if Level == null || Level.pipe_users.has(body):
+	if !Level.current || PipeTransition.active_transitions.has(body):
 		return
 	
 	if body is PhysicsBody2D:
@@ -59,16 +60,16 @@ func transition(body):
 			transitionInstance.entry = self
 			transitionInstance.exit = other_pipe
 			transitionInstance.OnTransitionComplete.connect(on_pipe_transition_complete)
-		Level.add_child(transitionInstance)
+		Level.current.add_child(transitionInstance)
 
 func on_pipe_transition_complete(body):
 		body.set_process(true)
 		body.set_physics_process(true)
 
 func player_on_pipe(player):
-	if Level != null:
-		Level.pipe = self
+	if player is SMBPlayer:
+		nearest_pipe = self
 
 func player_left_pipe(player):
-	if Level != null && Level.pipe == self:
-		Level.pipe = null
+	if player is SMBPlayer && nearest_pipe == self:
+		nearest_pipe = null

@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://c403k2spb072x"]
+[gd_scene load_steps=15 format=3 uid="uid://c403k2spb072x"]
 
-[ext_resource type="Script" path="res://Assets/Levels/LevelNode2D.gd" id="1_5dx3c"]
+[ext_resource type="Script" path="res://Assets/Levels/Level.gd" id="1_5dx3c"]
 [ext_resource type="Texture2D" uid="uid://cfpyqc0apokrm" path="res://Assets/Images/img_world_2-1_layout.png" id="1_otqk3"]
 [ext_resource type="PackedScene" uid="uid://cldfb4dn1b54j" path="res://Assets/Characters/Mario.tscn" id="2_5pi46"]
-[ext_resource type="PackedScene" uid="uid://bbw45ab481hcl" path="res://Assets/_Prototype/prop_test_pipe.tscn" id="3_hkeya"]
 [ext_resource type="PackedScene" uid="uid://5r54yjixl5ki" path="res://Assets/Blocks/PowerupBlock.tscn" id="4_cna14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s03n6"]
@@ -35,12 +34,6 @@ size = Vector2(32, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0fye5"]
 size = Vector2(64, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckno6"]
-size = Vector2(32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_adpvn"]
-size = Vector2(32, 48)
 
 [node name="level_2_1" type="Node2D"]
 script = ExtResource("1_5dx3c")
@@ -280,110 +273,5 @@ polygon = PackedVector2Array(192, -38, 144, -38, 144, 10, 128, 10, 128, -54, 192
 position = Vector2(-1192, 48)
 
 [node name="Pipes" type="Node2D" parent="World"]
-
-[node name="Pipe 1 - Entry" parent="World/Pipes" node_paths=PackedStringArray("other_pipe") instance=ExtResource("3_hkeya")]
-position = Vector2(1104, 56)
-other_pipe = NodePath("../Pipe 1 - Exit")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="World/Pipes/Pipe 1 - Entry"]
-position = Vector2(0, 32)
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Pipes/Pipe 1 - Entry/StaticBody2D"]
-position = Vector2(0, -16)
-shape = SubResource("RectangleShape2D_ckno6")
-
-[node name="Pipe 1 - Exit" parent="World/Pipes" instance=ExtResource("3_hkeya")]
-position = Vector2(1104, 215)
-entry_dir = 4
-
-[node name="StaticBody2D" type="StaticBody2D" parent="World/Pipes/Pipe 1 - Exit"]
-position = Vector2(0, -32)
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Pipes/Pipe 1 - Exit/StaticBody2D"]
-position = Vector2(0, 16)
-shape = SubResource("RectangleShape2D_ckno6")
-
-[node name="Pipe 2 - Entry" parent="World/Pipes" node_paths=PackedStringArray("other_pipe") instance=ExtResource("3_hkeya")]
-position = Vector2(944, 215)
-other_pipe = NodePath("../Pipe 2 - Exit")
-entry_dir = 0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="World/Pipes/Pipe 2 - Entry"]
-position = Vector2(0, -32)
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Pipes/Pipe 2 - Entry/StaticBody2D"]
-position = Vector2(0, 16)
-shape = SubResource("RectangleShape2D_ckno6")
-
-[node name="Pipe 2 - Exit" parent="World/Pipes" instance=ExtResource("3_hkeya")]
-position = Vector2(1008, 40)
-entry_dir = 4
-
-[node name="StaticBody2D" type="StaticBody2D" parent="World/Pipes/Pipe 2 - Exit"]
-position = Vector2(0, 48)
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Pipes/Pipe 2 - Exit/StaticBody2D"]
-position = Vector2(0, -24)
-shape = SubResource("RectangleShape2D_adpvn")
-
-[node name="Pipe 3 - Entry" parent="World/Pipes" node_paths=PackedStringArray("other_pipe") instance=ExtResource("3_hkeya")]
-position = Vector2(-208, -184)
-other_pipe = NodePath("../Pipe 3 - Exit")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="World/Pipes/Pipe 3 - Entry"]
-position = Vector2(0, 32)
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Pipes/Pipe 3 - Entry/StaticBody2D"]
-position = Vector2(0, -16)
-shape = SubResource("RectangleShape2D_ckno6")
-
-[node name="Pipe 3 - Exit" parent="World/Pipes" instance=ExtResource("3_hkeya")]
-position = Vector2(-208, 167)
-entry_dir = 4
-
-[node name="StaticBody2D" type="StaticBody2D" parent="World/Pipes/Pipe 3 - Exit"]
-position = Vector2(0, -32)
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Pipes/Pipe 3 - Exit/StaticBody2D"]
-position = Vector2(0, 16)
-shape = SubResource("RectangleShape2D_ckno6")
-
-[node name="Pipe 4 - Entry" parent="World/Pipes" node_paths=PackedStringArray("other_pipe") instance=ExtResource("3_hkeya")]
-position = Vector2(-64, 280)
-other_pipe = NodePath("../Pipe 4 - Exit")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="World/Pipes/Pipe 4 - Entry"]
-position = Vector2(0, 32)
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Pipes/Pipe 4 - Entry/StaticBody2D"]
-position = Vector2(0, -16)
-shape = SubResource("RectangleShape2D_ckno6")
-
-[node name="Pipe 4 - Exit" parent="World/Pipes" instance=ExtResource("3_hkeya")]
-position = Vector2(416, -232)
-entry_dir = 4
-
-[node name="StaticBody2D" type="StaticBody2D" parent="World/Pipes/Pipe 4 - Exit"]
-position = Vector2(0, -48)
-collision_layer = 8
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Pipes/Pipe 4 - Exit/StaticBody2D"]
-position = Vector2(0, 24)
-shape = SubResource("RectangleShape2D_adpvn")
 
 [node name="Instantiated" type="Node2D" parent="World"]

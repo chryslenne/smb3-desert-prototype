@@ -10,20 +10,23 @@ enum Mode
 
 signal OnTransitionComplete(body)
 
+static var active_transitions : Dictionary
 var body : Node2D = null
 var entry : Pipe
 var exit : Pipe
 var max_distance = 32 #32 pixels
 var current_mode = Mode.Entry
 
-func _enter_tree():
-	Level.pipe_users[body] = self
-func _exit_tree():
-	Level.pipe_users.erase(body)
-
 func _ready():
 	current_mode = Mode.Entry
 	$TransitionDuration.start()
+	
+func _notification(what):
+	match what:
+		NOTIFICATION_POSTINITIALIZE:
+			active_transitions[body] = self
+		NOTIFICATION_PREDELETE:
+			active_transitions.erase(self)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -39,8 +42,6 @@ func on_transition_duration_complete():
 			body.global_position = exit.exit_position() + enums.DirectionToVector2(exit.entry_dir) * max_distance
 			current_mode = Mode.Exit
 			$TransitionDuration.start()
-			print("entry done")
 		Mode.Exit:
 			OnTransitionComplete.emit(body)
-			print("exit done")
 			queue_free()

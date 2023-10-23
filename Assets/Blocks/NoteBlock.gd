@@ -4,6 +4,7 @@ class_name NoteBlock
 #---------------------#
 # properties          #
 #---------------------#
+static var entities : Array
 ## the original position that the note block will return to
 ## once the player is not stepping and no weight is 
 ## forced into the block
@@ -30,6 +31,13 @@ func _ready():
 	original_position = global_position
 	$Visual.play()
 
+func _notification(what):
+	match what:
+		NOTIFICATION_POSTINITIALIZE:
+			entities.append(self)
+		NOTIFICATION_PREDELETE:
+			entities.erase(self)
+
 func _process(delta):
 	if current_body is SMBPlayer && current_body.is_grounded():
 		move_noteblock = true
@@ -51,9 +59,7 @@ func player_on_noteblock(body):
 	current_body = body
 	if body is SMBPlayer:
 		body.jump_boost = true
-	print("a body has entered the block")
 func player_left_noteblock(body):
 	current_body = null
 	if body is SMBPlayer:
 		body.jump_boost = false
-	print("a body has left the block")

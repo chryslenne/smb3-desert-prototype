@@ -14,10 +14,6 @@ config/name="Super Mario Brothers 3 Prototype (Desert)"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-Level="*res://Assets/Levels/Level.gd"
-
 [display]
 
 window/size/viewport_width=800

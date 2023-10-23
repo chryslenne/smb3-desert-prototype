@@ -1,9 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://slbrqyq53qm8"]
 
 [ext_resource type="Script" path="res://Assets/Blocks/BrickBlock.gd" id="1_8w7x6"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_gxebo"]
-size = Vector2(20, 20)
+[ext_resource type="SpriteFrames" uid="uid://d1f7npxoy4rs" path="res://Assets/Blocks/BrickBlock_SpriteFrames.tres" id="2_b8g7b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fggmh"]
 
@@ -40,15 +38,16 @@ collision_layer = 9
 collision_mask = 0
 script = ExtResource("1_8w7x6")
 
-[node name="visuals" type="MeshInstance2D" parent="."]
-mesh = SubResource("QuadMesh_gxebo")
+[node name="Visual2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_b8g7b")
+animation = &"Unbroken"
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="Collision2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fggmh")
 
-[node name="visualfx" type="Node2D" parent="."]
+[node name="VisualFX" type="Node2D" parent="."]
 
-[node name="explosion" type="GPUParticles2D" parent="visualfx"]
+[node name="Explosion" type="GPUParticles2D" parent="VisualFX"]
 emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_1b71f")
@@ -56,7 +55,7 @@ lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 
-[node name="coin" type="GPUParticles2D" parent="visualfx"]
+[node name="Coin" type="GPUParticles2D" parent="VisualFX"]
 emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_scqj8")
@@ -64,11 +63,13 @@ lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 
-[node name="properties" type="Node" parent="."]
+[node name="Properties" type="Node" parent="."]
 
-[node name="breakable" type="Node" parent="properties"]
+[node name="Breakable" type="Node" parent="Properties"]
 
-[node name="cleanup" type="Timer" parent="."]
+[node name="Timer" type="Node" parent="."]
+
+[node name="Cleanup" type="Timer" parent="Timer"]
 wait_time = 5.0
 
-[connection signal="timeout" from="cleanup" to="." method="_on_cleanup_timeout"]
+[connection signal="timeout" from="Timer/Cleanup" to="." method="_on_cleanup_timeout"]
