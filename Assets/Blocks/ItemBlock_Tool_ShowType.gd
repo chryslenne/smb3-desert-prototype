@@ -7,8 +7,8 @@ func _process(_delta):
 	process_visual_type()
 
 func process_visual_type():
-	var brick_block = owner
-	var is_looted = brick_block.loot_state == enums.BrickPrizeState.Looted
+	var item_block = owner
+	var is_looted = item_block.loot_state == ItemBlock.State.Looted
 	for child in get_children():
 		if child is CanvasItem:
-			child.visible = child.name == enums.BrickPrizeType.keys()[brick_block.stored_pup] && !is_looted
+			child.visible = child.name == ItemBlock.Reward.keys()[item_block.stored_reward] && !is_looted

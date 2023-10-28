@@ -33,9 +33,9 @@ func _ready():
 
 func _notification(what):
 	match what:
-		NOTIFICATION_POSTINITIALIZE:
+		NOTIFICATION_ENTER_TREE:
 			entities.append(self)
-		NOTIFICATION_PREDELETE:
+		NOTIFICATION_EXIT_TREE:
 			entities.erase(self)
 
 func _process(delta):

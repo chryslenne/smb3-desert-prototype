@@ -7,16 +7,16 @@ static var current : Level
 
 static var preloaded_assets : Dictionary
 
-static func preload_prefabs():
+func preload_prefabs():
 	## pipe-related assets here
 	preloaded_assets["pipe_transition"] = preload("res://Assets/Pipes/PipeTransition.tscn")
 	
 	## preloaded powerups here
-	preloaded_assets[ItemBlock.PrizeType.keys()[ItemBlock.PrizeType.SuperMushroom]] = preload("res://Assets/Powerups/SuperMushroom.tscn")
-	preloaded_assets[ItemBlock.PrizeType.keys()[ItemBlock.PrizeType.FireFlower]] 	= preload("res://Assets/Powerups/FireFlower.tscn")
-	preloaded_assets[ItemBlock.PrizeType.keys()[ItemBlock.PrizeType.SuperLeaf]]   	= preload("res://Assets/Powerups/SuperLeaf.tscn")
-	preloaded_assets[ItemBlock.PrizeType.keys()[ItemBlock.PrizeType.OneUpMushroom]] = preload("res://Assets/Powerups/OneUpMushroom.tscn")
-	preloaded_assets[ItemBlock.PrizeType.keys()[ItemBlock.PrizeType.Starman]] 		= preload("res://Assets/Powerups/Starman.tscn")
+	preloaded_assets[ItemBlock.Reward.keys()[ItemBlock.Reward.SuperMushroom]] 	= preload("res://Assets/Item/SuperMushroom.tscn")
+	preloaded_assets[ItemBlock.Reward.keys()[ItemBlock.Reward.FireFlower]] 		= preload("res://Assets/Item/FireFlower.tscn")
+	preloaded_assets[ItemBlock.Reward.keys()[ItemBlock.Reward.SuperLeaf]]   	= preload("res://Assets/Item/SuperLeaf.tscn")
+	preloaded_assets[ItemBlock.Reward.keys()[ItemBlock.Reward.OneUpMushroom]] 	= preload("res://Assets/Item/OneUpMushroom.tscn")
+	preloaded_assets[ItemBlock.Reward.keys()[ItemBlock.Reward.Starman]] 		= preload("res://Assets/Item/Starman.tscn")
 
 
 # Called when the node enters the scene tree for the first time.

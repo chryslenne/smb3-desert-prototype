@@ -1,15 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://bceidvhjo8nrl"]
 
-[ext_resource type="Script" path="res://Assets/Characters/Modules/PowerupCollector.gd" id="1_gt8hp"]
+[ext_resource type="Script" path="res://Assets/Characters/Modules/ItemCollector.gd" id="1_dkupq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aj0s0"]
 size = Vector2(8, 12)
 
-[node name="PowerupCollector" type="Area2D"]
+[node name="ItemCollector" type="Area2D"]
 collision_layer = 2
 collision_mask = 8
 monitorable = false
-script = ExtResource("1_gt8hp")
+script = ExtResource("1_dkupq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)

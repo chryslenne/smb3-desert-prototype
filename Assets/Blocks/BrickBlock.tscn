@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://slbrqyq53qm8"]
+[gd_scene load_steps=9 format=3 uid="uid://slbrqyq53qm8"]
 
 [ext_resource type="Script" path="res://Assets/Blocks/BrickBlock.gd" id="1_8w7x6"]
 [ext_resource type="SpriteFrames" uid="uid://d1f7npxoy4rs" path="res://Assets/Blocks/BrickBlock_SpriteFrames.tres" id="2_b8g7b"]
+[ext_resource type="Script" path="res://Assets/Blocks/BrickBlock_Tool_ShowType.gd" id="3_gyrjd"]
+[ext_resource type="Texture2D" uid="uid://b264i0k53gt08" path="res://Assets/Item/SuperMushroom_AtlasTexture.tres" id="4_bx8u8"]
+[ext_resource type="Texture2D" uid="uid://c0hvdhgcagosg" path="res://Assets/Item/OneUpMushroom_AtlasTexture.tres" id="5_ntg3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fggmh"]
 
@@ -71,5 +74,28 @@ explosiveness = 1.0
 
 [node name="Cleanup" type="Timer" parent="Timer"]
 wait_time = 5.0
+
+[node name="Debug" type="Node2D" parent="."]
+position = Vector2(0, -17)
+script = ExtResource("3_gyrjd")
+
+[node name="None" type="Sprite2D" parent="Debug"]
+modulate = Color(1, 1, 1, 0.392157)
+z_index = 10
+texture_filter = 1
+
+[node name="Coin" type="Sprite2D" parent="Debug"]
+visible = false
+modulate = Color(1, 1, 1, 0.392157)
+z_index = 10
+texture_filter = 1
+texture = ExtResource("4_bx8u8")
+
+[node name="OneUpMushroom" type="Sprite2D" parent="Debug"]
+visible = false
+modulate = Color(1, 1, 1, 0.392157)
+z_index = 10
+texture_filter = 1
+texture = ExtResource("5_ntg3q")
 
 [connection signal="timeout" from="Timer/Cleanup" to="." method="_on_cleanup_timeout"]

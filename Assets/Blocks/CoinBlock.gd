@@ -36,9 +36,9 @@ func _ready():
 	set_visual_state()
 func _notification(what):
 	match what:
-		NOTIFICATION_POSTINITIALIZE:
+		NOTIFICATION_ENTER_TREE:
 			entities.append(self)
-		NOTIFICATION_PREDELETE:
+		NOTIFICATION_EXIT_TREE:
 			entities.erase(self)
 
 # Initializes the visual state

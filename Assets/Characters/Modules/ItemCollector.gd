@@ -6,9 +6,9 @@ func _process(_delta):
 	# controlled monitoring flag
 	# to avoid too much unwanted process
 	# of scanning
-	if Level.powerups_lst.size() == 0 && monitoring:
+	if Pickup.entities.size() == 0 && monitoring:
 		monitoring = false
-	elif Level.powerups_lst.size() > 0 && !monitoring:
+	elif Pickup.entities.size() > 0 && !monitoring:
 		monitoring = true
 
 func _on_body_entered(body):
@@ -17,17 +17,17 @@ func _on_body_entered(body):
 		#-------------------------#
 		# logic here for powerup  #
 		#-------------------------#
-		match enums.BrickPrizeType.get(body.owner.name):
-			enums.BrickPrizeType.SuperMushroom:
+		match ItemBlock.Reward.get(body.owner.name):
+			ItemBlock.Reward.SuperMushroom:
 				#super mushroom logic here
 				pass
-			enums.BrickPrizeType.FireFlower:
+			ItemBlock.Reward.FireFlower:
 				#fire flower logic here
 				pass
-			enums.BrickPrizeType.SuperLeaf:
+			ItemBlock.Reward.SuperLeaf:
 				#super leaf logic here
 				pass
-			enums.BrickPrizeType.OneUpMushroom:
+			ItemBlock.Reward.OneUpMushroom:
 				#super leaf logic here
 				pass
 		#-------------------------#

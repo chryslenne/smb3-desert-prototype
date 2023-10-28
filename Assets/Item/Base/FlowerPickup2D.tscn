@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dc1xxhc7a4c0a"]
 
-[ext_resource type="Script" path="res://Assets/Powerups/Base/FlowerPickup2D.gd" id="1_ktalt"]
-[ext_resource type="Texture2D" uid="uid://b8e7ff7svdxvv" path="res://Assets/Powerups/FireFlower_AtlasTexture.tres" id="2_lknrl"]
+[ext_resource type="Script" path="res://Assets/Item/Base/FlowerPickup2D.gd" id="1_ktalt"]
+[ext_resource type="Texture2D" uid="uid://b8e7ff7svdxvv" path="res://Assets/Item/FireFlower_AtlasTexture.tres" id="2_lknrl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i85xl"]
 size = Vector2(8, 8.5)

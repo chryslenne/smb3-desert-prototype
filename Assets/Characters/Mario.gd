@@ -1,15 +1,6 @@
 extends CharacterBody2D
 class_name SMBPlayer
 
-enum GroundState
-{
-	Grounded,
-	Jumping,
-	JumpingSmall,
-	JumpingToFalling,
-	Falling,
-}
-
 const enums = preload("res://Assets/Basics/Enums.gd")
 
 #---------------------#
@@ -24,7 +15,7 @@ static var entity : SMBPlayer
 @export_range(0, 1000, 5) var move_speed : float = 85
 @export_range(0, 10, 0.1) var run_speed : float = 2
 @export_range(1000, 0, 5) var jump_power : float = 200
-@export_range(-1000, 0, 5) var fall_speed : float = -200
+@export_range(1000, 0, 5) var fall_speed : float = 200
 @export_range(200, 2000, 10) var vertical_delta : float = 1000
 var vertical_speed : float
 var horizontal_speed : float
@@ -33,29 +24,26 @@ var jump_boost : bool = false
 var h_input : int
 var v_input : int
 var s_input : bool
-var jump_input : bool
+var j_input : bool
 var pipe_entry : Dictionary
 var run_input : bool
-var ground_state : GroundState = GroundState.Grounded
+var is_jumping : bool
 var active_state
-
-# ==================
-# For initialization
-func _enter_tree():
-	# appends the current collision body to the raycasters as part of
-	# the exception for raycasting
-	$GroundChecker.exceptions.append(self)
-	$RoofChecker.exceptions.append(self)
-	$RoofChecker.main_body = self
 
 # ==================
 # For start
 func _ready():
 	active_state = $States/Small_Mario
-	entity = self
 	## warm up the pipe entry logic
 	for dir in enums.Directions:
 		pipe_entry[enums.Directions[dir]] = false
+
+func _notification(what):
+	match what:
+		NOTIFICATION_ENTER_TREE:
+			entity = self
+		NOTIFICATION_EXIT_TREE:
+			entity = null
 
 # ==================
 # Receives player input here
@@ -97,9 +85,9 @@ func _input(event):
 	
 	if event.is_action("jump"):
 		if event.is_pressed() && !event.is_echo():
-			jump_input = true
+			j_input = true
 		elif event.is_released() && !event.is_echo():
-			jump_input = false
+			j_input = false
 	
 	if event.is_action("special"):
 		if event.is_pressed() && !event.is_echo():
@@ -109,9 +97,7 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	process_special_attacks()
 	process_movements(delta)
-	process_ground_state()
 	process_pipes_entry()
 
 func process_movements(delta):
@@ -119,52 +105,39 @@ func process_movements(delta):
 		$States.scale.x = 1
 	elif h_input < 0:
 		$States.scale.x = -1
+	if (j_input || s_input) && is_on_floor():
+		is_jumping = true
+		$Timer/Jump.start()
+	if !j_input && !s_input && is_jumping:
+		is_jumping = false
+		$Timer/Jump.stop()
+	## process horizontal speed
+	## this is moving depending on the h_input and it is smooth
 	horizontal_speed = move_toward(horizontal_speed, h_input, delta * 3)
 	velocity.x = horizontal_speed * (move_speed * run_speed if run_input else move_speed)
-	match ground_state:
-		GroundState.Grounded:
-			velocity.y = 0
-			move_and_slide()
-		GroundState.Jumping:
-			velocity.y = -jump_power * (1.25 if jump_boost else 1)
-			move_and_slide()
-		GroundState.JumpingSmall:
-			velocity.y = -jump_power
-			move_and_slide()
-		GroundState.JumpingToFalling:
-			velocity.y = move_toward(velocity.y, -fall_speed, vertical_delta * delta)
-			move_and_slide()
-		GroundState.Falling:
-			velocity.y = -fall_speed
-			move_and_slide()
-
-func is_grounded(): return $GroundChecker.is_grounded
-
-func process_ground_state():
-	var is_grounded = $GroundChecker.is_grounded
-	var is_roofed = $RoofChecker.is_roofed
-	
-	if is_grounded && ground_state == GroundState.Grounded && jump_input:
-		$Timer/Jump.start()
-		ground_state = GroundState.Jumping
-	elif ground_state == GroundState.Jumping && !jump_input || ground_state == GroundState.JumpingSmall:
-		ground_state = GroundState.JumpingToFalling
-	elif !is_grounded && ground_state == GroundState.Grounded:
-		ground_state = GroundState.JumpingToFalling
-	elif ground_state == GroundState.JumpingToFalling && velocity.y == fall_speed:
-		ground_state = GroundState.Falling
-	elif is_roofed && (ground_state == GroundState.Jumping || ground_state == GroundState.JumpingToFalling):
-		ground_state = GroundState.Falling
-	elif ground_state == GroundState.JumpingToFalling && is_grounded:
+	## process vertical speed
+	## and depending on the
+	## jump state
+	if is_jumping:
+		velocity.y = -jump_power * (1.25 if jump_boost else 1)
+	elif is_on_floor():
+		if !$Timer/Jump.is_stopped():
+			$Timer/Jump.stop()
+		velocity.y = delta
+	else:
+		velocity.y = move_toward(velocity.y, fall_speed, vertical_delta * delta)
+	## if bump the ceiling, then we fall
+	if is_on_ceiling():
+		var col = get_last_slide_collision().get_collider() as ItemBlock
+		col.loot_block(self)
+		velocity.y = fall_speed
+		is_jumping = false
+		j_input = false
 		$Timer/Jump.stop()
-		ground_state = GroundState.Grounded
-		jump_input = false
+	if s_input:
+		is_jumping = false
 		s_input = false
-	elif ground_state == GroundState.Falling && is_grounded:
-		$Timer/Jump.stop()
-		ground_state = GroundState.Grounded
-		jump_input = false
-		s_input = false
+	move_and_slide()
 
 func process_pipes_entry():
 	for dir in enums.Directions:
@@ -182,11 +155,5 @@ func enter_active_pipe(dir):
 		Pipe.nearest_pipe.transition(self)
 		horizontal_speed = 0
 
-func process_special_attacks():
-	var is_grounded = $GroundChecker.is_grounded
-	if active_state == $States/Small_Mario && is_grounded && ground_state == GroundState.Grounded && s_input:
-		s_input = false
-		ground_state = GroundState.JumpingSmall
-
 func _on_jumpduration_timeout():
-	ground_state = GroundState.JumpingToFalling
+	is_jumping = false

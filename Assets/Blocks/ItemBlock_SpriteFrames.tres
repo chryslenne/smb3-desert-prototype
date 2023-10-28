@@ -1,29 +1,29 @@
 [gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://ycvex6nils5o"]
 
-[ext_resource type="Texture2D" uid="uid://bmyyhmi5l4xn3" path="res://Assets/Images/img_spritesheet-stages-tileset-objects.png" id="1_u88ct"]
+[ext_resource type="Texture2D" uid="uid://bmyyhmi5l4xn3" path="res://Assets/Images/img_spritesheet-stages-tileset-objects.png" id="1_tykmj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wveuj"]
-atlas = ExtResource("1_u88ct")
+atlas = ExtResource("1_tykmj")
 region = Rect2(393, 14, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kyowj"]
-atlas = ExtResource("1_u88ct")
+atlas = ExtResource("1_tykmj")
 region = Rect2(410, 14, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_usmgb"]
-atlas = ExtResource("1_u88ct")
+atlas = ExtResource("1_tykmj")
 region = Rect2(325, 14, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gedcm"]
-atlas = ExtResource("1_u88ct")
+atlas = ExtResource("1_tykmj")
 region = Rect2(342, 14, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8vi5y"]
-atlas = ExtResource("1_u88ct")
+atlas = ExtResource("1_tykmj")
 region = Rect2(359, 14, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ebhe"]
-atlas = ExtResource("1_u88ct")
+atlas = ExtResource("1_tykmj")
 region = Rect2(376, 14, 16, 16)
 
 [resource]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://o7sps2vwclo5"]
 
-[ext_resource type="PackedScene" uid="uid://bus2jgmdmlm5g" path="res://Assets/Powerups/Base/MushroomPickup2D.tscn" id="1_757pr"]
+[ext_resource type="PackedScene" uid="uid://bus2jgmdmlm5g" path="res://Assets/Item/Base/MushroomPickup2D.tscn" id="1_757pr"]
 [ext_resource type="Script" path="res://Assets/Powerups/Powerup.gd" id="1_uiss1"]
 
 [node name="SuperMushroom" type="Node2D"]

@@ -96,7 +96,7 @@ func process_state(delta):
 	match star_state:
 		StarState.Spawning:
 			@warning_ignore("integer_division")
-			spawn_lerp += delta * (1 / Level.powerup_spawn_delay)
+			spawn_lerp += delta
 			global_position = lerp(spawn_origin, spawn_target, spawn_lerp)
 			if spawn_lerp > 1:
 				initialize_state(StarState.Moving)

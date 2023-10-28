@@ -1,7 +1,7 @@
 extends StaticBody2D 
 class_name ItemBlock
 
-enum PrizeType
+enum Reward
 {
 	SuperMushroom,
 	FireFlower,
@@ -28,7 +28,7 @@ signal OnLooted
 static var entities : Array
 const enums = preload("res://Assets/Basics/Enums.gd")
 @export var loot_state : State
-@export var stored_pup : PrizeType
+@export var stored_reward : Reward
 
 #---------------------#
 # accessors           #
@@ -50,9 +50,9 @@ func _ready():
 
 func _notification(what):
 	match what:
-		NOTIFICATION_POSTINITIALIZE:
+		NOTIFICATION_ENTER_TREE:
 			entities.append(self)
-		NOTIFICATION_PREDELETE:
+		NOTIFICATION_EXIT_TREE:
 			entities.erase(self)
 
 # Initializes the visual state
@@ -98,28 +98,4 @@ func loot_block(actor = null):
 #
 # Only gets called once the block is looted
 func spawn_powerup(actor):
-	var instance = Level.preloaded_assets[stored_pup].instantiate()
-	var instanceBody = instance.get_node("Body")
-	
-	match stored_pup:
-		PrizeType.SuperMushroom:
-			instanceBody.spawn_origin = self.global_position
-			Level.current.get_instance_container().add_child(instance)
-			if actor != null && actor is PhysicsBody2D:
-				instanceBody.hit_by(actor)
-		PrizeType.FireFlower:
-			instanceBody.spawn_origin = self.global_position
-			Level.current.get_instance_container().add_child(instance)
-		PrizeType.SuperLeaf:
-			instance.global_position = self.global_position
-			Level.current.get_instance_container().add_child(instance)
-		PrizeType.OneUpMushroom:
-			instanceBody.spawn_origin = self.global_position
-			Level.current.get_instance_container().add_child(instance)
-			if actor != null && actor is PhysicsBody2D:
-				instanceBody.hit_by(actor)
-		PrizeType.Starman:
-			instanceBody.spawn_origin = self.global_position
-			Level.current.get_instance_container().add_child(instance)
-			if actor != null && actor is PhysicsBody2D:
-				instanceBody.hit_by(actor)
+	Pickup.spawn(self.global_position, actor, stored_reward)

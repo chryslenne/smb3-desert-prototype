@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://5r54yjixl5ki"]
 
-[ext_resource type="Script" path="res://Assets/Blocks/PowerupBlock.gd" id="1_ksxrm"]
-[ext_resource type="SpriteFrames" uid="uid://ycvex6nils5o" path="res://Assets/Blocks/PowerupBlock_SpriteFrames.tres" id="2_jyscs"]
-[ext_resource type="Script" path="res://Assets/Blocks/PowerupBlock_Tool_ShowType.gd" id="3_l0f5f"]
-[ext_resource type="Texture2D" uid="uid://b8e7ff7svdxvv" path="res://Assets/Powerups/FireFlower_AtlasTexture.tres" id="4_rgt8p"]
-[ext_resource type="Texture2D" uid="uid://b264i0k53gt08" path="res://Assets/Powerups/SuperMushroom_AtlasTexture.tres" id="5_aiga4"]
-[ext_resource type="Texture2D" uid="uid://c0hvdhgcagosg" path="res://Assets/Powerups/OneUpMushroom_AtlasTexture.tres" id="6_tetvv"]
-[ext_resource type="Texture2D" uid="uid://t8odpvpl1rqg" path="res://Assets/Powerups/SuperLeaf_AtlasTexture.tres" id="7_i7l7w"]
-[ext_resource type="Texture2D" uid="uid://cc4y1vy1s7wxr" path="res://Assets/Powerups/Starman_AtlasTexture.tres" id="8_gbxvc"]
+[ext_resource type="Script" path="res://Assets/Blocks/ItemBlock.gd" id="1_ksxrm"]
+[ext_resource type="SpriteFrames" uid="uid://ycvex6nils5o" path="res://Assets/Blocks/ItemBlock_SpriteFrames.tres" id="2_jyscs"]
+[ext_resource type="Script" path="res://Assets/Blocks/ItemBlock_Tool_ShowType.gd" id="3_l0f5f"]
+[ext_resource type="Texture2D" uid="uid://b8e7ff7svdxvv" path="res://Assets/Item/FireFlower_AtlasTexture.tres" id="4_rmely"]
+[ext_resource type="Texture2D" uid="uid://b264i0k53gt08" path="res://Assets/Item/SuperMushroom_AtlasTexture.tres" id="5_t7nqf"]
+[ext_resource type="Texture2D" uid="uid://c0hvdhgcagosg" path="res://Assets/Item/OneUpMushroom_AtlasTexture.tres" id="6_nqrwh"]
+[ext_resource type="Texture2D" uid="uid://t8odpvpl1rqg" path="res://Assets/Item/SuperLeaf_AtlasTexture.tres" id="7_vqrmf"]
+[ext_resource type="Texture2D" uid="uid://cc4y1vy1s7wxr" path="res://Assets/Item/Starman_AtlasTexture.tres" id="8_ei4hh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fggmh"]
 size = Vector2(16, 16)
@@ -85,31 +85,31 @@ visible = false
 modulate = Color(1, 1, 1, 0.392157)
 z_index = 10
 texture_filter = 1
-texture = ExtResource("4_rgt8p")
+texture = ExtResource("4_rmely")
 
 [node name="SuperMushroom" type="Sprite2D" parent="Debug"]
 modulate = Color(1, 1, 1, 0.392157)
 z_index = 10
 texture_filter = 1
-texture = ExtResource("5_aiga4")
+texture = ExtResource("5_t7nqf")
 
 [node name="OneUpMushroom" type="Sprite2D" parent="Debug"]
 visible = false
 modulate = Color(1, 1, 1, 0.392157)
 z_index = 10
 texture_filter = 1
-texture = ExtResource("6_tetvv")
+texture = ExtResource("6_nqrwh")
 
 [node name="SuperLeaf" type="Sprite2D" parent="Debug"]
 visible = false
 modulate = Color(1, 1, 1, 0.392157)
 z_index = 10
 texture_filter = 1
-texture = ExtResource("7_i7l7w")
+texture = ExtResource("7_vqrmf")
 
 [node name="Starman" type="Sprite2D" parent="Debug"]
 visible = false
 modulate = Color(1, 1, 1, 0.392157)
 z_index = 10
 texture_filter = 1
-texture = ExtResource("8_gbxvc")
+texture = ExtResource("8_ei4hh")

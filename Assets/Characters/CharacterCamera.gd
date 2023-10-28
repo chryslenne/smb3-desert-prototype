@@ -4,7 +4,7 @@ extends Camera2D
 @export var follow : bool
 
 func _ready():
-	target = Level.player
+	target = SMBPlayer.entity
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

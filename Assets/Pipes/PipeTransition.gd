@@ -23,9 +23,9 @@ func _ready():
 	
 func _notification(what):
 	match what:
-		NOTIFICATION_POSTINITIALIZE:
+		NOTIFICATION_ENTER_TREE:
 			active_transitions[body] = self
-		NOTIFICATION_PREDELETE:
+		NOTIFICATION_EXIT_TREE:
 			active_transitions.erase(self)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

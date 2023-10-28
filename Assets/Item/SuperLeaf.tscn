@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://da112qiflcsxp"]
 
-[ext_resource type="Script" path="res://Assets/Powerups/Powerup.gd" id="1_5cs27"]
-[ext_resource type="PackedScene" uid="uid://b5wifl71oeq4f" path="res://Assets/Powerups/Base/LeafPickup2D.tscn" id="2_jhojx"]
+[ext_resource type="Script" path="res://Assets/Item/Pickup.gd" id="1_5cs27"]
+[ext_resource type="PackedScene" uid="uid://b5wifl71oeq4f" path="res://Assets/Item/Base/LeafPickup2D.tscn" id="2_jhojx"]
 
 [node name="SuperLeaf" type="Node2D"]
 script = ExtResource("1_5cs27")

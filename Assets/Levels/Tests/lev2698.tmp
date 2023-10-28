@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://buj4ggkyvimbu"]
+[gd_scene load_steps=8 format=3 uid="uid://buj4ggkyvimbu"]
 
 [ext_resource type="Script" path="res://Assets/Levels/Level.gd" id="1_caamb"]
 [ext_resource type="PackedScene" uid="uid://bid4sa0mj2y3j" path="res://Assets/_Prototype/prop_test_ground.tscn" id="2_yq515"]
 [ext_resource type="PackedScene" uid="uid://cldfb4dn1b54j" path="res://Assets/Characters/Mario.tscn" id="3_1rg1y"]
-[ext_resource type="PackedScene" uid="uid://5r54yjixl5ki" path="res://Assets/Blocks/ItemBlock.tscn" id="4_y1evm"]
+[ext_resource type="PackedScene" uid="uid://5r54yjixl5ki" path="res://Assets/Blocks/PowerupBlock.tscn" id="4_y1evm"]
 [ext_resource type="PackedScene" uid="uid://ciepcc0jk7gyh" path="res://Assets/Characters/CharacterCamera.tscn" id="5_uvcwp"]
-[ext_resource type="PackedScene" uid="uid://slbrqyq53qm8" path="res://Assets/Blocks/BrickBlock.tscn" id="6_67y7j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02bq4"]
 size = Vector2(20, 140)
@@ -22,19 +21,23 @@ script = ExtResource("1_caamb")
 position = Vector2(0, -13)
 
 [node name="PowerupBlock" parent="." instance=ExtResource("4_y1evm")]
-position = Vector2(-146, -55)
+position = Vector2(-87, -55)
 
 [node name="PowerupBlock2" parent="." instance=ExtResource("4_y1evm")]
-position = Vector2(-104, -55)
+position = Vector2(-45, -55)
+stored_pup = 1
 
 [node name="PowerupBlock3" parent="." instance=ExtResource("4_y1evm")]
-position = Vector2(-59, -55)
+position = Vector2(0, -55)
+stored_pup = 2
 
 [node name="PowerupBlock4" parent="." instance=ExtResource("4_y1evm")]
-position = Vector2(-14, -55)
+position = Vector2(45, -55)
+stored_pup = 3
 
 [node name="PowerupBlock5" parent="." instance=ExtResource("4_y1evm")]
-position = Vector2(28, -55)
+position = Vector2(87, -55)
+stored_pup = 4
 
 [node name="CharacterCamera" parent="." instance=ExtResource("5_uvcwp")]
 
@@ -59,12 +62,3 @@ shape = SubResource("RectangleShape2D_02bq4")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Wall2"]
 position = Vector2(0, -60)
 mesh = SubResource("QuadMesh_wqpin")
-
-[node name="BrickBlock" parent="." instance=ExtResource("6_67y7j")]
-position = Vector2(71, -56)
-
-[node name="BrickBlock2" parent="." instance=ExtResource("6_67y7j")]
-position = Vector2(110, -56)
-
-[node name="BrickBlock3" parent="." instance=ExtResource("6_67y7j")]
-position = Vector2(151, -55)
