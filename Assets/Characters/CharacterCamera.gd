@@ -7,7 +7,7 @@ func _ready():
 	target = SMBPlayer.entity
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if follow || !target:
 		return
 	call_deferred("follow_target")
