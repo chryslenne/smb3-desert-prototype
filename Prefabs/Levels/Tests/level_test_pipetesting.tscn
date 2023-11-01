@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://dbcbtidue8as8"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_g2tx1"]
+[ext_resource type="PackedScene" uid="uid://bid4sa0mj2y3j" path="res://Prefabs/_Prototype/prop_test_ground.tscn" id="2_xu820"]
+[ext_resource type="PackedScene" uid="uid://cldfb4dn1b54j" path="res://Prefabs/Mario.tscn" id="3_yjw1q"]
+[ext_resource type="PackedScene" uid="uid://ciepcc0jk7gyh" path="res://Prefabs/CharacterCamera.tscn" id="5_cxi6o"]
+[ext_resource type="PackedScene" uid="uid://drastf1hm07j0" path="res://Scripts/Pipes/Parts/GreenPipeBody.tscn" id="5_fvkfe"]
+[ext_resource type="PackedScene" uid="uid://c8y0m2agd4o0y" path="res://Scripts/Pipes/Parts/GreenPipeTop.tscn" id="6_84bee"]
+[ext_resource type="PackedScene" uid="uid://duqebxbmacj5l" path="res://Scripts/Pipes/Pipe.tscn" id="7_i6n3d"]
+
+[node name="level_test_pipetesting" type="Node2D"]
+script = ExtResource("1_g2tx1")
+
+[node name="prop_test_ground" parent="." instance=ExtResource("2_xu820")]
+
+[node name="prefab_small-mario" parent="." instance=ExtResource("3_yjw1q")]
+position = Vector2(0, -13)
+
+[node name="CharacterCamera" parent="." instance=ExtResource("5_cxi6o")]
+
+[node name="PipeContainer2" type="Node2D" parent="."]
+position = Vector2(151, -10)
+
+[node name="GreenPipeBody" parent="PipeContainer2" instance=ExtResource("5_fvkfe")]
+position = Vector2(0, -8)
+
+[node name="GreenPipeTop" parent="PipeContainer2" instance=ExtResource("6_84bee")]
+position = Vector2(0, -24)
+
+[node name="Pipe" parent="PipeContainer2" node_paths=PackedStringArray("other_pipe", "scene_camera") instance=ExtResource("7_i6n3d")]
+position = Vector2(0, -32)
+other_pipe = NodePath("../../PipeContainer/Pipe")
+entry_dir = 3
+scene_camera = NodePath("../../CharacterCamera")
+
+[node name="PipeContainer" type="Node2D" parent="."]
+position = Vector2(-127, -10)
+
+[node name="GreenPipeBody" parent="PipeContainer" instance=ExtResource("5_fvkfe")]
+position = Vector2(0, -8)
+
+[node name="GreenPipeTop" parent="PipeContainer" instance=ExtResource("6_84bee")]
+position = Vector2(0, -24)
+
+[node name="Pipe" parent="PipeContainer" node_paths=PackedStringArray("other_pipe", "scene_camera") instance=ExtResource("7_i6n3d")]
+position = Vector2(0, -32)
+other_pipe = NodePath("../../PipeContainer2/Pipe")
+entry_dir = 3
+scene_camera = NodePath("../../CharacterCamera")

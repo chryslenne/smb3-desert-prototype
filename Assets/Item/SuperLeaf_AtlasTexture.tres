@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://t8odpvpl1rqg"]
-
-[ext_resource type="Texture2D" uid="uid://dhwvcxw6r85gl" path="res://Assets/Images/img_spritesheet-powerups.png" id="1_qph2s"]
-
-[resource]
-atlas = ExtResource("1_qph2s")
-region = Rect2(38, 12, 16, 16)

@@ -16,9 +16,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Enums="*res://Assets/Basics/Enums.gd"
-StringLookup="*res://Assets/Basics/StringLookup.gd"
-LoadData="*res://Assets/Basics/LoadData.gd"
+Enums="*res://Scripts/Basic/Enums.gd"
+StringLookup="*res://Scripts/Basic/StringLookup.gd"
+LoadData="*res://Scripts/Basic/LoadData.gd"
 
 [display]
 

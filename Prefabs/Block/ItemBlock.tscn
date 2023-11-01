@@ -1,0 +1,115 @@
+[gd_scene load_steps=12 format=3 uid="uid://5r54yjixl5ki"]
+
+[ext_resource type="Script" path="res://Scripts/Blocks/ItemBlock.gd" id="1_ksxrm"]
+[ext_resource type="SpriteFrames" uid="uid://ycvex6nils5o" path="res://SpriteFrames/ItemBlock_SpriteFrames.tres" id="2_jyscs"]
+[ext_resource type="Script" path="res://Scripts/Blocks/ItemBlock_Tool_ShowType.gd" id="3_l0f5f"]
+[ext_resource type="Texture2D" uid="uid://b8e7ff7svdxvv" path="res://Textures/Atlas/FireFlower_AtlasTexture.tres" id="4_rmely"]
+[ext_resource type="Texture2D" uid="uid://b264i0k53gt08" path="res://Textures/Atlas/SuperMushroom_AtlasTexture.tres" id="5_t7nqf"]
+[ext_resource type="Texture2D" uid="uid://c0hvdhgcagosg" path="res://Textures/Atlas/OneUpMushroom_AtlasTexture.tres" id="6_nqrwh"]
+[ext_resource type="Texture2D" uid="uid://t8odpvpl1rqg" path="res://Textures/Atlas/SuperLeaf_AtlasTexture.tres" id="7_vqrmf"]
+[ext_resource type="Texture2D" uid="uid://cc4y1vy1s7wxr" path="res://Textures/Atlas/Starman_AtlasTexture.tres" id="8_ei4hh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fggmh"]
+size = Vector2(16, 16)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1b71f"]
+emission_shape = 1
+emission_sphere_radius = 10.17
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 5.13
+initial_velocity_max = 82.05
+angular_velocity_min = 107.08
+angular_velocity_max = 720.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(1, 0.65098, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_scqj8"]
+emission_shape = 1
+emission_sphere_radius = 10.17
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 5.13
+initial_velocity_max = 82.05
+angular_velocity_min = 107.08
+angular_velocity_max = 720.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(1, 1, 0, 1)
+
+[node name="PowerupBlock" type="StaticBody2D"]
+collision_layer = 9
+collision_mask = 0
+script = ExtResource("1_ksxrm")
+
+[node name="Visual2D" type="AnimatedSprite2D" parent="."]
+z_index = 10
+texture_filter = 1
+sprite_frames = ExtResource("2_jyscs")
+animation = &"unlooted"
+
+[node name="Collision2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fggmh")
+
+[node name="VisualFX" type="Node2D" parent="."]
+
+[node name="Explosion" type="GPUParticles2D" parent="VisualFX"]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_1b71f")
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="Coin" type="GPUParticles2D" parent="VisualFX"]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_scqj8")
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="Properties" type="Node" parent="."]
+
+[node name="Lootable" type="Node" parent="Properties"]
+
+[node name="Debug" type="Node2D" parent="."]
+position = Vector2(0, -17)
+script = ExtResource("3_l0f5f")
+
+[node name="FireFlower" type="Sprite2D" parent="Debug"]
+visible = false
+modulate = Color(1, 1, 1, 0.392157)
+z_index = 10
+texture_filter = 1
+texture = ExtResource("4_rmely")
+
+[node name="SuperMushroom" type="Sprite2D" parent="Debug"]
+modulate = Color(1, 1, 1, 0.392157)
+z_index = 10
+texture_filter = 1
+texture = ExtResource("5_t7nqf")
+
+[node name="OneUpMushroom" type="Sprite2D" parent="Debug"]
+visible = false
+modulate = Color(1, 1, 1, 0.392157)
+z_index = 10
+texture_filter = 1
+texture = ExtResource("6_nqrwh")
+
+[node name="SuperLeaf" type="Sprite2D" parent="Debug"]
+visible = false
+modulate = Color(1, 1, 1, 0.392157)
+z_index = 10
+texture_filter = 1
+texture = ExtResource("7_vqrmf")
+
+[node name="Starman" type="Sprite2D" parent="Debug"]
+visible = false
+modulate = Color(1, 1, 1, 0.392157)
+z_index = 10
+texture_filter = 1
+texture = ExtResource("8_ei4hh")

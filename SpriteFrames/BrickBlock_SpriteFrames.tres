@@ -1,0 +1,58 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://d1f7npxoy4rs"]
+
+[ext_resource type="Texture2D" uid="uid://bmyyhmi5l4xn3" path="res://Textures/Raw/img_spritesheet-stages-tileset-objects.png" id="1_221lu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wveuj"]
+atlas = ExtResource("1_221lu")
+region = Rect2(393, 14, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyowj"]
+atlas = ExtResource("1_221lu")
+region = Rect2(410, 14, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bboos"]
+atlas = ExtResource("1_221lu")
+region = Rect2(325, 31, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ash8a"]
+atlas = ExtResource("1_221lu")
+region = Rect2(342, 31, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu70h"]
+atlas = ExtResource("1_221lu")
+region = Rect2(359, 31, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5pf7"]
+atlas = ExtResource("1_221lu")
+region = Rect2(376, 31, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wveuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyowj")
+}],
+"loop": true,
+"name": &"Looted",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bboos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ash8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lu70h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5pf7")
+}],
+"loop": true,
+"name": &"Unbroken",
+"speed": 5.0
+}]

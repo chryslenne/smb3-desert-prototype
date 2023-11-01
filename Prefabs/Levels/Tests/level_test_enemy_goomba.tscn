@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://8jb5jkdeyw1b"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_h5wy5"]
+[ext_resource type="PackedScene" uid="uid://bid4sa0mj2y3j" path="res://Prefabs/_Prototype/prop_test_ground.tscn" id="2_htvny"]
+[ext_resource type="PackedScene" uid="uid://cldfb4dn1b54j" path="res://Prefabs/Mario.tscn" id="3_bj2p0"]
+[ext_resource type="PackedScene" uid="uid://1fp1l5j883u5" path="res://Prefabs/Enemies/EnemySpawner.tscn" id="5_vthst"]
+[ext_resource type="PackedScene" uid="uid://ciepcc0jk7gyh" path="res://Prefabs/CharacterCamera.tscn" id="5_x2i3x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02bq4"]
+size = Vector2(20, 140)
+
+[sub_resource type="QuadMesh" id="QuadMesh_wqpin"]
+size = Vector2(20, 140)
+
+[node name="level_test_pickups" type="Node2D"]
+script = ExtResource("1_h5wy5")
+
+[node name="prop_test_ground" parent="." instance=ExtResource("2_htvny")]
+position = Vector2(-250, 0)
+
+[node name="prop_test_ground2" parent="." instance=ExtResource("2_htvny")]
+position = Vector2(250, 0)
+
+[node name="prefab_small-mario" parent="." instance=ExtResource("3_bj2p0")]
+position = Vector2(0, -13)
+
+[node name="CharacterCamera" parent="." instance=ExtResource("5_x2i3x")]
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(-400, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(0, -60)
+shape = SubResource("RectangleShape2D_02bq4")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Wall"]
+position = Vector2(0, -60)
+mesh = SubResource("QuadMesh_wqpin")
+
+[node name="Wall2" type="StaticBody2D" parent="."]
+position = Vector2(400, -20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2"]
+position = Vector2(0, -60)
+shape = SubResource("RectangleShape2D_02bq4")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Wall2"]
+position = Vector2(0, -60)
+mesh = SubResource("QuadMesh_wqpin")
+
+[node name="EnemySpawner" parent="." instance=ExtResource("5_vthst")]
+position = Vector2(250, -10)
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("5_vthst")]
+position = Vector2(336, -10)
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("5_vthst")]
+position = Vector2(-250, -13)
+
+[node name="EnemySpawner4" parent="." instance=ExtResource("5_vthst")]
+position = Vector2(-333, -13)

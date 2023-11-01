@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://22q48wmuidxd"]
+
+[ext_resource type="Script" path="res://Scripts/Player/RoofChecker.gd" id="1_surw3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ld0j"]
+size = Vector2(5, 1)
+
+[node name="roof_checker" type="Node2D"]
+script = ExtResource("1_surw3")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("RectangleShape2D_6ld0j")
+target_position = Vector2(0, -1)

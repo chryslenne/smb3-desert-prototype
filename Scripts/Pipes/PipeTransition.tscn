@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba4etr1fjk3ga"]
+
+[ext_resource type="Script" path="res://Scripts/Pipes/PipeTransition.gd" id="1_6yb7q"]
+
+[node name="PipeTransition" type="Node"]
+script = ExtResource("1_6yb7q")
+
+[node name="TransitionDuration" type="Timer" parent="."]
+
+[connection signal="timeout" from="TransitionDuration" to="." method="on_transition_duration_complete"]
