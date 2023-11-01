@@ -157,3 +157,6 @@ func enter_active_pipe(dir):
 
 func _on_jumpduration_timeout():
 	is_jumping = false
+
+func hit():
+	pass
