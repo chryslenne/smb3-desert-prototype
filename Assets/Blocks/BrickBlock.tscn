@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Assets/Blocks/BrickBlock.gd" id="1_8w7x6"]
 [ext_resource type="SpriteFrames" uid="uid://d1f7npxoy4rs" path="res://Assets/Blocks/BrickBlock_SpriteFrames.tres" id="2_b8g7b"]
 [ext_resource type="Script" path="res://Assets/Blocks/BrickBlock_Tool_ShowType.gd" id="3_gyrjd"]
-[ext_resource type="Texture2D" uid="uid://b264i0k53gt08" path="res://Assets/Item/SuperMushroom_AtlasTexture.tres" id="4_bx8u8"]
+[ext_resource type="Texture2D" uid="uid://c53yw3pypqfid" path="res://Assets/Item/Coin_AtlasTexture.tres" id="4_aa2fx"]
 [ext_resource type="Texture2D" uid="uid://c0hvdhgcagosg" path="res://Assets/Item/OneUpMushroom_AtlasTexture.tres" id="5_ntg3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fggmh"]
@@ -42,6 +42,7 @@ collision_mask = 0
 script = ExtResource("1_8w7x6")
 
 [node name="Visual2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = ExtResource("2_b8g7b")
 animation = &"Unbroken"
 
@@ -89,7 +90,7 @@ visible = false
 modulate = Color(1, 1, 1, 0.392157)
 z_index = 10
 texture_filter = 1
-texture = ExtResource("4_bx8u8")
+texture = ExtResource("4_aa2fx")
 
 [node name="OneUpMushroom" type="Sprite2D" parent="Debug"]
 visible = false

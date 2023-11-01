@@ -1,4 +1,4 @@
-extends StaticBody2D 
+extends Block 
 class_name ItemBlock
 
 enum Reward
@@ -47,6 +47,7 @@ func is_disabled():
 #---------------------#
 func _ready():
 	set_visual_state()
+	block_hit.connect(loot_block)
 
 func _notification(what):
 	match what:

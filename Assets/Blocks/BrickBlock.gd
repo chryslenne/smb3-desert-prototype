@@ -25,14 +25,14 @@ signal OnBroken
 static var entities : Array
 @export var brick_state : State
 @export var reward_type : Reward
-@export var reward_count : int
+@export var reward_count : int = 1
 
 #---------------------#
 # accessors           #
 #---------------------#
-func is_active(): brick_state == State.Unbroken
-func is_looted(): brick_state == State.Looted
-func is_hidden(): brick_state == State.Hidden
+func is_active(): return brick_state == State.Unbroken
+func is_looted(): return brick_state == State.Looted
+func is_hidden(): return brick_state == State.Hidden
 
 #---------------------#
 # godot functions     #
@@ -53,19 +53,21 @@ func _exit_tree():
 func set_visual_state(new_state = null):
 	if new_state != null:
 		brick_state = new_state
-	
 	match brick_state:
 		State.Unbroken:
+			print("Unbroken")
 			process_mode = Node.PROCESS_MODE_INHERIT
 			visible = true
-			$Visual2D.play()
+			$Visual2D.play("Unbroken")
 			$Collision2D.disabled = false
 		State.Looted:
+			print("Looted")
 			process_mode = Node.PROCESS_MODE_INHERIT
 			visible = true
-			$Visual2D.play()
+			$Visual2D.play("Looted")
 			$Collision2D.disabled = false
 		State.Hidden: 
+			print("Hidden")
 			process_mode = Node.PROCESS_MODE_INHERIT
 			visible = true
 			$Visual2D.stop()
@@ -78,26 +80,25 @@ func brick_hit(actor = null):
 			break_block(actor)
 			return
 		Reward.Coin:
-			if reward_count > 1:
-				reward_count -= 1
-				if reward_count == 0:
-					set_visual_state(State.Looted)
-				if $VisualFX/Coin: 
-					($VisualFX/Coin as GPUParticles2D).emitting = true
+			if reward_count <= 0: return
+			if $VisualFX/Coin: 
+				($VisualFX/Coin as GPUParticles2D).emitting = true
 		Reward.OneUpMushroom:
-			if reward_count > 1:
-				reward_count -= 1
-				if reward_count == 0:
-					set_visual_state(State.Looted)
-				Pickup.spawn(self.global_position, actor, reward_type)
-			pass
+			if reward_count <= 0: return
+			Pickup.spawn(self.global_position, actor, ItemBlock.Reward.OneUpMushroom)
+	
+	if reward_count >= 1:
+		print("MEOW!")
+		reward_count = reward_count - 1
+		if reward_count <= 0:
+			set_visual_state(State.Looted)
 
 # Throws an explosion particle fx
 # and sets the brick state to broken
 # and initializes visual state
 #
 # (optional) rewards coins if allowed
-func break_block(actor = null):
+func break_block(_actor = null):
 	if $VisualFX/Explosion: 
 		($VisualFX/Explosion as GPUParticles2D).emitting = true
 	# set visual aspects and disable physics body

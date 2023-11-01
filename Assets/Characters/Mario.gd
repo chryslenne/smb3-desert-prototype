@@ -119,7 +119,7 @@ func process_movements(delta):
 	## and depending on the
 	## jump state
 	if is_jumping:
-		velocity.y = -jump_power * (1.25 if jump_boost else 1)
+		velocity.y = -jump_power * (1.25 if jump_boost else 1.0)
 	elif is_on_floor():
 		if !$Timer/Jump.is_stopped():
 			$Timer/Jump.stop()
@@ -128,8 +128,8 @@ func process_movements(delta):
 		velocity.y = move_toward(velocity.y, fall_speed, vertical_delta * delta)
 	## if bump the ceiling, then we fall
 	if is_on_ceiling():
-		var col = get_last_slide_collision().get_collider() as ItemBlock
-		col.loot_block(self)
+		var col = get_last_slide_collision().get_collider() as Block
+		col.hit(self)
 		velocity.y = fall_speed
 		is_jumping = false
 		j_input = false
