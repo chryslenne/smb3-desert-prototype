@@ -33,4 +33,4 @@ func _on_body_entered(body):
 		#-------------------------#
 		# cleanup here            #
 		#-------------------------#
-		body.owner.loot_powerup()
+		body.owner.loot_item()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cb1iq0470b7mb"]
 
 [ext_resource type="PackedScene" uid="uid://dc1xxhc7a4c0a" path="res://Assets/Item/Base/FlowerPickup2D.tscn" id="1_ac24t"]
-[ext_resource type="Script" path="res://Assets/Powerups/Powerup.gd" id="1_r8bar"]
+[ext_resource type="Script" path="res://Assets/Item/Pickup.gd" id="1_r8bar"]
 
 [node name="FireFlower" type="Node2D"]
 script = ExtResource("1_r8bar")
