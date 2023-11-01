@@ -106,8 +106,7 @@ func process_movements(delta):
 	elif h_input < 0:
 		$States.scale.x = -1
 	if (j_input || s_input) && is_on_floor():
-		is_jumping = true
-		$Timer/Jump.start()
+		jump()
 	if !j_input && !s_input && is_jumping:
 		is_jumping = false
 		$Timer/Jump.stop()
@@ -137,6 +136,8 @@ func process_movements(delta):
 	if s_input:
 		is_jumping = false
 		s_input = false
+	## Process the hitscan
+	$DownwardHitscan.enabled = velocity.y > delta
 	move_and_slide()
 
 func process_pipes_entry():
@@ -160,3 +161,10 @@ func _on_jumpduration_timeout():
 
 func hit():
 	pass
+
+func jump():
+	is_jumping = true
+	$Timer/Jump.start()
+
+func force_jump():
+	velocity.y = -jump_power * (1.25 if jump_boost else 1.0)

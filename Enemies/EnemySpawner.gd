@@ -27,11 +27,5 @@ func _on_visible_on_screen_notifier_2d_screen_entered():
 	## Spawn enemy and set current position
 	enemy = get_prefab().instantiate() if has_prefab() else null
 	if enemy:
+		self.add_child(enemy)
 		enemy.global_position = self.global_position
-
-## This function handles despawning of enemy if it exists
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	if enemy == null:
-		return
-	enemy.queue_free()
-	enemy = null

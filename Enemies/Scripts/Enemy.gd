@@ -5,25 +5,21 @@ static var entities : Array = []
 static func get_entities():
 	return entities
 
-signal enemy_spawned
-signal enemy_despawned
-signal enemy_hit
-signal enemy_dead
+signal enemy_spawned(entity : Enemy)
+signal enemy_despawned(entity : Enemy)
+signal enemy_hit()
+signal enemy_dead()
 
 func spawn():
-	print(name, " has spawned")
-	enemy_spawned.emit()
+	enemy_spawned.emit(self)
 
 func despawn():
-	print(name, " has despawned")
-	enemy_despawned.emit()
+	enemy_despawned.emit(self)
 
 func hit():
-	print(name, " has been hit")
 	enemy_hit.emit()
 
 func kill():
-	print(name, " has been killed")
 	enemy_dead.emit()
 
 func _notification(what):

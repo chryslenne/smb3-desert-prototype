@@ -10,7 +10,7 @@ static func get_entities():
 var h_input : int = 1
 
 @export var spawn_direction : String = "left"
-@export_range(0, 1000, 5) var move_speed : float = 85
+@export_range(0, 1000, 5) var move_speed : float = 30
 @export_range(1000, 0, 5) var fall_speed : float = 200
 @export_range(200, 2000, 10) var vertical_delta : float = 1000
 
@@ -26,13 +26,13 @@ func _process(_delta):
 func _physics_process(delta):
 	## process horizontal speed
 	velocity.x = h_input * move_speed
-	
+
 	## process vertical speed
 	if is_on_floor():
 		velocity.y = delta
 	else:
 		velocity.y = move_toward(velocity.y, fall_speed, vertical_delta * delta)
-	
+
 	move_and_slide()
 
 func spawn():
@@ -68,6 +68,7 @@ func kill():
 	## Toggle timer for despawn
 	$Timer.start()
 
+
 func _on_damage_area_2d_body_entered(body):
 	## If it is not processing at all
 	## it means it is dead!
@@ -76,6 +77,12 @@ func _on_damage_area_2d_body_entered(body):
 	## Only scan for player and find the correct body class
 	if body is SMBPlayer:
 		body.hit()
-	
+
 func _on_timer_timeout():
+	queue_free()
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	if owner is EnemySpawner:
+		owner.enemy = null
+	$Timer.stop()
 	queue_free()
