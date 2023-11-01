@@ -5,6 +5,8 @@ static var entities : Array = []
 static func get_entities():
 	return entities
 
+var spawn_direction : String
+
 signal enemy_spawned(entity : Enemy)
 signal enemy_despawned(entity : Enemy)
 signal enemy_hit()

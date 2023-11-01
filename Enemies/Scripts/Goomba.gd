@@ -9,7 +9,6 @@ static func get_entities():
 # Character input & states
 var h_input : int = 1
 
-@export var spawn_direction : String = "left"
 @export_range(0, 1000, 5) var move_speed : float = 30
 @export_range(1000, 0, 5) var fall_speed : float = 200
 @export_range(200, 2000, 10) var vertical_delta : float = 1000

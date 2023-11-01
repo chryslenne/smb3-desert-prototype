@@ -1,12 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://1fp1l5j883u5"]
+[gd_scene load_steps=7 format=3 uid="uid://1fp1l5j883u5"]
 
 [ext_resource type="Script" path="res://Enemies/EnemySpawner.gd" id="1_l4mj6"]
 [ext_resource type="Script" path="res://Enemies/EnemySpawner_Tool_ShowEnemyType.gd" id="2_ab7js"]
 [ext_resource type="Texture2D" uid="uid://1ttyjcisx76r" path="res://Enemies/Goomba_AtlasTexture.tres" id="3_al0je"]
+[ext_resource type="Texture2D" uid="uid://dqall32v6lkdh" path="res://Assets/Images/img_horizontal-arrows-32x32.png" id="4_koydy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ite3a"]
+atlas = ExtResource("4_koydy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vuw7"]
+atlas = ExtResource("4_koydy")
+region = Rect2(0, 0, 32, 32)
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_l4mj6")
-enemy_type = 1
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -8)
@@ -15,9 +23,27 @@ position = Vector2(0, -8)
 texture_filter = 1
 script = ExtResource("2_ab7js")
 
-[node name="Goomba" type="Sprite2D" parent="ShowEnemyType"]
+[node name="Displays" type="Node2D" parent="ShowEnemyType"]
+
+[node name="Goomba" type="Sprite2D" parent="ShowEnemyType/Displays"]
+visible = false
 modulate = Color(1, 1, 1, 0.27451)
 position = Vector2(0, -8)
 texture = ExtResource("3_al0je")
+
+[node name="SpawnDirection" type="Node2D" parent="ShowEnemyType"]
+position = Vector2(0, -24)
+
+[node name="Left" type="Sprite2D" parent="ShowEnemyType/SpawnDirection"]
+modulate = Color(1, 1, 1, 0.196078)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_ite3a")
+
+[node name="Right" type="Sprite2D" parent="ShowEnemyType/SpawnDirection"]
+visible = false
+modulate = Color(1, 1, 1, 0.196078)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("AtlasTexture_6vuw7")
+flip_h = true
 
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
