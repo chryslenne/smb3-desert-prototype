@@ -17,7 +17,9 @@ func preload_prefabs():
 	preloaded_assets[ItemBlock.Reward.keys()[ItemBlock.Reward.SuperLeaf]]   	= preload("res://Prefabs/Items/SuperLeaf.tscn")
 	preloaded_assets[ItemBlock.Reward.keys()[ItemBlock.Reward.OneUpMushroom]] 	= preload("res://Prefabs/Items/OneUpMushroom.tscn")
 	preloaded_assets[ItemBlock.Reward.keys()[ItemBlock.Reward.Starman]] 		= preload("res://Prefabs/Items/Starman.tscn")
-
+	
+	FireSnake.asset = preload("res://Prefabs/Enemies/FireSnakeMain.tscn")
+	FireSnakeTail.asset = preload("res://Prefabs/Enemies/FireSnakeTail.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

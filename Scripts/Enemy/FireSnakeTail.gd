@@ -1,7 +1,7 @@
 extends Enemy
 class_name FireSnakeTail
 
-const asset = preload("res://Prefabs/Enemies/FireSnakeTail.tscn")
+static var asset : PackedScene
 
 static func get_entities():
 	return entities.filter(func(entity): return entity is FireSnakeTail)

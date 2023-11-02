@@ -1,7 +1,7 @@
 extends Enemy
 class_name FireSnake
 
-const asset = preload("res://Prefabs/Enemies/FireSnake.tscn")
+static var asset : PackedScene
 
 static func get_entities():
 	return entities.filter(func(entity): return entity is FireSnake)
@@ -10,8 +10,8 @@ static func get_entities():
 var h_input : int = 1
 
 @export var tail_size = 4
-@export var jump_time_range = Vector2(0.2, 0.3)
-@export var jump_cooldown_range = Vector2(2, 3)
+@export var jump_time_range = Vector2(0.1, 0.25)
+@export var jump_cooldown_range = Vector2(2, 5)
 @export_range(0, 1000, 5) var move_speed : float = 60
 @export_range(1000, 0, 5) var fall_speed : float = 200
 @export_range(1000, 0, 5) var jump_power : float = 200
