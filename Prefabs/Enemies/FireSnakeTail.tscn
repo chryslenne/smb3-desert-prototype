@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2jmxgufvsvve"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/FireSnakeTail.gd" id="1_sbhdk"]
+[ext_resource type="SpriteFrames" uid="uid://b56dytcs0l5uo" path="res://SpriteFrames/FireSnake_SpriteFrames.tres" id="2_o6blv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28im2"]
+size = Vector2(7, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kobs"]
+size = Vector2(10, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kr3fm"]
+size = Vector2(10, 10)
+
+[node name="FireSnakeTail" type="CharacterBody2D"]
+script = ExtResource("1_sbhdk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = ExtResource("2_o6blv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_28im2")
+
+[node name="DamageArea2D" type="Area2D" parent="."]
+position = Vector2(0, -6.5)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="DamageShape2D" type="CollisionShape2D" parent="DamageArea2D"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_1kobs")
+
+[node name="HitArea2D" type="Area2D" parent="."]
+position = Vector2(0, -14.5)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+
+[node name="HitShape2D" type="CollisionShape2D" parent="HitArea2D"]
+position = Vector2(0, 9.5)
+shape = SubResource("RectangleShape2D_kr3fm")
+
+[node name="AllowableHitTypes" type="Node" parent="HitArea2D"]
+
+[node name="Projectile" type="Node" parent="HitArea2D/AllowableHitTypes"]
+
+[node name="Tail" type="Node" parent="HitArea2D/AllowableHitTypes"]
+
+[node name="Invincibility" type="Node" parent="HitArea2D/AllowableHitTypes"]
+
+[node name="JumpCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="JumpTime" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="DamageArea2D" to="." method="_on_damage_area_2d_body_entered"]
+[connection signal="timeout" from="JumpCooldown" to="." method="_on_jump_cooldown_timeout"]

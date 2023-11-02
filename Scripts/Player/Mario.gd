@@ -1,8 +1,6 @@
 extends CharacterBody2D
 class_name SMBPlayer
 
-const enums = preload("res://Assets/Basics/Enums.gd")
-
 #---------------------#
 # signals             #
 #---------------------#
@@ -35,8 +33,10 @@ var active_state
 func _ready():
 	active_state = $States/Small_Mario
 	## warm up the pipe entry logic
-	for dir in enums.Directions:
-		pipe_entry[enums.Directions[dir]] = false
+	for dir in Enums.Directions:
+		pipe_entry[Enums.Directions[dir]] = false
+	## adds hitscan callback
+	$DownwardHitscan.hitscan_found.connect(fall_attack_success)
 
 func _notification(what):
 	match what:
@@ -50,31 +50,31 @@ func _notification(what):
 func _input(event):
 	if event.is_action("move_right"):
 		if event.is_pressed() && !event.is_echo():
-			pipe_entry[enums.Directions.E] = true
+			pipe_entry[Enums.Directions.E] = true
 			h_input += 1
 		elif event.is_released() && !event.is_echo():
-			pipe_entry[enums.Directions.E] = false
+			pipe_entry[Enums.Directions.E] = false
 			h_input -= 1
 	if event.is_action("move_left"):
 		if event.is_pressed() && !event.is_echo():
-			pipe_entry[enums.Directions.W] = true
+			pipe_entry[Enums.Directions.W] = true
 			h_input -= 1
 		elif event.is_released() && !event.is_echo():
-			pipe_entry[enums.Directions.W] = false
+			pipe_entry[Enums.Directions.W] = false
 			h_input += 1
 	if event.is_action("move_up"):
 		if event.is_pressed() && !event.is_echo():
-			pipe_entry[enums.Directions.N] = true
+			pipe_entry[Enums.Directions.N] = true
 			v_input -= 1
 		elif event.is_released() && !event.is_echo():
-			pipe_entry[enums.Directions.N] = false
+			pipe_entry[Enums.Directions.N] = false
 			v_input += 1
 	if event.is_action("move_down"):
 		if event.is_pressed() && !event.is_echo():
-			pipe_entry[enums.Directions.S] = true
+			pipe_entry[Enums.Directions.S] = true
 			v_input += 1
 		elif event.is_released() && !event.is_echo():
-			pipe_entry[enums.Directions.S] = false
+			pipe_entry[Enums.Directions.S] = false
 			v_input -= 1
 	
 	if event.is_action("run"):
@@ -137,19 +137,19 @@ func process_movements(delta):
 		is_jumping = false
 		s_input = false
 	## Process the hitscan
-	$DownwardHitscan.enabled = velocity.y > delta
+	$DownwardHitscan.enabled = !is_on_floor() && velocity.y > 0
 	move_and_slide()
 
 func process_pipes_entry():
-	for dir in enums.Directions:
-		if pipe_entry[enums.Directions[dir]]:
-			pipe_entry[enums.Directions[dir]] = false
+	for dir in Enums.Directions:
+		if pipe_entry[Enums.Directions[dir]]:
+			pipe_entry[Enums.Directions[dir]] = false
 			enter_active_pipe(dir)
 
 func enter_active_pipe(dir):
 	if Pipe.nearest_pipe == null:
 		return
-	if Pipe.nearest_pipe.entry_dir == enums.Directions[dir]:
+	if Pipe.nearest_pipe.entry_dir == Enums.Directions[dir]:
 		if Pipe.nearest_pipe.scene_camera != Pipe.nearest_pipe.other_pipe.scene_camera:
 			Pipe.nearest_pipe.other_pipe.scene_camera.enabled = true
 			Pipe.nearest_pipe.scene_camera.enabled = false
@@ -165,6 +165,12 @@ func hit():
 func jump():
 	is_jumping = true
 	$Timer/Jump.start()
+
+func fall_attack_success():
+	if j_input:
+		jump()
+	else:
+		force_jump()
 
 func force_jump():
 	velocity.y = -jump_power * (1.25 if jump_boost else 1.0)

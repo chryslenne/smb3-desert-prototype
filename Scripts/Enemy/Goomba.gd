@@ -1,7 +1,7 @@
 extends Enemy
 class_name Goomba
 
-const asset = preload("res://Enemies/Goomba.tscn")
+const asset = preload("res://Prefabs/Enemies/Goomba.tscn")
 
 static func get_entities():
 	return entities.filter(func(entity): return entity is Goomba)

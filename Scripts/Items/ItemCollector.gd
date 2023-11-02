@@ -1,5 +1,4 @@
 extends Area2D
-const enums = preload("res://Assets/Basics/Enums.gd")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
