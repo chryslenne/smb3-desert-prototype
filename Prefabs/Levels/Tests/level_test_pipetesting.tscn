@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_g2tx1"]
 [ext_resource type="PackedScene" uid="uid://bid4sa0mj2y3j" path="res://Prefabs/_Prototype/prop_test_ground.tscn" id="2_xu820"]
-[ext_resource type="PackedScene" uid="uid://cldfb4dn1b54j" path="res://Prefabs/Mario.tscn" id="3_yjw1q"]
-[ext_resource type="PackedScene" uid="uid://ciepcc0jk7gyh" path="res://Prefabs/CharacterCamera.tscn" id="5_cxi6o"]
+[ext_resource type="PackedScene" uid="uid://cldfb4dn1b54j" path="res://Prefabs/Player/Mario.tscn" id="3_yjw1q"]
+[ext_resource type="PackedScene" uid="uid://ciepcc0jk7gyh" path="res://Prefabs/Component/CharacterCamera.tscn" id="5_cxi6o"]
 [ext_resource type="PackedScene" uid="uid://drastf1hm07j0" path="res://Scripts/Pipes/Parts/GreenPipeBody.tscn" id="5_fvkfe"]
 [ext_resource type="PackedScene" uid="uid://c8y0m2agd4o0y" path="res://Scripts/Pipes/Parts/GreenPipeTop.tscn" id="6_84bee"]
-[ext_resource type="PackedScene" uid="uid://duqebxbmacj5l" path="res://Scripts/Pipes/Pipe.tscn" id="7_i6n3d"]
+[ext_resource type="PackedScene" uid="uid://duqebxbmacj5l" path="res://Prefabs/Pipes/Pipe.tscn" id="7_i6n3d"]
 
 [node name="level_test_pipetesting" type="Node2D"]
 script = ExtResource("1_g2tx1")

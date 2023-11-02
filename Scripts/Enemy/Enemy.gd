@@ -1,7 +1,8 @@
 extends CharacterBody2D
 class_name Enemy
 
-static var entities : Array = []
+static var entities : Array = []:
+	get = get_entities
 static func get_entities():
 	return entities
 
@@ -16,12 +17,15 @@ func spawn():
 	enemy_spawned.emit(self)
 
 func despawn():
+	print("despawning ", name)
 	enemy_despawned.emit(self)
 
 func hit():
+	print("hit ", name)
 	enemy_hit.emit()
 
 func kill():
+	print("kill ", name)
 	enemy_dead.emit()
 
 func _notification(what):

@@ -1,6 +1,6 @@
 extends Node
 class_name PipeTransition
-const enums = preload("res://Assets/Basics/Enums.gd")
+const enums = preload("res://Scripts/Basic/Enums.gd")
 
 enum Mode
 {

@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Super Mario Brothers 3 Prototype (Desert)"
+config/tags=PackedStringArray("prototype", "recreation")
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 

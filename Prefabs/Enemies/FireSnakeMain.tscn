@@ -1,30 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4n4wtt105ijr"]
+[gd_scene load_steps=6 format=3 uid="uid://chshqo77lq1wk"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy/Goomba.gd" id="1_2idse"]
-[ext_resource type="SpriteFrames" uid="uid://bv6emqfpdbmv8" path="res://SpriteFrames/Goomba_SpriteFrames.tres" id="2_53a5j"]
+[ext_resource type="Script" path="res://Scripts/Enemy/FireSnake.gd" id="1_7qi8a"]
+[ext_resource type="SpriteFrames" uid="uid://b56dytcs0l5uo" path="res://SpriteFrames/FireSnake_SpriteFrames.tres" id="2_xq6h8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yfxq"]
-size = Vector2(7, 13)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5mxx"]
+size = Vector2(7, 9)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pxtt"]
-size = Vector2(16, 13)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcbw4"]
+size = Vector2(10, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u66c1"]
-size = Vector2(8, 13)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxqa2"]
+size = Vector2(10, 10)
 
-[node name="Goomba" type="CharacterBody2D"]
-texture_filter = 1
+[node name="FireSnake" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource("1_2idse")
+script = ExtResource("1_7qi8a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)
-sprite_frames = ExtResource("2_53a5j")
-frame_progress = 0.0595651
+sprite_frames = ExtResource("2_xq6h8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6.5)
-shape = SubResource("RectangleShape2D_1yfxq")
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_j5mxx")
 
 [node name="DamageArea2D" type="Area2D" parent="."]
 position = Vector2(0, -6.5)
@@ -33,7 +31,8 @@ collision_mask = 2
 monitorable = false
 
 [node name="DamageShape2D" type="CollisionShape2D" parent="DamageArea2D"]
-shape = SubResource("RectangleShape2D_0pxtt")
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_hcbw4")
 
 [node name="HitArea2D" type="Area2D" parent="."]
 position = Vector2(0, -14.5)
@@ -42,8 +41,8 @@ collision_mask = 0
 monitoring = false
 
 [node name="HitShape2D" type="CollisionShape2D" parent="HitArea2D"]
-position = Vector2(0, 8)
-shape = SubResource("RectangleShape2D_u66c1")
+position = Vector2(0, 9.5)
+shape = SubResource("RectangleShape2D_vxqa2")
 
 [node name="AllowableHitTypes" type="Node" parent="HitArea2D"]
 
@@ -53,8 +52,6 @@ shape = SubResource("RectangleShape2D_u66c1")
 
 [node name="Invincibility" type="Node" parent="HitArea2D/AllowableHitTypes"]
 
-[node name="FallAttack" type="Node" parent="HitArea2D/AllowableHitTypes"]
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -8)
 
@@ -62,6 +59,15 @@ position = Vector2(0, -8)
 wait_time = 2.0
 one_shot = true
 
+[node name="JumpCooldown" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="JumpTime" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="body_entered" from="DamageArea2D" to="." method="_on_damage_area_2d_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="JumpCooldown" to="." method="_on_jump_cooldown_timeout"]

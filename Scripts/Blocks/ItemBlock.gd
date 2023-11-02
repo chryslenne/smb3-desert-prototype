@@ -26,7 +26,6 @@ signal OnLooted
 # properties          #
 #---------------------#
 static var entities : Array
-const enums = preload("res://Assets/Basics/Enums.gd")
 @export var loot_state : State
 @export var stored_reward : Reward
 
