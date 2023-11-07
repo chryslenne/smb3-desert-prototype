@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://5r54yjixl5ki"]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Blocks/ItemBlock.gd" id="1_ksxrm"]
-[ext_resource type="SpriteFrames" uid="uid://ycvex6nils5o" path="res://SpriteFrames/ItemBlock_SpriteFrames.tres" id="2_jyscs"]
+[ext_resource type="SpriteFrames" path="res://SpriteFrames/ItemBlock_SpriteFrames.tres" id="2_jyscs"]
 [ext_resource type="Script" path="res://Scripts/Blocks/ItemBlock_Tool_ShowType.gd" id="3_l0f5f"]
-[ext_resource type="Texture2D" uid="uid://b8e7ff7svdxvv" path="res://Textures/Atlas/FireFlower_AtlasTexture.tres" id="4_rmely"]
-[ext_resource type="Texture2D" uid="uid://b264i0k53gt08" path="res://Textures/Atlas/SuperMushroom_AtlasTexture.tres" id="5_t7nqf"]
-[ext_resource type="Texture2D" uid="uid://c0hvdhgcagosg" path="res://Textures/Atlas/OneUpMushroom_AtlasTexture.tres" id="6_nqrwh"]
-[ext_resource type="Texture2D" uid="uid://t8odpvpl1rqg" path="res://Textures/Atlas/SuperLeaf_AtlasTexture.tres" id="7_vqrmf"]
-[ext_resource type="Texture2D" uid="uid://cc4y1vy1s7wxr" path="res://Textures/Atlas/Starman_AtlasTexture.tres" id="8_ei4hh"]
+[ext_resource type="Texture2D" path="res://Textures/Atlas/FireFlower_AtlasTexture.tres" id="4_rmely"]
+[ext_resource type="Texture2D" path="res://Textures/Atlas/SuperMushroom_AtlasTexture.tres" id="5_t7nqf"]
+[ext_resource type="Texture2D" path="res://Textures/Atlas/OneUpMushroom_AtlasTexture.tres" id="6_nqrwh"]
+[ext_resource type="Texture2D" path="res://Textures/Atlas/SuperLeaf_AtlasTexture.tres" id="7_vqrmf"]
+[ext_resource type="Texture2D" path="res://Textures/Atlas/Starman_AtlasTexture.tres" id="8_ei4hh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fggmh"]
 size = Vector2(16, 16)

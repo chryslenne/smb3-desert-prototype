@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://drastf1hm07j0"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Texture2D" uid="uid://doner3tq7gf2v" path="res://Scripts/Pipes/AtlasTextures/PipeGreenBottomLeft_AtlasTexture.tres" id="1_lmgij"]
-[ext_resource type="Texture2D" uid="uid://bsm5nf761gh8t" path="res://Scripts/Pipes/AtlasTextures/PipeGreenBottomRight_AtlasTexture.tres" id="2_td4tr"]
+[ext_resource type="Texture2D" path="res://Scripts/Pipes/AtlasTextures/PipeGreenBottomLeft_AtlasTexture.tres" id="1_lmgij"]
+[ext_resource type="Texture2D" path="res://Scripts/Pipes/AtlasTextures/PipeGreenBottomRight_AtlasTexture.tres" id="2_td4tr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bohxg"]
 size = Vector2(32, 16)

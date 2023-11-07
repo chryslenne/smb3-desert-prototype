@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4n4wtt105ijr"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/Goomba.gd" id="1_2idse"]
-[ext_resource type="SpriteFrames" uid="uid://bv6emqfpdbmv8" path="res://SpriteFrames/Goomba_SpriteFrames.tres" id="2_53a5j"]
+[ext_resource type="SpriteFrames" path="res://SpriteFrames/Goomba_SpriteFrames.tres" id="2_53a5j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yfxq"]
 size = Vector2(7, 13)

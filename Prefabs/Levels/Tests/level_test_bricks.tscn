@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://buj4ggkyvimbu"]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_caamb"]
-[ext_resource type="PackedScene" uid="uid://bid4sa0mj2y3j" path="res://Prefabs/_Prototype/prop_test_ground.tscn" id="2_yq515"]
-[ext_resource type="PackedScene" uid="uid://cldfb4dn1b54j" path="res://Prefabs/Mario.tscn" id="3_1rg1y"]
-[ext_resource type="PackedScene" uid="uid://5r54yjixl5ki" path="res://Prefabs/ItemBlock.tscn" id="4_y1evm"]
-[ext_resource type="PackedScene" uid="uid://ciepcc0jk7gyh" path="res://Prefabs/CharacterCamera.tscn" id="5_uvcwp"]
-[ext_resource type="PackedScene" uid="uid://slbrqyq53qm8" path="res://Prefabs/BrickBlock.tscn" id="6_67y7j"]
+[ext_resource type="PackedScene" path="res://Prefabs/_Prototype/prop_test_ground.tscn" id="2_yq515"]
+[ext_resource type="PackedScene" path="res://Prefabs/Player/Mario.tscn" id="3_1rg1y"]
+[ext_resource type="PackedScene" path="res://Prefabs/Block/ItemBlock.tscn" id="4_y1evm"]
+[ext_resource type="PackedScene" path="res://Prefabs/Component/CharacterCamera.tscn" id="5_uvcwp"]
+[ext_resource type="PackedScene" path="res://Prefabs/Block/BrickBlock.tscn" id="6_67y7j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02bq4"]
 size = Vector2(20, 140)

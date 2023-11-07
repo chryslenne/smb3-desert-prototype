@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://duwlstsc5yaf0"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Items/StarPickup2D.gd" id="1_ii8iw"]
-[ext_resource type="Texture2D" uid="uid://cc4y1vy1s7wxr" path="res://Textures/Atlas/Starman_AtlasTexture.tres" id="2_t5226"]
-[ext_resource type="PackedScene" uid="uid://dhphberhak0kw" path="res://Prefabs/Component/Legacy/GroundChecker.tscn" id="3_0fk8k"]
+[ext_resource type="Texture2D" path="res://Textures/Atlas/Starman_AtlasTexture.tres" id="2_t5226"]
+[ext_resource type="PackedScene" path="res://Prefabs/Component/Legacy/GroundChecker.tscn" id="3_0fk8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i85xl"]
 size = Vector2(8, 8.5)

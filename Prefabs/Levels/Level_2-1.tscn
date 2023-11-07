@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://c403k2spb072x"]
+[gd_scene load_steps=15 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_5dx3c"]
-[ext_resource type="Texture2D" uid="uid://cfpyqc0apokrm" path="res://Textures/Raw/img_world_2-1_layout.png" id="1_otqk3"]
-[ext_resource type="PackedScene" uid="uid://cldfb4dn1b54j" path="res://Prefabs/Player/Mario.tscn" id="2_5pi46"]
-[ext_resource type="PackedScene" uid="uid://5r54yjixl5ki" path="res://Prefabs/Block/ItemBlock.tscn" id="4_cna14"]
+[ext_resource type="Texture2D" path="res://Textures/Raw/img_world_2-1_layout.png" id="1_otqk3"]
+[ext_resource type="PackedScene" path="res://Prefabs/Player/Mario.tscn" id="2_5pi46"]
+[ext_resource type="PackedScene" path="res://Prefabs/Block/ItemBlock.tscn" id="4_cna14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s03n6"]
 size = Vector2(3074, 17)
