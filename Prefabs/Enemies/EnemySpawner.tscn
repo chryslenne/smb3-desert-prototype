@@ -1,14 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://1fp1l5j883u5"]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/EnemySpawner.gd" id="1_l4mj6"]
 [ext_resource type="Script" path="res://Scripts/Enemy/EnemySpawner_Tool_ShowEnemyType.gd" id="2_ab7js"]
-[ext_resource type="Texture2D" uid="uid://1ttyjcisx76r" path="res://Textures/Atlas/Goomba_AtlasTexture.tres" id="3_al0je"]
-[ext_resource type="Texture2D" uid="uid://bnrksyonwajj7" path="res://Textures/Raw/img_spritesheet-enemies.png" id="4_hp0bn"]
-[ext_resource type="Texture2D" uid="uid://dqall32v6lkdh" path="res://Textures/Raw/img_horizontal-arrows-32x32.png" id="4_koydy"]
+[ext_resource type="Texture2D" path="res://Textures/Atlas/Goomba_AtlasTexture.tres" id="3_al0je"]
+[ext_resource type="Texture2D" path="res://Textures/Raw/img_spritesheet-enemies.png" id="4_hp0bn"]
+[ext_resource type="Texture2D" path="res://Textures/Raw/img_horizontal-arrows-32x32.png" id="4_koydy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yyqt5"]
+atlas = ExtResource("4_hp0bn")
+region = Rect2(114, 840, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ldt5w"]
 atlas = ExtResource("4_hp0bn")
-region = Rect2(97, 840, 16, 16)
+region = Rect2(2, 433, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ite3a"]
 atlas = ExtResource("4_koydy")
@@ -37,6 +41,12 @@ position = Vector2(0, -8)
 texture = ExtResource("3_al0je")
 
 [node name="FireSnake" type="Sprite2D" parent="ShowEnemyType/Displays"]
+visible = false
+modulate = Color(1, 1, 1, 0.27451)
+position = Vector2(0, -8)
+texture = SubResource("AtlasTexture_yyqt5")
+
+[node name="PiranhaPlant" type="Sprite2D" parent="ShowEnemyType/Displays"]
 visible = false
 modulate = Color(1, 1, 1, 0.27451)
 position = Vector2(0, -8)

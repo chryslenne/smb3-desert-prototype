@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bus2jgmdmlm5g"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Items/MushroomPickup2D.gd" id="1_tuojr"]
-[ext_resource type="Texture2D" uid="uid://b264i0k53gt08" path="res://Textures/Atlas/SuperMushroom_AtlasTexture.tres" id="2_u6xnv"]
-[ext_resource type="PackedScene" uid="uid://dhphberhak0kw" path="res://Prefabs/Component/Legacy/GroundChecker.tscn" id="3_o0x1o"]
+[ext_resource type="Texture2D" path="res://Textures/Atlas/SuperMushroom_AtlasTexture.tres" id="2_u6xnv"]
+[ext_resource type="PackedScene" path="res://Prefabs/Component/Legacy/GroundChecker.tscn" id="3_o0x1o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i85xl"]
 size = Vector2(8, 8.5)

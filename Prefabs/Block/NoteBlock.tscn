@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://iyd4wtw4enoh"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Blocks/NoteBlock.gd" id="1_arcyy"]
-[ext_resource type="SpriteFrames" uid="uid://b81tqklspvjya" path="res://SpriteFrames/NoteBlock_SpriteFrames.tres" id="2_0q5j3"]
+[ext_resource type="SpriteFrames" path="res://SpriteFrames/NoteBlock_SpriteFrames.tres" id="2_0q5j3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fggmh"]
 size = Vector2(16, 16)

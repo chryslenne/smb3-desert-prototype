@@ -20,6 +20,7 @@ func preload_prefabs():
 	
 	FireSnake.asset = preload("res://Prefabs/Enemies/FireSnakeMain.tscn")
 	FireSnakeTail.asset = preload("res://Prefabs/Enemies/FireSnakeTail.tscn")
+	PiranhaPlant.asset = preload("res://Prefabs/Enemies/PiranhaPlant.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

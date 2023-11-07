@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="SpriteFrames" path="res://SpriteFrames/PiranhaPlant_Projectile_SpriteFrames.tres" id="1_iwfvo"]
+[ext_resource type="Script" path="res://Prefabs/Projectile/Projectile.gd" id="1_oxo4b"]
+[ext_resource type="Script" path="res://Scripts/Enemy/PlayerDamagerArea2D.gd" id="1_x37fb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7rh6h"]
+radius = 4.0
+
+[node name="PiranhaPlant_Projectile" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_oxo4b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_iwfvo")
+frame_progress = 0.270202
+
+[node name="DamageArea2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D"]
+shape = SubResource("CircleShape2D_7rh6h")
+
+[node name="PlayerDamager" type="Node" parent="."]
+script = ExtResource("1_x37fb")
+
+[node name="Lifetime" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="DamageArea2D" to="PlayerDamager" method="_on_damage_area_2d_body_entered"]
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

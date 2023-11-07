@@ -1,0 +1,129 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/PiranhaPlant.gd" id="1_bvpon"]
+[ext_resource type="SpriteFrames" path="res://SpriteFrames/PiranhaPlant_SpriteFrames.tres" id="1_gfhee"]
+[ext_resource type="Texture2D" path="res://Textures/Atlas/PiranhaPlant_Stem1Upwards_AtlasTexture.tres" id="2_c1a1j"]
+[ext_resource type="Texture2D" path="res://Textures/Atlas/PiranhaPlant_HeadRanged_LowClose.tres" id="3_nd04w"]
+[ext_resource type="Texture2D" path="res://Textures/Atlas/PiranhaPlant_Stem2Upwards_AtlasTexture.tres" id="3_ugyod"]
+[ext_resource type="Texture2D" path="res://Textures/Atlas/PiranhaPlant_HeadRanged_LowOpen.tres" id="4_nloqr"]
+[ext_resource type="Texture2D" path="res://Textures/Atlas/PiranhaPlant_HeadRanged_HighClose.tres" id="5_vw3m2"]
+[ext_resource type="Texture2D" path="res://Textures/Atlas/PiranhaPlant_HeadRanged_HighOpen.tres" id="6_erg7t"]
+[ext_resource type="Script" path="res://Scripts/Enemy/PlayerDamagerArea2D.gd" id="9_45i7m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhgek"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pxtt"]
+size = Vector2(12, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u66c1"]
+size = Vector2(12, 20)
+
+[node name="PiranhaPlant" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_bvpon")
+
+[node name="PlaceholderCollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mhgek")
+disabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="TransitionTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ShootDelay" type="Timer" parent="."]
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Head" type="Node2D" parent="Body"]
+position = Vector2(0, -24)
+
+[node name="Height" type="Node2D" parent="Body/Head"]
+position = Vector2(0, -8)
+
+[node name="Melee" type="AnimatedSprite2D" parent="Body/Head"]
+sprite_frames = ExtResource("1_gfhee")
+animation = &"bite_up"
+frame_progress = 0.140012
+
+[node name="Range" type="Node2D" parent="Body/Head"]
+visible = false
+
+[node name="LowClose" type="Sprite2D" parent="Body/Head/Range"]
+visible = false
+texture = ExtResource("3_nd04w")
+
+[node name="LowOpen" type="Sprite2D" parent="Body/Head/Range"]
+visible = false
+texture = ExtResource("4_nloqr")
+
+[node name="HighClose" type="Sprite2D" parent="Body/Head/Range"]
+visible = false
+texture = ExtResource("5_vw3m2")
+
+[node name="HighOpen" type="Sprite2D" parent="Body/Head/Range"]
+visible = false
+texture = ExtResource("6_erg7t")
+
+[node name="Stem" type="Node2D" parent="Body"]
+
+[node name="Short" type="Sprite2D" parent="Body/Stem"]
+visible = false
+z_index = -1
+position = Vector2(0, -4)
+texture = ExtResource("2_c1a1j")
+
+[node name="Long" type="Sprite2D" parent="Body/Stem"]
+z_index = -1
+position = Vector2(0, -8)
+texture = ExtResource("3_ugyod")
+
+[node name="HeadDistance" type="Node2D" parent="Body"]
+
+[node name="Short" type="Node2D" parent="Body/HeadDistance"]
+visible = false
+position = Vector2(0, -15)
+
+[node name="Long" type="Node2D" parent="Body/HeadDistance"]
+position = Vector2(0, -24)
+
+[node name="AreaBodies" type="Node2D" parent="Body"]
+
+[node name="PlayerDamager" type="Node" parent="Body/AreaBodies"]
+script = ExtResource("9_45i7m")
+
+[node name="DamageArea2D" type="Area2D" parent="Body/AreaBodies"]
+position = Vector2(0, -6.5)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="DamageShape2D" type="CollisionShape2D" parent="Body/AreaBodies/DamageArea2D"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_0pxtt")
+
+[node name="HitArea2D" type="Area2D" parent="Body/AreaBodies"]
+position = Vector2(0, -14.5)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+
+[node name="HitShape2D" type="CollisionShape2D" parent="Body/AreaBodies/HitArea2D"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_u66c1")
+
+[node name="AllowableHitTypes" type="Node" parent="Body/AreaBodies/HitArea2D"]
+
+[node name="Projectile" type="Node" parent="Body/AreaBodies/HitArea2D/AllowableHitTypes"]
+
+[node name="Tail" type="Node" parent="Body/AreaBodies/HitArea2D/AllowableHitTypes"]
+
+[node name="Invincibility" type="Node" parent="Body/AreaBodies/HitArea2D/AllowableHitTypes"]
+
+[connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timer_timeout"]
+[connection signal="timeout" from="ShootDelay" to="." method="_on_shoot_delay_timeout"]
+[connection signal="body_entered" from="Body/AreaBodies/DamageArea2D" to="Body/AreaBodies/PlayerDamager" method="_on_damage_area_2d_body_entered"]

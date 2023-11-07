@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cb1iq0470b7mb"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="PackedScene" uid="uid://dc1xxhc7a4c0a" path="res://Prefabs/Items/Base/FlowerPickup2D.tscn" id="1_ac24t"]
+[ext_resource type="PackedScene" path="res://Prefabs/Items/Base/FlowerPickup2D.tscn" id="1_ac24t"]
 [ext_resource type="Script" path="res://Scripts/Items/Pickup.gd" id="1_r8bar"]
 
 [node name="FireFlower" type="Node2D"]

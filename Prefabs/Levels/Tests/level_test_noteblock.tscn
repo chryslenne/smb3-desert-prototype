@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c82jw3cpvmmrf"]
+[gd_scene load_steps=6 format=3 uid="uid://bhjj24l2y8uk"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_c50eo"]
-[ext_resource type="PackedScene" uid="uid://bid4sa0mj2y3j" path="res://Prefabs/_Prototype/prop_test_ground.tscn" id="2_kc5lj"]
-[ext_resource type="PackedScene" uid="uid://cldfb4dn1b54j" path="res://Prefabs/Mario.tscn" id="3_2bq4n"]
-[ext_resource type="PackedScene" uid="uid://iyd4wtw4enoh" path="res://Prefabs/NoteBlock.tscn" id="5_71jwa"]
-[ext_resource type="PackedScene" uid="uid://ciepcc0jk7gyh" path="res://Prefabs/CharacterCamera.tscn" id="5_oxmwu"]
+[ext_resource type="PackedScene" path="res://Prefabs/_Prototype/prop_test_ground.tscn" id="2_kc5lj"]
+[ext_resource type="PackedScene" path="res://Prefabs/Player/Mario.tscn" id="3_2bq4n"]
+[ext_resource type="PackedScene" path="res://Prefabs/Block/NoteBlock.tscn" id="5_71jwa"]
+[ext_resource type="PackedScene" path="res://Prefabs/Component/CharacterCamera.tscn" id="5_oxmwu"]
 
 [node name="level_test_noteblock" type="Node2D"]
 script = ExtResource("1_c50eo")

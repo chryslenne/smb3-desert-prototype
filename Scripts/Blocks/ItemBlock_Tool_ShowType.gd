@@ -1,8 +1,6 @@
 @tool
 extends Node2D
 
-const enums = preload("res://Assets/Basics/Enums.gd")
-
 func _process(_delta):
 	process_visual_type()
 
@@ -12,3 +10,4 @@ func process_visual_type():
 	for child in get_children():
 		if child is CanvasItem:
 			child.visible = child.name == ItemBlock.Reward.keys()[item_block.stored_reward] && !is_looted
+

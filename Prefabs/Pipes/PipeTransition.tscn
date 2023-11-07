@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba4etr1fjk3ga"]
+[gd_scene load_steps=2 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Pipes/PipeTransition.gd" id="1_6yb7q"]
 

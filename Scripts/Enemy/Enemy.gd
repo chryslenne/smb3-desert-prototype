@@ -13,6 +13,9 @@ signal enemy_despawned(entity : Enemy)
 signal enemy_hit()
 signal enemy_dead()
 
+func _use_spawn_config(config):
+	pass
+
 func spawn():
 	enemy_spawned.emit(self)
 
@@ -28,6 +31,10 @@ func kill():
 	print("kill ", name)
 	enemy_dead.emit()
 
+func _ready():
+	spawn()
+func _exit_tree():
+	despawn()
 func _notification(what):
 	match what:
 		NOTIFICATION_ENTER_TREE:

@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cldfb4dn1b54j"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Player/Mario.gd" id="1_crs4k"]
-[ext_resource type="SpriteFrames" uid="uid://3mo2rnqkl2n" path="res://SpriteFrames/Mario_Small_SpriteFrames.tres" id="2_p7nxx"]
-[ext_resource type="PackedScene" uid="uid://rs5nlourshlw" path="res://Prefabs/Component/DownwardHitscan.tscn" id="4_pwquy"]
-[ext_resource type="PackedScene" uid="uid://bceidvhjo8nrl" path="res://Prefabs/Items/ItemCollector.tscn" id="5_hjvx0"]
+[ext_resource type="SpriteFrames" path="res://SpriteFrames/Mario_Small_SpriteFrames.tres" id="2_p7nxx"]
+[ext_resource type="PackedScene" path="res://Prefabs/Component/DownwardHitscan.tscn" id="4_pwquy"]
+[ext_resource type="PackedScene" path="res://Prefabs/Items/ItemCollector.tscn" id="5_hjvx0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxvqm"]
 size = Vector2(5, 10)

@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://chshqo77lq1wk"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/FireSnake.gd" id="1_7qi8a"]
-[ext_resource type="SpriteFrames" uid="uid://b56dytcs0l5uo" path="res://SpriteFrames/FireSnake_SpriteFrames.tres" id="2_xq6h8"]
+[ext_resource type="SpriteFrames" path="res://SpriteFrames/FireSnake_SpriteFrames.tres" id="2_xq6h8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5mxx"]
 size = Vector2(7, 9)

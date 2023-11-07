@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://05r012mit4g6"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Items/Pickup.gd" id="1_mgxwq"]
-[ext_resource type="PackedScene" uid="uid://duwlstsc5yaf0" path="res://Prefabs/Items/Base/StarPickup2D.tscn" id="2_e8b4p"]
+[ext_resource type="PackedScene" path="res://Prefabs/Items/Base/StarPickup2D.tscn" id="2_e8b4p"]
 
 [node name="Starman" type="Node2D"]
 script = ExtResource("1_mgxwq")
