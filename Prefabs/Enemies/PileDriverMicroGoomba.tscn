@@ -1,10 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://nue7hgqvyqrx"]
+[gd_scene load_steps=8 format=3 uid="uid://d03gk4roc611o"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy/Goomba.gd" id="1_2idse"]
-[ext_resource type="SpriteFrames" uid="uid://bv6emqfpdbmv8" path="res://SpriteFrames/Goomba_SpriteFrames.tres" id="2_53a5j"]
+[ext_resource type="Script" path="res://Scripts/Enemy/PileDriverMicroGoomba.gd" id="1_3jipn"]
+[ext_resource type="SpriteFrames" uid="uid://d1f7npxoy4rs" path="res://SpriteFrames/BrickBlock_SpriteFrames.tres" id="2_0i0ko"]
+[ext_resource type="Texture2D" uid="uid://d3ugcv5nycpra" path="res://Textures/Atlas/MicroGoomba_AtlasTexture.tres" id="3_grc2u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yfxq"]
 size = Vector2(7, 13)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6up8y"]
+emission_shape = 1
+emission_sphere_radius = 10.17
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 5.13
+initial_velocity_max = 82.05
+angular_velocity_min = 107.08
+angular_velocity_max = 720.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(1, 0.65098, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pxtt"]
 size = Vector2(16, 13)
@@ -12,19 +27,36 @@ size = Vector2(16, 13)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u66c1"]
 size = Vector2(8, 13)
 
-[node name="Goomba" type="CharacterBody2D"]
+[node name="Pile Driver Micro-Goomba" type="CharacterBody2D"]
 texture_filter = 1
 collision_layer = 4
-script = ExtResource("1_2idse")
+script = ExtResource("1_3jipn")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Offset" type="Node2D" parent="."]
 position = Vector2(0, -8)
-sprite_frames = ExtResource("2_53a5j")
-frame_progress = 0.0595651
+
+[node name="AnimatedSprite2D_FakeBrick" type="AnimatedSprite2D" parent="Offset"]
+z_index = 10
+sprite_frames = ExtResource("2_0i0ko")
+animation = &"Unbroken"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("3_grc2u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_1yfxq")
+
+[node name="VisualFX" type="Node2D" parent="."]
+
+[node name="Explosion" type="GPUParticles2D" parent="VisualFX"]
+emitting = false
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_6up8y")
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
 
 [node name="DamageArea2D" type="Area2D" parent="."]
 position = Vector2(0, -6.5)
@@ -47,13 +79,9 @@ shape = SubResource("RectangleShape2D_u66c1")
 
 [node name="AllowableHitTypes" type="Node" parent="HitArea2D"]
 
-[node name="Projectile" type="Node" parent="HitArea2D/AllowableHitTypes"]
-
 [node name="Tail" type="Node" parent="HitArea2D/AllowableHitTypes"]
 
 [node name="Invincibility" type="Node" parent="HitArea2D/AllowableHitTypes"]
-
-[node name="FallAttack" type="Node" parent="HitArea2D/AllowableHitTypes"]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -8)
@@ -62,6 +90,10 @@ position = Vector2(0, -8)
 wait_time = 2.0
 one_shot = true
 
+[node name="StateTime" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="DamageArea2D" to="." method="_on_damage_area_2d_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="StateTime" to="." method="_on_state_time_timeout"]
