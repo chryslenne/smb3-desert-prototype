@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=15 format=3 uid="uid://cegh2k0f5wlkq"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_5dx3c"]
-[ext_resource type="Texture2D" path="res://Textures/Raw/img_world_2-1_layout.png" id="1_otqk3"]
+[ext_resource type="Texture2D" uid="uid://cfpyqc0apokrm" path="res://Textures/Raw/img_world_2-1_layout.png" id="1_otqk3"]
 [ext_resource type="PackedScene" path="res://Prefabs/Player/Mario.tscn" id="2_5pi46"]
 [ext_resource type="PackedScene" path="res://Prefabs/Block/ItemBlock.tscn" id="4_cna14"]
 
@@ -271,6 +271,7 @@ polygon = PackedVector2Array(192, -38, 144, -38, 144, 10, 128, 10, 128, -54, 192
 
 [node name="PowerupBlock" parent="World/Surface/Props" instance=ExtResource("4_cna14")]
 position = Vector2(-1192, 48)
+stored_reward = 2
 
 [node name="Pipes" type="Node2D" parent="World"]
 

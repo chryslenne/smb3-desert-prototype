@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://dhbt0ebr2jqtd"]
 
 [ext_resource type="Script" path="res://Scripts/Blocks/BrickBlock.gd" id="1_8w7x6"]
-[ext_resource type="SpriteFrames" path="res://SpriteFrames/BrickBlock_SpriteFrames.tres" id="2_b8g7b"]
+[ext_resource type="SpriteFrames" uid="uid://d1f7npxoy4rs" path="res://SpriteFrames/BrickBlock_SpriteFrames.tres" id="2_b8g7b"]
 [ext_resource type="Script" path="res://Scripts/Blocks/BrickBlock_Tool_ShowType.gd" id="3_gyrjd"]
-[ext_resource type="Texture2D" path="res://Textures/Atlas/Coin_AtlasTexture.tres" id="4_aa2fx"]
-[ext_resource type="Texture2D" path="res://Textures/Atlas/OneUpMushroom_AtlasTexture.tres" id="5_ntg3q"]
+[ext_resource type="Texture2D" uid="uid://c53yw3pypqfid" path="res://Textures/Atlas/Coin_AtlasTexture.tres" id="4_aa2fx"]
+[ext_resource type="Texture2D" uid="uid://c0hvdhgcagosg" path="res://Textures/Atlas/OneUpMushroom_AtlasTexture.tres" id="5_ntg3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fggmh"]
 

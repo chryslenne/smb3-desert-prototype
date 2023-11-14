@@ -6,7 +6,8 @@ enum SpawnType
 	None,
 	Goomba,
 	FireSnake,
-	PiranhaPlant
+	PiranhaPlant,
+	PileDriverMicroGoomba,
 }
 
 @export_enum("Left", "Right") var spawn_direction : String = "Left"
@@ -22,6 +23,8 @@ func get_prefab():
 			return FireSnake.asset
 		SpawnType.PiranhaPlant:
 			return PiranhaPlant.asset
+		SpawnType.PileDriverMicroGoomba:
+			return PileDriverMicroGoomba.asset
 	return null
 func has_prefab():
 	return get_prefab() != null
