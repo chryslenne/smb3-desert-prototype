@@ -82,17 +82,13 @@ func kill():
 	set_physics_process(false)
 	set_process(false)
 	$DamageArea2D.monitoring = false
-	$HitArea2D.monitorable = false
-	
-	## Update its animation
-#	$AnimatedSprite2D.play("death")
-	
+	$HitArea2D.monitorable = false	
 	## Toggle timer for despawn
 	$Timer.start()
 
 func h_input_to_player():
 	# Tracks player
-	if is_on_floor() && SMBPlayer.entity:
+	if SMBPlayer.entity:
 		if SMBPlayer.entity.global_position.x > self.global_position.x:
 			h_input = 1
 		elif SMBPlayer.entity.global_position.x < self.global_position.x:
