@@ -1,6 +1,17 @@
 class_name PiranhaPlant
 extends Enemy
 
+const id = 'mob_piranhaplant'
+static func get_asset():
+	if Level.instance:
+		if !Level.instance.loaded_assets.has(id):
+			Level.instance.loaded_assets[id] = load('res://Prefabs/Enemies/PiranhaPlant.tscn')
+		return Level.instance.loaded_assets[id]
+	else: return null
+
+static func get_entities():
+	return entities.filter(func(entity): return entity is PiranhaPlant)
+
 const NORTH = "N"
 const WEST = "W"
 const SOUTH = "S"
@@ -18,11 +29,6 @@ const LOOK_UP = PI * 0
 const LOOK_DOWN = PI * 1.0
 const LOOK_LEFT = PI * 1.5
 const LOOK_RIGHT = PI * 0.5
-
-static var asset : PackedScene
-
-static func get_entities():
-	return entities.filter(func(entity): return entity is PiranhaPlant)
 
 @export_enum(ATTACK_MELEE_ID, ATTACK_RANGED_ID) var attack = ATTACK_DEFAULT_ID
 @export_enum(VARIATION_SHORT_ID, VARIATION_LONG_ID) var variation = VARIATION_LONG_ID

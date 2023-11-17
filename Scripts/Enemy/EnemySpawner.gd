@@ -18,16 +18,28 @@ var enemy : Enemy = null
 func get_prefab():
 	match enemy_type:
 		SpawnType.Goomba:
-			return Goomba.asset
+			return Goomba.get_asset()
 		SpawnType.FireSnake:
-			return FireSnake.asset
+			return FireSnake.get_asset()
 		SpawnType.PiranhaPlant:
-			return PiranhaPlant.asset
+			return PiranhaPlant.get_asset()
 		SpawnType.PileDriverMicroGoomba:
-			return PileDriverMicroGoomba.asset
+			return PileDriverMicroGoomba.get_asset()
 	return null
 func has_prefab():
 	return get_prefab() != null
+
+func _enter_tree():
+	match enemy_type:
+		SpawnType.Goomba:
+			Goomba.get_asset()
+		SpawnType.FireSnake:
+			FireSnake.get_asset()
+			FireSnakeTail.get_asset()
+		SpawnType.PiranhaPlant:
+			PiranhaPlant.get_asset()
+		SpawnType.PileDriverMicroGoomba:
+			PileDriverMicroGoomba.get_asset()
 
 ## This function handles spawning of enemy if it exists
 func _on_visible_on_screen_notifier_2d_screen_entered():
