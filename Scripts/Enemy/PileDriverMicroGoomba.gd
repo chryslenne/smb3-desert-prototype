@@ -1,7 +1,13 @@
 extends Enemy
 class_name PileDriverMicroGoomba
 
-static var asset : PackedScene
+const id = 'mob_microgoomba_piledriver'
+static func get_asset():
+	if Level.instance:
+		if !Level.instance.loaded_assets.has(id):
+			Level.instance.loaded_assets[id] = load('res://Prefabs/Enemies/PileDriverMicroGoomba.tscn')
+		return Level.instance.loaded_assets[id]
+	else: return null
 
 static func get_entities():
 	return entities.filter(func(entity): return entity is PileDriverMicroGoomba)
@@ -89,7 +95,9 @@ func kill():
 func h_input_to_player():
 	# Tracks player
 	if SMBPlayer.entity:
-		if SMBPlayer.entity.global_position.x > self.global_position.x:
+		if abs(SMBPlayer.entity.global_position.x - self.global_position.x) <= 1:
+			h_input = 0
+		elif SMBPlayer.entity.global_position.x > self.global_position.x:
 			h_input = 1
 		elif SMBPlayer.entity.global_position.x < self.global_position.x:
 			h_input = -1

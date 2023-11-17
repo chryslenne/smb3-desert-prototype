@@ -1,7 +1,13 @@
 extends Enemy
 class_name FireSnake
 
-static var asset : PackedScene
+const id = 'mob_firesnake_body'
+static func get_asset():
+	if Level.instance:
+		if !Level.instance.loaded_assets.has(id):
+			Level.instance.loaded_assets[id] = load('res://Prefabs/Enemies/FireSnakeMain.tscn')
+		return Level.instance.loaded_assets[id]
+	else: return null
 
 static func get_entities():
 	return entities.filter(func(entity): return entity is FireSnake)
@@ -76,7 +82,7 @@ func spawn():
 	velocity = Vector2.ZERO
 	## Spawn its tails
 	for i in tail_size:
-		var tail = FireSnakeTail.asset.instantiate()
+		var tail = FireSnakeTail.get_asset().instantiate()
 		if tail is FireSnakeTail:
 			tail.spawn()
 			tail.main_body = self

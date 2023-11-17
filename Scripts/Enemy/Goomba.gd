@@ -1,7 +1,13 @@
 extends Enemy
 class_name Goomba
 
-const asset = null
+const id = 'mob_goomba'
+static func get_asset():
+	if Level.instance:
+		if !Level.instance.loaded_assets.has(id):
+			Level.instance.loaded_assets[id] = load('res://Prefabs/Enemies/Goomba.tscn')
+		return Level.instance.loaded_assets[id]
+	else: return null
 
 static func get_entities():
 	return entities.filter(func(entity): return entity is Goomba)

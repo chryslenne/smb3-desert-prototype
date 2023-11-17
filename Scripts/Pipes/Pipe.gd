@@ -48,19 +48,19 @@ func _process(_delta):
 	pass
 
 func transition(body):
-	if !Level.current || PipeTransition.active_transitions.has(body):
+	if !Level.instance || PipeTransition.active_transitions.has(body):
 		return
 	
 	if body is PhysicsBody2D:
 		body.set_process(false)
 		body.set_physics_process(false)
-		var transitionInstance = Level.preloaded_assets["pipe_transition"].instantiate()
+		var transitionInstance = PipeTransition.get_asset().instantiate()
 		if transitionInstance is PipeTransition:
 			transitionInstance.body = body
 			transitionInstance.entry = self
 			transitionInstance.exit = other_pipe
 			transitionInstance.OnTransitionComplete.connect(on_pipe_transition_complete)
-		Level.current.add_child(transitionInstance)
+		Level.instance.add_child(transitionInstance)
 
 func on_pipe_transition_complete(body):
 		body.set_process(true)

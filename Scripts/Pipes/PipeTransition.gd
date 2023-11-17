@@ -2,6 +2,14 @@ extends Node
 class_name PipeTransition
 const enums = preload("res://Scripts/Basic/Enums.gd")
 
+const id = 'pipe_transition'
+static func get_asset():
+	if Level.instance:
+		if !Level.instance.loaded_assets.has(id):
+			Level.instance.loaded_assets[id] = load('res://Prefabs/Pipes/PipeTransition.tscn')
+		return Level.instance.loaded_assets[id]
+	else: return null
+
 enum Mode
 {
 	Entry,

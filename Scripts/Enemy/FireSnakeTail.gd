@@ -1,7 +1,13 @@
 extends Enemy
 class_name FireSnakeTail
 
-static var asset : PackedScene
+const id = 'mob_firesnake_tail'
+static func get_asset():
+	if Level.instance:
+		if !Level.instance.loaded_assets.has(id):
+			Level.instance.loaded_assets[id] = load('res://Prefabs/Enemies/FireSnakeTail.tscn')
+		return Level.instance.loaded_assets[id]
+	else: return null
 
 static func get_entities():
 	return entities.filter(func(entity): return entity is FireSnakeTail)

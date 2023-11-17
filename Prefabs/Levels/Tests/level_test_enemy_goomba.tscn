@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://bscdyy67mpu8d"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_h5wy5"]
 [ext_resource type="PackedScene" path="res://Prefabs/_Prototype/prop_test_ground.tscn" id="2_htvny"]
 [ext_resource type="PackedScene" path="res://Prefabs/Player/Mario.tscn" id="3_bj2p0"]
-[ext_resource type="PackedScene" path="res://Prefabs/Enemies/EnemySpawner.tscn" id="5_vthst"]
+[ext_resource type="PackedScene" uid="uid://mg4er2j18w6k" path="res://Prefabs/Enemies/EnemySpawner.tscn" id="5_vthst"]
 [ext_resource type="PackedScene" path="res://Prefabs/Component/CharacterCamera.tscn" id="5_x2i3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02bq4"]
